@@ -1,0 +1,24 @@
+{
+  "name": "aubrey-snippetts",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "flow-bin": "^0.87.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aubford/aubrey-snippetts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aubford/aubrey-snippetts/issues"
+  },
+  "homepage": "https://github.com/aubford/aubrey-snippetts#readme"
+}
