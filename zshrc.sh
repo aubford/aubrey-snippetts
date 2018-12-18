@@ -7,13 +7,12 @@ bindkey "\e\eOC" forward-word
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails wd textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(wd github)
-plugins+=(zsh-nvm)
+plugins=(z wd github zsh-nvm npm node osx)
 
 # Shell ---------------------------------------------------------------------------------------------------
 alias -g openmulti='open -n'
 # open zsh config file
-alias zzz='idea ~/.zshrc'
+alias zzz='idea ~/workspace/aubrey-snippetts/zshrc.sh'
 # start npm http server
 alias http='http-server -c-1'
 # re-source zsh shell
@@ -24,6 +23,11 @@ alias jira='open https://rachio.atlassian.net/secure/RapidBoard.jspa?projectKey=
 alias genodecide='killall node'
 #get file size
 alias size="du -hs"
+# find the origin of a given command
+alias locate="which"
+# copy global npm packages from given package
+alias nvm-cp="nvm copy-packages" #(e.g. 0.10.23)
+
 npmo(){
   npm explore $1 -- open -a Terminal .;
 }
@@ -60,13 +64,14 @@ mk() {
 }
 
 
-# Webapp -------------------------------------------------------------------------------------------
+# Rachio Webapp -------------------------------------------------------------------------------------------
 # run my slim webpack config
 alias rd='npm run dev-slim'
 # commitizen commit
 alias cza='git add -A; npm run commit'
 # commitizen commit retry
 alias czr='git add -A; npm run commit -- --retry'
+alias rt='npm run test:watch'
 # build project
 build(){
   if git symbolic-ref HEAD &>/dev/null; then
@@ -114,7 +119,7 @@ buildnew(){
 }
 
 
-# Rachio Backed -------------------------------------------------------------------------------------
+# Rachio Backend -------------------------------------------------------------------------------------
 # connections
 alias db-prod-partner_portal_owner='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U partner_portal_owner prod'
 alias db-prod-readonly='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U readonly prod'
@@ -134,7 +139,7 @@ clearmaven(){
 
 # Javascript -------------------------------------------------------------------------------------------
 # install everything you need for babel
-alias babel='npm install --save-dev babel-core babel-loader babel-preset-react'
+alias install-babel='npm install --save-dev babel-core babel-loader babel-preset-react'
 # list npm packages in node_modules
 alias nl='npm list --depth=0'
 # simple npm run
@@ -142,7 +147,6 @@ alias rn='npm run'
 #open package.json
 alias pac='idea package.json'
 alias ww='wd 3'
-alias rt='npm run test:watch'
 alias snip='idea ~/workspace/aubrey-snippetts'
 
 
@@ -313,13 +317,21 @@ admit() {
 # stashing
 alias stash='git add -A; git stash save'
 alias gl='git stash list --pretty=format:"%Cblue %cr %Cred %gd %Cgreen %s"'
-alias apply='git stash apply'
 # wipe branch
 alias res='git reset --hard head'
 # rename a branch
 alias rename='git branch -m'
 # untrack a file
 alias untrack='git rm -r --cached'
+
+# git stash apply
+apply() {
+  if [[ $# -eq 0 ]]
+    then git stash apply
+    else git stash apply stash@{$1}
+  fi
+}
+
 # checkout back in time
 gbb() {
   git checkout @{-$1};
