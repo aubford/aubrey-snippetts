@@ -1,18 +1,17 @@
 #!/bin/sh
-
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails wd textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(z wd github zsh-nvm npm node osx)
+# PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
+alias -g zrc="~/workspace/aubrey-snippetts/zshrc.sh"
 
-# Shell ---------------------------------------------------------------------------------------------------
-alias -g openmulti='open -n'
+# ------- Shell ---------------------------------------------------------------------------------------------------
+# sed this file
+alias alialist="tail -n +8 zrc"
 # open zsh config file
-alias zzz='idea ~/workspace/aubrey-snippetts/zshrc.sh'
+alias zzz='idea zrc'
+# open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
+alias -g openmulti='open -n'
 # start npm http server
 alias http='http-server -c-1'
 # re-source zsh shell
@@ -27,7 +26,7 @@ alias size="du -hs"
 alias locate="which"
 # copy global npm packages from given package
 alias nvm-cp="nvm copy-packages" #(e.g. 0.10.23)
-
+# open npm package in node_modules
 npmo(){
   npm explore $1 -- open -a Terminal .;
 }
@@ -62,9 +61,7 @@ mk() {
   mkdir $1
   ls
 }
-
-
-# Rachio Webapp -------------------------------------------------------------------------------------------
+# ------- Rachio Webapp ----------------------------------------------------------------------------------------
 # run my slim webpack config
 alias rd='npm run dev-slim'
 # commitizen commit
@@ -117,9 +114,7 @@ buildnew(){
   curl -X POST "http://jenkins.rachvpc.io/job/Rachio/job/rachio-webapp/build?delay=0" --user aubrey@rach.io:093c8354b8c16914c3b8fab6cc4dd436;
   (sleep 200; curl -X POST $url$branch/build --user aubrey@rach.io:093c8354b8c16914c3b8fab6cc4dd436; sleep 200; open $url$branch)&
 }
-
-
-# Rachio Backend -------------------------------------------------------------------------------------
+# ------- Rachio Backend -------------------------------------------------------------------------------------
 # connections
 alias db-prod-partner_portal_owner='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U partner_portal_owner prod'
 alias db-prod-readonly='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U readonly prod'
@@ -130,14 +125,12 @@ alias db-local='psql -h localhost -d postgres -U'
 alias dump-portaldb='pg_dump -Fc -Ox -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U partner_portal_owner -n partner_portal prod > portal.dump'
 # restore partner_portal schema from dump file
 alias restore-portaldb='pg_restore --schema-only --verbose --clean --exit-on-error --no-privileges --no-owner -l -d postgres portal.dump'
-
 # clear maven installed
 clearmaven(){
     trash ~/.m2/repository/com/rachio/$1
     cd ~/.m2/repository/com/rachio
 }
-
-# Javascript -------------------------------------------------------------------------------------------
+# ------- Javascript -------------------------------------------------------------------------------------------
 # install everything you need for babel
 alias install-babel='npm install --save-dev babel-core babel-loader babel-preset-react'
 # list npm packages in node_modules
@@ -148,9 +141,7 @@ alias rn='npm run'
 alias pac='idea package.json'
 alias ww='wd 3'
 alias snip='idea ~/workspace/aubrey-snippetts'
-
-
-# Run ---------------------------------------------------------------------------------------------------
+# ------- Run ---------------------------------------------------------------------------------------------------
 alias ngrok='~/workspace/RESOURCES/UTILITIES/ngrok'
 grok(){
   ngrok http -subdomain rachio --host-header=rewrite $1
@@ -182,9 +173,7 @@ jenk(){
   url="http://jenkins.rachvpc.io/job/Rachio2/job/rachio-webapp/job/";
   open $url$branch;
 }
-
-
-# Mac --------------------------------------------------------------------------------------------------
+# ------- Mac --------------------------------------------------------------------------------------------------
 # retrieve password from keychain
 alias key='security find-generic-password -w -ga'
 # give file full permissions
@@ -193,22 +182,17 @@ alias permit='chmod 777'
 alias permit-owner='chmod 700'
 # find all domains available for updating macOS preferences
 alias defaults-domains="defaults domains | tr ',' '\n'"
-#backup important home folder configs
-backupConfig(){
-  mkk ~/Google\ Drive/Software\ Settings/homefolder_backups/$(date +"%y-%m-%d-time->(%T)")
-  cp ~/.zshrc .
-}
+# show hidden folders in Finder
 unhide(){
   defaults write com.apple.finder AppleShowAllFiles -bool YES;
   killall Finder;
 }
+# hide hidden folders in Finder
 hide(){
   defaults write com.apple.finder AppleShowAllFiles -bool NO
   killall Finder;
 }
-
-
-# Database -------------------------------------------------------------------------------------------------
+# ------- Database -------------------------------------------------------------------------------------------------
 # start postgres database
 alias poststart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 # stop postgres database
@@ -219,11 +203,7 @@ alias psqlog="cat /usr/local/var/postgres/server.log"
 alias rollback='knex migrate:rollback --env development'
 alias migrate='knex migrate:latest --env development'
 alias seed='knex seed:run --env development'
-
-# Sed this file -------------------------------------------------------------------------------------------------
-alias alialist="sed -n 96,10000p ~/.zshrc"
-
-# Github -----------------------------------------------------------------------------------------------------
+# ------- Github -----------------------------------------------------------------------------------------------------
 gh() {
   giturl=$(git config --get remote.origin.url)
   if [[ $giturl == "" ]]
@@ -236,7 +216,6 @@ gh() {
 
   open $giturl
 }
-
 ghb () {
   giturl=$(git config --get remote.origin.url)
   if [[ $giturl == "" ]]
@@ -265,9 +244,7 @@ ghb () {
   giturl=$giturl/$branch
   open $giturl
 }
-
-alias iglocal="idea ./.git/info/exclude"
-# Git Logs -------------------------------------------------------------------------------------------------
+# ------- Git Logs -------------------------------------------------------------------------------------------------
 # log entire repo pretty
 alias megalog="git log --graph --decorate --pretty=format:'%Cred %h %Cgreen %s %Cblue %cd %Cgreen %an %Cred %C(auto) %d' --all"
 # log this branch pretty
@@ -284,7 +261,6 @@ alias gr='git remote -v'
 rangelog() {
   git log $2..$1 --graph --decorate --pretty=format:"%Cred %h %Cgreen %s %Cblue %cd %Cgreen %an %C(auto) %d"
 }
-
 # show remote of provided locl branch
 show-remote() {
   git branch | grep $1*;
@@ -294,14 +270,11 @@ show-remote() {
   git branch -r | grep $1*;
   return 1;
 }
-
 # get history of a function ($1) in a file ($2)
 hist() {
   git log -L :$1:$2
 }
-
-
-# Git ----------------------------------------------------------
+# ------- Git ----------------------------------------------------------
 alias gp='git pull'
 alias push='git push -u'
 alias gs='git status'
@@ -313,7 +286,6 @@ admit() {
   git add -A
   git commit -m $1
 }
-
 # stashing
 alias stash='git add -A; git stash save'
 alias gl='git stash list --pretty=format:"%Cblue %cr %Cred %gd %Cgreen %s"'
@@ -323,7 +295,6 @@ alias res='git reset --hard head'
 alias rename='git branch -m'
 # untrack a file
 alias untrack='git rm -r --cached'
-
 # git stash apply
 apply() {
   if [[ $# -eq 0 ]]
@@ -331,17 +302,14 @@ apply() {
     else git stash apply stash@{$1}
   fi
 }
-
 # checkout back in time
 gbb() {
   git checkout @{-$1};
 }
-
 # checkout all from another branch
 checkall() {
   git checkout $1 -- .;
 }
-
 # checkout all from common ancestor with master (for PRs)
 checkpr(){
   branch=$(git symbolic-ref --short HEAD)
