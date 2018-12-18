@@ -312,7 +312,7 @@ admit() {
 
 # stashing
 alias stash='git add -A; git stash save'
-alias gl='git stash list --date=default'
+alias gl='git stash list --pretty=format:"%Cblue %cr %Cred %gd %Cgreen %s"'
 alias apply='git stash apply'
 # wipe branch
 alias res='git reset --hard head'
