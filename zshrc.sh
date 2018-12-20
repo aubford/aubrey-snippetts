@@ -1,7 +1,9 @@
-#!/bin/sh
+#@IgnoreInspection BashAddShebang
+
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
 plugins=(z wd github zsh-nvm npm node osx)
+source $ZSH/oh-my-zsh.sh
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g zrc="~/workspace/aubrey-snippetts/zshrc.sh"
 
