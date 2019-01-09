@@ -1,15 +1,25 @@
 import shallowEqual from 'react-redux/lib/utils/shallowEqual'
 
+/**
+ * apply signature string to error message
+ * @param {string} message - any string
+ * @param {string} signature - signature to apply if it exists
+ * @returns {string} new string with signature applied
+ */
+const withSignature = (message: string, signature?: string) => {
+  return message + (signature ? '  SIGNATURE: ' + signature : '')
+}
+
 function blackList(...blackListed) {
   return (pProps, nProps) => {
     const prev = {...pProps}
     const next = {...nProps}
-    for (var p in prev) {
+    for (const p in prev) {
       if (blackListed.includes(p)) {
         prev[p] = 1
       }
     }
-    for (var n in next) {
+    for (const n in next) {
       if (blackListed.includes(n)) {
         next[n] = 1
       }
@@ -45,10 +55,6 @@ export const loadDataParallelSimple = (
             data.signature
           )
         )
-        logger.error(err, {
-          dataArray,
-          data
-        })
         return Promise.reject(err)
       }
 
@@ -76,22 +82,6 @@ export const loadDataParallelSimple = (
         return Promise.reject(err)
       } else {
         if (setLoadingMessage) setLoadingMessage('Error loading data')
-        logger.error({
-          error: err,
-          dataArray: dataArray.map(d => ({
-            action: d.action ? d.action.toString() : null,
-            checkRequiredData: d.checkRequiredData
-              ? d.checkRequiredData.toString()
-              : null
-          })),
-          reason:
-            err && err.error
-              ? 'Network error'
-              : withSignature(
-                  'FETCH_WENT_THROUGH_BUT_DATA_REQUIREMENT_NOT_FULFILLED',
-                  err.signature
-                )
-        })
         return Promise.reject(err)
       }
     })
