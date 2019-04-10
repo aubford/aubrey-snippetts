@@ -63,9 +63,11 @@ mk() {
   mkdir $1
   ls
 }
+#curl GET
+alias get='curl -X GET -H "Content-Type: application/json"'
 # ------- Rachio Webapp ----------------------------------------------------------------------------------------
 # run my slim webpack config
-alias rd='npm run dev-slim'
+alias rd='npm run dev'
 # commitizen commit
 alias cza='git add -A; npm run commit'
 # commitizen commit retry
@@ -117,6 +119,8 @@ buildnew(){
   (sleep 200; curl -X POST $url$branch/build --user aubrey@rach.io:093c8354b8c16914c3b8fab6cc4dd436; sleep 200; open $url$branch)&
 }
 # ------- Rachio Backend -------------------------------------------------------------------------------------
+# elasticsearch for integration tests
+alias elastic='mvn elasticsearch:runforked -Dwait=true'
 # connections
 alias db-prod-partner_portal_owner='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U partner_portal_owner prod'
 alias db-prod-readonly='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U readonly prod'
@@ -129,8 +133,7 @@ alias dump-portaldb='pg_dump -Fc -Ox -h core-aurora-postgresql-prod.cluster-c9in
 alias restore-portaldb='pg_restore --schema-only --verbose --clean --exit-on-error --no-privileges --no-owner -l -d postgres portal.dump'
 # clear maven installed
 clearmaven(){
-    trash ~/.m2/repository/com/rachio/$1
-    cd ~/.m2/repository/com/rachio
+    trash ~/.m2/repository/com/rachio
 }
 # ------- Javascript -------------------------------------------------------------------------------------------
 # install everything you need for babel
