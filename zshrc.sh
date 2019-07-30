@@ -2,14 +2,21 @@
 
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
-plugins=(z wd github zsh-nvm npm node osx)
-source $ZSH/oh-my-zsh.sh
+
+# oh-my-zsh non-default settings
+DISABLE_AUTO_TITLE="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+plugins=(zsh-nvm z wd github npm node osx)
+
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g zrc="~/workspace/aubrey-snippetts/zshrc.sh"
 
 # ------- Shell ---------------------------------------------------------------------------------------------------
 # sed this file
 alias alialist="tail -n +8 zrc"
+# pbcopy pwd
+alias copypwd="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
 alias zzz='idea zrc'
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
@@ -80,7 +87,7 @@ alias ngrok='~/workspace/RESOURCES/UTILITIES/ngrok'
 grok(){
   ngrok http -subdomain rachio --host-header=rewrite $1
 }
-alias simcr='~/workspace/RESOURCES/chromium-tools/chromium/src/out/Debug-iphonesimulator/iossim ~/workspace/RESOURCES/chromium-tools/chromium/src/out/Debug-iphonesimulator/Chromium.app'
+alias simcr='~/workspace/RESOURCES/chromium-tools/chromium/src/out/Debug-iphonesimulator/iossim ~/workspace/RE`SOURCE`S/chromium-tools/chromium/src/out/Debug-iphonesimulator/Chromium.app'
 # react native run ios emulator
 alias ios='react-native run-ios'
 # react native run android emulator
