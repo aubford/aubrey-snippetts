@@ -18,8 +18,6 @@ alias -g openmulti='open -n'
 alias http='http-server -c-1'
 # re-source zsh shell
 alias rl='source ~/.zshrc'
-# open jira
-alias jira='open https://rachio.atlassian.net/secure/RapidBoard.jspa?projectKey=PM&rapidView=76'
 # kill all node processes
 alias genodecide='killall node'
 #get file size
@@ -65,76 +63,7 @@ mk() {
 }
 #curl GET
 alias get='curl -X GET -H "Content-Type: application/json"'
-# ------- Rachio Webapp ----------------------------------------------------------------------------------------
-# run my slim webpack config
-alias rd='npm run dev'
-# commitizen commit
-alias cza='git add -A; npm run commit'
-# commitizen commit retry
-alias czr='git add -A; npm run commit -- --retry'
-alias rt='npm run test:watch'
-# build project
-build(){
-  if git symbolic-ref HEAD &>/dev/null; then
-  branch=$(git symbolic-ref HEAD)
-  else
-  echo "You're not on a branch"
-  return 1;
-  fi
 
-  if [[ ! -n `git branch -r | grep "$(git symbolic-ref --short HEAD 2>/dev/null)"` ]]
-  then
-  echo "Remote Doesn't Exist.  Push branch first.";
-  return 1;
-  fi
-
-  branch=${branch##refs/heads/};
-  url="http://jenkins.rachvpc.io/job/Rachio/job/rachio-webapp/job/";
-
-  curl -X POST $url$branch/build --user aubrey@rach.io:093c8354b8c16914c3b8fab6cc4dd436;
-
-  (sleep 125; open $url$branch)&
-}
-buildnew(){
-  if git symbolic-ref HEAD &>/dev/null; then
-  branch=$(git symbolic-ref HEAD)
-  else
-  echo "You're not on a branch"
-
-  return 1;
-  fi
-
-  if [[ ! -n `git branch -r | grep "$(git symbolic-ref --short HEAD 2>/dev/null)"` ]]
-  then
-  echo "Remote Doesn't Exist.  Push branch first.";
-  return 1;
-  fi
-
-  branch=${branch##refs/heads/};
-  url="http://jenkins.rachvpc.io/job/Rachio/job/rachio-webapp/job/";
-
-  gh;
-
-  curl -X POST "http://jenkins.rachvpc.io/job/Rachio/job/rachio-webapp/build?delay=0" --user aubrey@rach.io:093c8354b8c16914c3b8fab6cc4dd436;
-  (sleep 200; curl -X POST $url$branch/build --user aubrey@rach.io:093c8354b8c16914c3b8fab6cc4dd436; sleep 200; open $url$branch)&
-}
-# ------- Rachio Backend -------------------------------------------------------------------------------------
-# elasticsearch for integration tests
-alias elastic='mvn elasticsearch:runforked -Dwait=true'
-# connections
-alias db-prod-partner_portal_owner='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U partner_portal_owner prod'
-alias db-prod-readonly='psql -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U readonly prod'
-alias db-dev-partner_portal_owner='psql -h core-aurora-postgresql-dev.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U partner_portal_owner dev'
-alias db-dev-db_owner='psql -h core-aurora-postgresql-dev-0.c9ingygldflb.us-west-2.rds.amazonaws.com -U db_owner dev'
-alias db-local='psql -h localhost -d postgres -U'
-# dump partner_portal schema from prod database to file
-alias dump-portaldb='pg_dump -Fc -Ox -h core-aurora-postgresql-prod.cluster-c9ingygldflb.us-west-2.rds.amazonaws.com -U partner_portal_owner -n partner_portal prod > portal.dump'
-# restore partner_portal schema from dump file
-alias restore-portaldb='pg_restore --schema-only --verbose --clean --exit-on-error --no-privileges --no-owner -l -d postgres portal.dump'
-# clear maven installed
-clearmaven(){
-    trash ~/.m2/repository/com/rachio
-}
 # ------- Javascript -------------------------------------------------------------------------------------------
 # install everything you need for babel
 alias install-babel='npm install --save-dev babel-core babel-loader babel-preset-react'
