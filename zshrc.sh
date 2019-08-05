@@ -2,7 +2,7 @@
 
 
 # what your ~/.zshrc file should look like, simply:
-# source "/Users/aubrey/workspace/aubrey-snippetts/zshrc.sh"
+# source "/Users/aubrey/workspace/aubrey-snippetts/UTIL/zshrc.sh"
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -105,13 +105,13 @@ export PATH="/usr/local/opt/mongodb-community@4.0/bin:$PATH"
 
 
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
-alias -g zrc="~/workspace/aubrey-snippetts/zshrc.sh"
+alias -g zrc="~/workspace/UTIL/aubrey-snippetts/zshrc.sh"
 
 # ------- Shell ---------------------------------------------------------------------------------------------------
 # sed this file
 alias alialist="tail -n +8 zrc"
 # pbcopy pwd
-alias copypwd="pwd | tr -d '\n' | pbcopy"
+alias cppwd="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
 alias zzz='idea zrc'
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
@@ -134,8 +134,21 @@ npmo(){
 murder(){
   kill -9 $(lsof -i :$1 -t);
 }
+# list all node TCP processes
+allnode(){
+  lsof -Pc node
+}
+# list all node TCP processes
+allnodetcp(){
+  lsof -Pc node -i TCP -a
+}
+# what is going on on this port
 chanps(){
-  lsof -i :$1;
+  lsof -Pi :$1;
+}
+# find process by name
+comm(){
+  lsof -Pc $1;
 }
 #get date string from milliseconds
 when(){
@@ -150,6 +163,7 @@ alias sch='find . -name'
 chpwd(){
   lsa
 }
+# move to workspace trash with date
 delt(){
     mv $1 ~/workspace/OLD/TRASH/$(date +"%m-%d-T-%T")"::"$1;
 }
@@ -211,7 +225,7 @@ jenk(){
 # retrieve password from keychain
 alias key='security find-generic-password -w -ga'
 # give file full permissions
-alias permit='chmod 777'
+alias -g permit='chmod 777'
 # give file full permissions for owner
 alias permit-owner='chmod 700'
 # find all domains available for updating macOS preferences
@@ -238,7 +252,7 @@ alias rollback='knex migrate:rollback --env development'
 alias migrate='knex migrate:latest --env development'
 alias seed='knex seed:run --env development'
 # run mongo
-alias mongo='mongod --config /usr/local/etc/mongod.conf'
+alias mong='mongod --config /usr/local/etc/mongod.conf'
 # ------- Github -----------------------------------------------------------------------------------------------------
 gh() {
   giturl=$(git config --get remote.origin.url)
@@ -352,3 +366,10 @@ checkpr(){
   git checkout head...master
   checkall ${branch}
 }
+
+# Apache
+alias apache-start='apachectl start'
+alias apache-restart='apachectl restart'
+# php http config file
+alias apache-config="idea /private/etc/apache2/httpd.conf"
+
