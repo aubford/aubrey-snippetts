@@ -8,7 +8,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/aubrey/.oh-my-zsh"
+export ZSH=/Users/$AUBREY/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -367,9 +367,13 @@ checkpr(){
   checkall ${branch}
 }
 
-# Apache
+#------ Apache ---------------------------------------------------
 alias apache-start='apachectl start'
 alias apache-restart='apachectl restart'
 # php http config file
 alias apache-config="idea /private/etc/apache2/httpd.conf"
+
+#------ Docker ---------------------------------------------------
+alias docker-killall="docker kill $(docker ps -q)"
+alias docker-rmall="docker rm $(docker ps -a -q)"
 
