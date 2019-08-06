@@ -80,7 +80,7 @@ bindkey "\e\eOC" forward-word
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(node z wd github npm osx zsh-nvm)
+plugins=(node z wd github npm osx zsh-nvm docker postgres)
 
 source $ZSH/oh-my-zsh.sh
 
