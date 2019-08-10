@@ -177,6 +177,18 @@ mk() {
 }
 #curl GET
 alias get='curl -X GET -H "Content-Type: application/json"'
+# get current user id
+alias userid='id -u'
+alias groupid='id -g'
+
+# copy files from local machine to remote machine
+cp-lr() {
+  scp -r $2 $1:$3
+}
+
+cp-rl() {
+  scp -r $1:$2 $3
+}
 
 # ------- Javascript -------------------------------------------------------------------------------------------
 # install everything you need for babel
