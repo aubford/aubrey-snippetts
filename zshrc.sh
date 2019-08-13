@@ -392,5 +392,5 @@ alias docker-rmall="docker rm $(docker ps -a -q)"
 
 #------- Heroku -----------------------------------------------------
 alias heroku-config-to-env="heroku config | sed 's/:  */=/g; /^=/d' >> .env.heroku"
-alias env-to-heroku-config="heroku-config-to-env; heroku config:set $(cat .env | sed '/^$/d; /#[[:print:]]*$/d')"
+alias env-to-heroku-config="heroku-config-to-env; heroku config:set \$(cat .env | sed '/^$/d; /#[[:print:]]*$/d')"
 
