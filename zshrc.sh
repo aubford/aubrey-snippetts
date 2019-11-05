@@ -101,7 +101,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-export PATH="/usr/local/opt/mongodb-community@4.0/bin:$PATH"
+export PATH="/usr/local/opt/mongodb-community/bin:$PATH"
 
 
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
