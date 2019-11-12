@@ -1,8 +1,14 @@
 #@IgnoreInspection BashAddShebang
 
+########################################################################
 
-# what your ~/.zshrc file should look like, simply:
-# source "/Users/aubrey/workspace/aubrey-snippetts/UTIL/zshrc.sh"
+#>  what your ~/.zshrc file should look like, simply:
+#>  #@IgnoreInspection BashAddShebang
+#>  AUBREY="aubreyford"
+#>  path+="/usr/local/mysql/bin"
+#>  source "/Users/aubreyford/workspace/UTIL/aubrey-snippetts/zshrc.sh"
+
+########################################################################
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -75,6 +81,8 @@ ZSH_THEME="robbyrussell"
 
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
+defaults write -g InitialKeyRepeat -int 8
+defaults write -g KeyRepeat -int 1
 
 # oh-my-zsh non-default settings
 DISABLE_AUTO_TITLE="true"
