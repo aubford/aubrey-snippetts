@@ -14,6 +14,12 @@
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Set the Android home for the location they are found when SDK is installed using Android Studio
+export ANDROID_HOME=$HOME/Library/Android/sdk
+# Add Android tools locations to PATH
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+# set Java Developent Kit home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/$JDK_HOME/Contents/Home
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$AUBREY/.oh-my-zsh
