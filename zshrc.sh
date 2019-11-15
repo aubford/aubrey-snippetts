@@ -12,7 +12,9 @@
 
 ########################################################################
 
-# If you come from bash you might have to change your $PATH.
+# --- Set Locations -------------------------------------------------------------------------
+
+# set global bin locations
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Set the Android home for the location they are found when SDK is installed using Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -21,9 +23,26 @@ export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 # set Java Developent Kit home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/$JDK_HOME/Contents/Home
 
+
+# set mongo bin location
+export PATH=/usr/local/opt/mongodb-community/bin:$PATH
+# path to shell manual
+export MANPATH=/usr/local/man:$MANPATH
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$AUBREY/.oh-my-zsh
 
+# ---- Global settings ---------------------------------------------------------------------
+
+# PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
+alias -g zrc=~/workspace/UTIL/aubrey-snippetts/zshrc.sh
+
+bindkey "\e\eOD" backward-word
+bindkey "\e\eOC" forward-word
+defaults write -g InitialKeyRepeat -int 8
+defaults write -g KeyRepeat -int 1
+
+
+# ------- Oh My Zsh Settings -----------------------------------------------------------------
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -83,15 +102,6 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-#////////////////////////////////////////////////////////////////////////////////////
-#////////////////////////////////////////////////////////////////////////////////////
-#////////////////////////////////////////////////////////////////////////////////////
-
-bindkey "\e\eOD" backward-word
-bindkey "\e\eOC" forward-word
-defaults write -g InitialKeyRepeat -int 8
-defaults write -g KeyRepeat -int 1
-
 # oh-my-zsh non-default settings
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -99,10 +109,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(node z wd github npm osx zsh-nvm docker postgres)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -117,11 +123,6 @@ export MANPATH="/usr/local/man:$MANPATH"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-export PATH="/usr/local/opt/mongodb-community/bin:$PATH"
-
-
-# PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
-alias -g zrc="~/workspace/UTIL/aubrey-snippetts/zshrc.sh"
 
 # ------- Shell ---------------------------------------------------------------------------------------------------
 # sed this file
