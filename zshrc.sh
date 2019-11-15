@@ -2,11 +2,13 @@
 
 ########################################################################
 
-#>  what your ~/.zshrc file should look like, simply:
+#   What your ~/.zshrc file should look like, simply:
+
 #>  #@IgnoreInspection BashAddShebang
 #>  AUBREY="aubreyford"
 #>  path+="/usr/local/mysql/bin"
 #>  source "/Users/aubreyford/workspace/UTIL/aubrey-snippetts/zshrc.sh"
+#>  JDK_HOME="WHATEVER_CURRENT_JDK_IS" (e.g.: JDK_HOME="jdk1.8.0_231.jdk")
 
 ########################################################################
 
@@ -209,6 +211,15 @@ alias rn='npm run'
 alias pac='idea package.json'
 alias ww='wd 3'
 alias snip='idea ~/workspace/aubrey-snippetts'
+
+# ------- Java/Android -----------------------------------------------------------------------------------------
+# list installed JDK versions
+alias jdk='/usr/libexec/java_home -V'
+# input text into Android emulator
+apaste(){
+  adb shell input text "$1"
+}
+
 # ------- Run ---------------------------------------------------------------------------------------------------
 alias ngrok='~/workspace/RESOURCES/UTILITIES/ngrok'
 grok(){
