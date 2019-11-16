@@ -108,7 +108,8 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(node z wd github npm osx zsh-nvm docker postgres)
 
-source $ZSH/oh-my-zsh.sh
+# shellcheck source=/Users/$AUBREY/.oh-my-zsh/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -145,15 +146,19 @@ alias size="du -hs"
 alias nvm-cp="nvm copy-packages" #(e.g. 0.10.23)
 # open npm package in node_modules
 npmo(){
-  npm explore $1 -- open -a Terminal .;
+  npm explore "$1" -- open -a Terminal .;
 }
 #kill process on a given port
 murder(){
-  kill -9 $(lsof -i :$1 -t);
+  kill -9 "$(lsof -i :"$1" -t)";
 }
 # list all node TCP processes
 allnode(){
   lsof -Pc node
+}
+# list all TCP processes
+alltcp(){
+  lsof -Pi TCP -a
 }
 # list all node TCP processes
 allnodetcp(){
@@ -161,17 +166,17 @@ allnodetcp(){
 }
 # what is going on on this port
 chanps(){
-  lsof -Pi :$1;
+  lsof -Pi :"$1";
 }
 # find process by name
 comm(){
-  lsof -Pc $1;
+  lsof -Pc "$1";
 }
 #get date string from milliseconds
 when(){
-  date -r $1;
-  if [[ ! -z $2 ]]
-  then date -r $2;
+  date -r "$1";
+  if [[ -n $2 ]]
+  then date -r "$2";
   fi;
 }
 #search for file by name starting at .
@@ -182,14 +187,14 @@ chpwd(){
 }
 # move to workspace trash with date
 delt(){
-    mv $1 ~/workspace/OLD/TRASH/$(date +"%m-%d-T-%T")"::"$1;
+    mv "$1" ~/workspace/OLD/TRASH/"$(date +"%m-%d-T-%T") -- $1";
 }
 mkk() {
-  mkdir $1
-  cd $1 || exit
+  mkdir "$1"
+  cd "$1" || exit
 }
 mk() {
-  mkdir $1
+  mkdir "$1"
   ls
 }
 #curl GET
@@ -205,6 +210,11 @@ cp-lr() {
 
 cp-rl() {
   scp -r $1:$2 $3
+}
+
+echoerr(){
+  echo "$@" 1>&2;
+  return 1;
 }
 
 # ------- Javascript -------------------------------------------------------------------------------------------
@@ -230,7 +240,7 @@ apaste(){
 # ------- Run ---------------------------------------------------------------------------------------------------
 alias ngrok='~/workspace/RESOURCES/UTILITIES/ngrok'
 grok(){
-  ngrok http -subdomain rachio --host-header=rewrite $1
+  ngrok http -subdomain rachio --host-header=rewrite "$1"
 }
 alias simcr='~/workspace/RESOURCES/chromium-tools/chromium/src/out/Debug-iphonesimulator/iossim ~/workspace/RE`SOURCE`S/chromium-tools/chromium/src/out/Debug-iphonesimulator/Chromium.app'
 # react native run ios emulator
@@ -239,26 +249,9 @@ alias ios='react-native run-ios'
 alias droid='react-native run-android'
 jav(){
   javac *.java
-  java $1
+  java "$1"
 }
-jenk(){
-  if git symbolic-ref HEAD &>/dev/null; then
-  branch=$(git symbolic-ref HEAD)
-  else
-  echo "You're not on a branch"
-  return 1;
-  fi
 
-  if [[ ! -n `git branch -r | grep "$(git symbolic-ref --short HEAD 2>/dev/null)"` ]]
-  then
-  echo "Remote Doesn't Exist.  Push branch first.";
-  return 1;
-  fi
-
-  branch=${branch##refs/heads/};
-  url="http://jenkins.rachvpc.io/job/Rachio2/job/rachio-webapp/job/";
-  open $url$branch;
-}
 # ------- Mac --------------------------------------------------------------------------------------------------
 # retrieve password from keychain
 alias key='security find-generic-password -w -ga'
@@ -292,46 +285,39 @@ alias seed='knex seed:run --env development'
 # run mongo
 alias mong='mongod --config /usr/local/etc/mongod.conf'
 # ------- Github -----------------------------------------------------------------------------------------------------
-gh() {
-  giturl=$(git config --get remote.origin.url)
-  if [[ $giturl == "" ]]
-  then
-    echo 'Origin Not found.';
-    return 1;
-  fi
-
-  giturl=${giturl/git@github.com\:/https://github.com/}
-
-  open $giturl
+# return github repo http addy
+ghurl() {
+  GITURL=$(git config --get remote.origin.url) || echoerr 'Origin Not Found...' || return 1;
+  echo "${GITURL/git@github.com\:/https://github.com/}"
 }
-ghb () {
-  giturl=$(git config --get remote.origin.url)
-  if [[ $giturl == "" ]]
+
+# return github branch http addy
+ghburl () {
+  GITURL=$(ghurl) || return 1
+  BRANCH=$(branch-name) || return 1
+
+  if git branch -r | grep -q "^  origin/$BRANCH$"
   then
-    echo 'Origin Not found.';
-    return 1;
-  fi
-
-  if [[ ! -n `git branch -r | grep "$(git symbolic-ref --short HEAD 2 >/dev/null)"` ]]
-  then
-    echo "Remote Doesn't Exist.  Push branch first.";
-    return 1;
-  fi
-
-  giturl=${giturl/git@github.com\:/https://github.com/}
-  giturl=${giturl/\.git/\/tree}
-
-  if git symbolic-ref HEAD & >/dev/null; then
-    branch=$(git symbolic-ref HEAD)
+    GITURL=${GITURL/\.git/\/tree}
+    echo "$GITURL/$BRANCH"
   else
-    echo "You're not on a branch"
-    return 1;
+    echoerr "Remote Doesn't Exist.  Push branch first."
+    return 1
   fi
-
-  branch=${branch##refs/heads/}
-  giturl=$giturl/$branch
-  open $giturl
 }
+
+# open current github repo
+gh() {
+  GITURL=$(ghurl) || return 1
+  open "$GITURL"
+}
+
+# open current branch in github
+ghb(){
+  BRANCH_URL=$(ghburl) || return 1
+  open "$BRANCH_URL"
+}
+
 # ------- Git Logs -------------------------------------------------------------------------------------------------
 # log entire repo pretty
 alias megalog="git log --graph --decorate --pretty=format:'%Cred %h %Cgreen %s %Cblue %cd %Cgreen %an %Cred %C(auto) %d' --all"
@@ -347,21 +333,10 @@ alias changed="git diff --name-status"
 alias gr='git remote -v'
 # logg a range
 rangelog() {
-  git log $2..$1 --graph --decorate --pretty=format:"%Cred %h %Cgreen %s %Cblue %cd %Cgreen %an %C(auto) %d"
+  LAST=$(($2 + 1))
+  git log "HEAD~$LAST..HEAD~$1" --graph --decorate --pretty=format:"%Cred %h %Cgreen %s %Cblue %cd %Cgreen %an %C(auto) %d"
 }
-# show remote of provided locl branch
-show-remote() {
-  git branch | grep $1*;
-  echo
-  echo '**************************'
-  echo
-  git branch -r | grep $1*;
-  return 1;
-}
-# get history of a function ($1) in a file ($2)
-hist() {
-  git log -L :$1:$2
-}
+
 # ------- Git ----------------------------------------------------------
 alias gp='git pull'
 alias push='git push -u'
@@ -370,9 +345,15 @@ alias gg='git checkout'
 alias mg='git merge master'
 alias amend='git add -A; git commit --amend'
 alias g3='git checkout master'
+
+branch-name(){
+  BRANCH_NAME=$(git symbolic-ref -q --short HEAD) || echoerr "You're not on a branch" || return 1
+  echo "$BRANCH_NAME"
+}
+
 admit() {
   git add -A
-  git commit -m $1
+  git commit -m "$1"
 }
 # stashing
 alias stash='git add -A; git stash save'
@@ -387,22 +368,22 @@ alias untrack='git rm -r --cached'
 apply() {
   if [[ $# -eq 0 ]]
     then git stash apply
-    else git stash apply stash@{$1}
+    else git stash apply "stash@{$1}"
   fi
 }
 # checkout back in time
 gbb() {
-  git checkout @{-$1};
+  git checkout "@{-$1}";
 }
 # checkout all from another branch
 checkall() {
-  git checkout $1 -- .;
+  git checkout "$1" -- .;
 }
 # checkout all from common ancestor with master (for PRs)
 checkpr(){
-  branch=$(git symbolic-ref --short HEAD)
+  BRANCH=$(branch-name) || return 1
   git checkout head...master
-  checkall ${branch}
+  checkall "$BRANCH"
 }
 
 #------ Apache ---------------------------------------------------
@@ -412,8 +393,8 @@ alias apache-restart='apachectl restart'
 alias apache-config="idea /private/etc/apache2/httpd.conf"
 
 #------ Docker ---------------------------------------------------
-alias docker-killall="docker kill $(docker ps -q)"
-alias docker-rmall="docker rm $(docker ps -a -q)"
+alias docker-killall='docker kill $(docker ps -q)'
+alias docker-rmall='docker rm $(docker ps -a -q)'
 
 
 #------- Heroku -----------------------------------------------------
