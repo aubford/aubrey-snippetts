@@ -46,6 +46,9 @@ bindkey "\e\eOC" forward-word
 defaults write -g InitialKeyRepeat -int 8
 defaults write -g KeyRepeat -int 1
 
+# ------ Run Scripts Every Startup ---------------------------------------------------------
+# backup apple notes to util in time series
+cp -r ~/Library/Group\ Containers/group.com.apple.notes/ ~/Google\ Drive/Backup/notes-backup;
 
 # ------- Oh My Zsh Settings -----------------------------------------------------------------
 # Set name of the theme to load --- if set to "random", it will
