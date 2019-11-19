@@ -36,8 +36,13 @@ export ZSH=/Users/$AUBREY/.oh-my-zsh
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g zrc=~/workspace/UTIL/aubrey-snippetts/zshrc.sh
 
+# on git push, set default remote tracking branch if none exists
+git config --global push.default current
+
+# I think this fixes some shit related to dumb alt key behavior
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
+# faster key repeat for bad ADD
 defaults write -g InitialKeyRepeat -int 8
 defaults write -g KeyRepeat -int 1
 
