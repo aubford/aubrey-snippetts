@@ -9,6 +9,7 @@
 #>  path+="/usr/local/mysql/bin"
 #>  source "/Users/aubreyford/workspace/UTIL/aubrey-snippetts/zshrc.sh"
 #>  JDK_HOME="WHATEVER_CURRENT_JDK_IS" (e.g.: JDK_HOME="jdk1.8.0_231.jdk")
+#>  METEOR_VERSION_DIR="WHATEVER_CURRENT_METEOR_VERSION"
 
 ########################################################################
 
@@ -22,6 +23,9 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 # set Java Developent Kit home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/$JDK_HOME/Contents/Home
+# Set location
+export METEOR_TOOLS_DIR=/Users/aubreyford/.meteor/packages/meteor-tool/$METEOR_VERSION_DIR/mt-os.osx.x86_64/tools/cli
+
 
 
 # set mongo bin location
@@ -176,6 +180,8 @@ allnodetcp(){
 chanps(){
   lsof -Pi :"$1";
 }
+# get ppid for name
+alias name-chan="pgrep"
 # find process by name
 comm(){
   lsof -Pc "$1";
@@ -215,7 +221,7 @@ alias groupid='id -g'
 cp-lr() {
   scp -r $2 $1:$3
 }
-
+# copy files from remote machine to local machine
 cp-rl() {
   scp -r $1:$2 $3
 }
@@ -352,7 +358,7 @@ alias gs='git status'
 alias gg='git checkout'
 alias mg='git merge master'
 alias amend='git add -A; git commit --amend'
-alias g3='git checkout master'
+alias g3='git checkout dev'
 
 branch-name(){
   BRANCH_NAME=$(git symbolic-ref -q --short HEAD) || echoerr "You're not on a branch" || return 1
