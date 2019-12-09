@@ -50,10 +50,6 @@ bindkey "\e\eOC" forward-word
 defaults write -g InitialKeyRepeat -int 8
 defaults write -g KeyRepeat -int 1
 
-# ------ Run Scripts Every Startup ---------------------------------------------------------
-# backup apple notes to util in time series
-cp -r ~/Library/Group\ Containers/group.com.apple.notes/ ~/Google\ Drive/Backup/notes-backup;
-
 # ------- Oh My Zsh Settings -----------------------------------------------------------------
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -284,6 +280,23 @@ unhide(){
 hide(){
   defaults write com.apple.finder AppleShowAllFiles -bool NO
   killall Finder;
+}
+backup(){
+  BACKUP_BASENAME=$(basename "$1")
+  BACKUP_DATE=$(date +"%y-%m-%d-T-%T")
+  BACKUP_LOCATION="$HOME/Google Drive/Backup/$BACKUP_BASENAME/$BACKUP_DATE/"
+  RESTORE_FILE="$BACKUP_LOCATION/restore.sh"
+  
+  cp -r "$1"  "$BACKUP_LOCATION";
+  
+  touch "$RESTORE_FILE"
+  echo "#!/bin/bash
+trash \"$1\" && cp -r . \"$1\"" > "$RESTORE_FILE" 
+}
+
+backupIDE(){
+  backup "$HOME/Google Drive/intellij-settings-repo/";
+  backup "$HOME/workspace/brasch/suremeteor/.idea";
 }
 # ------- Database -------------------------------------------------------------------------------------------------
 # start postgres database
