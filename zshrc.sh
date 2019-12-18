@@ -143,7 +143,10 @@ alias alialist="tail -n +8 zrc"
 # pbcopy pwd
 alias cppwd="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
-alias zzz='idea zrc'
+zzz(){
+  cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .
+}
+
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g openmulti='open -n'
 # start npm http server
