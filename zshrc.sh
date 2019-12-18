@@ -51,6 +51,7 @@ defaults write -g InitialKeyRepeat -int 8
 defaults write -g KeyRepeat -int 1
 
 # ------- Oh My Zsh Settings -----------------------------------------------------------------
+# shellcheck disable=SC2034
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -110,10 +111,13 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# shellcheck disable=SC2034
 # oh-my-zsh non-default settings
 DISABLE_AUTO_TITLE="true"
+# shellcheck disable=SC2034
 COMPLETION_WAITING_DOTS="true"
 
+# shellcheck disable=SC2034
 plugins=(node z wd github npm osx zsh-nvm docker postgres)
 
 # shellcheck source=/Users/$AUBREY/.oh-my-zsh/oh-my-zsh.sh
@@ -372,6 +376,18 @@ alias gg='git checkout'
 alias mg='git merge master'
 alias amend='git add -A; git commit --amend'
 alias g3='git checkout dev'
+# ignore changes to files
+alias ignore="git update-index --skip-worktree" #... $filename
+# ignore changes to all files in dir /// note: must cd into dir first
+ignoreall(){
+  git update-index --skip-worktree "$(git ls-files | tr '\n' ' ')"
+}
+# update an ignored file manually (e.g. if there are changes from the cloud)
+alias update-ignored="git update-index" #... $filename
+# un-ignore an ignored file
+alias unignore="git update-index --no-skip-worktree" #... $filename
+# show all ignored files
+alias ls-ignore="git ls-files -v|grep '^S'"
 
 branch-name(){
   BRANCH_NAME=$(git symbolic-ref -q --short HEAD) || echoerr "You're not on a branch" || return 1
@@ -409,7 +425,7 @@ checkall() {
 # checkout all from common ancestor with master (for PRs)
 checkpr(){
   BRANCH=$(branch-name) || return 1
-  git checkout head...master
+  git checkout head...dev
   checkall "$BRANCH"
 }
 
