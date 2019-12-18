@@ -144,7 +144,7 @@ alias alialist="tail -n +8 zrc"
 alias cppwd="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
 zzz(){
-  cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .
+  cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .;
 }
 
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
@@ -390,7 +390,7 @@ alias update-ignored="git update-index" #... $filename
 # un-ignore an ignored file
 alias unignore="git update-index --no-skip-worktree" #... $filename
 # show all ignored files
-alias ls-ignore="git ls-files -v|grep '^S'"
+alias ignore-ls="git ls-files -v|grep '^S'"
 
 branch-name(){
   BRANCH_NAME=$(git symbolic-ref -q --short HEAD) || echoerr "You're not on a branch" || return 1
