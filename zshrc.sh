@@ -268,6 +268,8 @@ jav(){
   javac *.java
   java "$1"
 }
+alias launch="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
+alias build="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
 
 # ------- Mac --------------------------------------------------------------------------------------------------
 # retrieve password from keychain
