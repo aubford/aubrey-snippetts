@@ -383,7 +383,7 @@ alias g3='git checkout dev'
 alias ignore="git update-index --skip-worktree" #... $filename
 # ignore changes to all files in dir /// note: must cd into dir first
 ignoreall(){
-  git update-index --skip-worktree "$(git ls-files | tr '\n' ' ')"
+  git ls-files -z | xargs -0 git update-index --skip-worktree;
 }
 # update an ignored file manually (e.g. if there are changes from the cloud)
 alias update-ignored="git update-index" #... $filename
