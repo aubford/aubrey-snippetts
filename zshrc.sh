@@ -24,8 +24,7 @@ export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 # set Java Developent Kit home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/$JDK_HOME/Contents/Home
 # Set location
-export METEOR_TOOLS_DIR=/Users/aubreyford/.meteor/packages/meteor-tool/$METEOR_VERSION_DIR/mt-os.osx.x86_64/tools/cli
-
+#export METEOR_TOOLS_DIR=/Users/aubreyford/.meteor/packages/meteor-tool/$METEOR_VERSION_DIR/mt-os.osx.x86_64/tools/cli
 
 
 # set mongo bin location
@@ -269,6 +268,7 @@ jav(){
   java "$1"
 }
 alias launch="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
+alias launch-comp="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
 alias build="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
 
 # ------- Mac --------------------------------------------------------------------------------------------------
@@ -295,12 +295,12 @@ backup(){
   BACKUP_DATE=$(date +"%y-%m-%d-T-%T")
   BACKUP_LOCATION="$HOME/Google Drive/Backup/$BACKUP_BASENAME/$BACKUP_DATE/"
   RESTORE_FILE="$BACKUP_LOCATION/restore.sh"
-  
+
   cp -r "$1"  "$BACKUP_LOCATION";
-  
+
   touch "$RESTORE_FILE"
   echo "#!/bin/bash
-trash \"$1\" && cp -r . \"$1\"" > "$RESTORE_FILE" 
+trash \"$1\" && cp -r . \"$1\"" > "$RESTORE_FILE"
 }
 
 backupIDE(){
