@@ -135,6 +135,11 @@ source "$ZSH/oh-my-zsh.sh"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# -------- Current Job -------------------------------------------------------------------------------------------
+alias gogo="open http://localhost:5000/login"
+alias launch="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
+alias launch-comp="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
+alias build="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
 
 # ------- Shell ---------------------------------------------------------------------------------------------------
 # sed this file
@@ -267,9 +272,6 @@ jav(){
   javac *.java
   java "$1"
 }
-alias launch="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
-alias launch-comp="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
-alias build="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
 
 # ------- Mac --------------------------------------------------------------------------------------------------
 # retrieve password from keychain

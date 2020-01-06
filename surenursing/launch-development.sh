@@ -7,5 +7,6 @@ export MONGO_OPLOG_URL="mongodb://development-mongodb-replicaset-0.development-m
 export METEOR_OFFLINE_CATALOG=1
 #export METEOR_PROFILE=1
 
+open "http://localhost:5000/login"
 meteor --settings settings.json --no-release-check --no-lint --allow-incompatible-update --port 5000
 
