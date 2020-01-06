@@ -387,6 +387,10 @@ alias ignore="git update-index --skip-worktree" #... $filename
 ignoreall(){
   git ls-files -z | xargs -0 git update-index --skip-worktree;
 }
+# un-ignore changes to all files in dir /// note: must cd into dir first
+unignoreall(){
+  git ls-files -z | xargs -0 git update-index --no-skip-worktree;
+}
 # update an ignored file manually (e.g. if there are changes from the cloud)
 alias update-ignored="git update-index" #... $filename
 # un-ignore an ignored file
