@@ -36,6 +36,7 @@ export ZSH=/Users/$AUBREY/.oh-my-zsh
 
 # ---- Global settings ---------------------------------------------------------------------
 
+export VISUAL=nano
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g zrc=~/workspace/UTIL/aubrey-snippetts/zshrc.sh
 
