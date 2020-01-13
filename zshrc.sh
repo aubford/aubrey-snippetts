@@ -218,6 +218,8 @@ mk() {
   mkdir "$1"
   ls
 }
+# make dir only if none exists
+alias mkp="mkdir -p"
 #curl GET
 alias get='curl -X GET -H "Content-Type: application/json"'
 # get current user id
@@ -292,23 +294,39 @@ hide(){
   defaults write com.apple.finder AppleShowAllFiles -bool NO
   killall Finder;
 }
-backup(){
-  BACKUP_BASENAME=$(basename "$1")
-  BACKUP_DATE=$(date +"%y-%m-%d-T-%T")
-  BACKUP_LOCATION="$HOME/Google Drive/Backup/$BACKUP_BASENAME/$BACKUP_DATE/"
-  RESTORE_FILE="$BACKUP_LOCATION/restore.sh"
-
-  cp -r "$1"  "$BACKUP_LOCATION";
-
-  touch "$RESTORE_FILE"
-  echo "#!/bin/bash
-trash \"$1\" && cp -r . \"$1\"" > "$RESTORE_FILE"
+_backup_home_folder_item_tool_local(){
+  BACKUP_SOURCE="$HOME/$1/"
+  BACKUP_LOCATION_DIR="$HOME/Google Drive/Backup/$BACKUP_DATE"
+  BACKUP_LOCATION="$BACKUP_LOCATION_DIR/$1"
+  
+  mkdir -p "$BACKUP_LOCATION"; 
+  cp -r "$BACKUP_SOURCE" "$BACKUP_LOCATION";
 }
 
-backupIDE(){
-  backup "$HOME/Google Drive/intellij-settings-repo/";
-  backup "$HOME/workspace/brasch/suremeteor/.idea";
+_backup_what_local(){
+  _backup_home_folder_item_tool_local "Library/Group Containers/group.com.apple.notes";
+  _backup_home_folder_item_tool_local "workspace/brasch/suremeteor/.idea";
+  _backup_home_folder_item_tool_local "Library/Application Support/IntelliJIdea2019.3";
+  _backup_home_folder_item_tool_local "Library/Preferences/IntelliJIdea2019.3";
+  _backup_home_folder_item_tool_local "Library/Logs/IntelliJIdea2019.3";
+  _backup_home_folder_item_tool_local "Library/Caches/IntelliJIdea2019.3";
 }
+
+daily_backup(){
+  export BACKUP_DATE=$(date +"%y-%m-%d");
+  _backup_what_local;
+}
+
+do_backup(){
+  export BACKUP_DATE=$(date +"%y-%m-%d-T-%T");
+  _backup_what_local;
+}
+
+# show cron jobs
+alias cron-ls="crontab -l"
+# edit cron jobs file
+alias cron="crontab -e"
+
 # ------- Database -------------------------------------------------------------------------------------------------
 # start postgres database
 alias poststart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
