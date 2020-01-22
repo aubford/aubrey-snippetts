@@ -140,6 +140,7 @@ source "$ZSH/oh-my-zsh.sh"
 alias gogo="open http://localhost:5000/login"
 alias launch="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
 alias launch-comp="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
+alias launch-local="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh"
 alias build="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
 
 # ------- Shell ---------------------------------------------------------------------------------------------------
@@ -152,6 +153,7 @@ zzz(){
   cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .;
 }
 
+alias nodem="node --max-old-space-size=4096"
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g openmulti='open -n'
 # start npm http server
@@ -341,6 +343,10 @@ alias migrate='knex migrate:latest --env development'
 alias seed='knex seed:run --env development'
 # run mongo
 alias mong='mongod --config /usr/local/etc/mongod.conf'
+# list running mongos
+mongotcp(){
+  lsof -Pc mongo -i TCP -a
+}
 # ------- Github -----------------------------------------------------------------------------------------------------
 # return github repo http addy
 ghurl() {
