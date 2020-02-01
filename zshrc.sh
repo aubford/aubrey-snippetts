@@ -36,7 +36,6 @@ export ZSH=/Users/$AUBREY/.oh-my-zsh
 
 # ---- Global settings ---------------------------------------------------------------------
 
-export VISUAL=nano
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g zrc=~/workspace/UTIL/aubrey-snippetts/zshrc.sh
 
@@ -64,52 +63,8 @@ ZSH_THEME="robbyrussell"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ COMPLETION_WAITING_DOTS="true"
 
 # shellcheck disable=SC2034
 # oh-my-zsh non-default settings
@@ -161,7 +116,7 @@ alias http='http-server -c-1'
 # re-source zsh shell
 alias rl='source ~/.zshrc'
 # kill all node processes
-alias genodecide='killall node'
+alias genodecide='killall -9 node'
 #get file size
 alias size="du -hs"
 # copy global npm packages from given package
@@ -175,15 +130,15 @@ murder(){
   kill -9 "$(lsof -i :"$1" -t)";
 }
 # list all node TCP processes
-allnode(){
+node-ls(){
   lsof -Pc node
 }
 # list all TCP processes
-alltcp(){
+tcp-ls(){
   lsof -Pi TCP -a
 }
 # list all node TCP processes
-allnodetcp(){
+tcp-ls-node(){
   lsof -Pc node -i TCP -a
 }
 # what is going on on this port
