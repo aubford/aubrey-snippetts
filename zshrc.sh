@@ -105,7 +105,7 @@ alias alialist="tail -n +8 zrc"
 alias cppwd="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
 zzz(){
-  cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .;
+  (cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .)
 }
 
 alias nodem="node --max-old-space-size=4096"
@@ -252,38 +252,37 @@ hide(){
   defaults write com.apple.finder AppleShowAllFiles -bool NO
   killall Finder;
 }
-_backup_home_folder_item_tool_local(){
-  BACKUP_SOURCE="$HOME/$1/"
-  BACKUP_LOCATION_DIR="$HOME/Google Drive/Backup/$BACKUP_DATE"
+_backup_home_folder_item_tool(){
   BACKUP_LOCATION="$BACKUP_LOCATION_DIR/$1"
+  BACKUP_SOURCE="$HOME/$1/"
   
   mkdir -p "$BACKUP_LOCATION"; 
   cp -r "$BACKUP_SOURCE" "$BACKUP_LOCATION";
 }
 
-_backup_what_local(){
-  _backup_home_folder_item_tool_local "Library/Group Containers/group.com.apple.notes";
-  _backup_home_folder_item_tool_local "workspace/brasch/suremeteor/.idea";
-  _backup_home_folder_item_tool_local "Library/Application Support/IntelliJIdea2019.3";
-  _backup_home_folder_item_tool_local "Library/Preferences/IntelliJIdea2019.3";
-  _backup_home_folder_item_tool_local "Library/Logs/IntelliJIdea2019.3";
-  _backup_home_folder_item_tool_local "Library/Caches/IntelliJIdea2019.3";
+_backup_what(){
+  export BACKUP_LOCATION_DIR="$HOME/Google Drive/Backup/$BACKUP_DATE"
+  _backup_home_folder_item_tool "Library/Group Containers/group.com.apple.notes";
+  _backup_home_folder_item_tool "workspace/brasch/suremeteor/.idea";
+  _backup_home_folder_item_tool "Library/Application Support/IntelliJIdea2019.3";
+  _backup_home_folder_item_tool "Library/Preferences/IntelliJIdea2019.3";
+  (cd "$HOME/Google Drive/Backup/" && zip -9r "$BACKUP_DATE" "$BACKUP_DATE")
 }
 
 daily_backup(){
   export BACKUP_DATE=$(date +"%y-%m-%d");
-  _backup_what_local;
+  _backup_what;
 }
 
 do_backup(){
   export BACKUP_DATE=$(date +"%y-%m-%d-T-%T");
-  _backup_what_local;
+  _backup_what;
 }
 
 # show cron jobs
 alias cron-ls="crontab -l"
 # edit cron jobs file
-alias cron="crontab -e"
+alias cron="VISUAL=nano; crontab -e"
 
 # ------- Database -------------------------------------------------------------------------------------------------
 # start postgres database
