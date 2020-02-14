@@ -266,7 +266,7 @@ _backup_what(){
   _backup_home_folder_item_tool "workspace/brasch/suremeteor/.idea";
   _backup_home_folder_item_tool "Library/Application Support/IntelliJIdea2019.3";
   _backup_home_folder_item_tool "Library/Preferences/IntelliJIdea2019.3";
-  (cd "$HOME/Google Drive/Backup/" && zip -9r "$BACKUP_DATE" "$BACKUP_DATE")
+  (cd "$HOME/Google Drive/Backup/" && zip -9rm "$BACKUP_DATE" "$BACKUP_DATE")
 }
 
 daily_backup(){
@@ -282,7 +282,7 @@ do_backup(){
 # show cron jobs
 alias cron-ls="crontab -l"
 # edit cron jobs file
-alias cron="VISUAL=nano; crontab -e"
+alias cron="export VISUAL=NANO; crontab -e"
 
 # ------- Database -------------------------------------------------------------------------------------------------
 # start postgres database
@@ -341,7 +341,7 @@ alias megalog="git log --graph --decorate --pretty=format:'%Cred %h %Cgreen %s %
 # log this branch pretty
 alias superlog="git log --graph --decorate --pretty=format:'%Cred %h %Cgreen %s %Cblue %cd %Cgreen %an %Cred %C(auto) %d'"
 # simple git log
-alias logg="git --no-pager log --pretty=tformat:'%Cred %h %Cgreen %s %Cblue %cd %Cgreen %an %Cred %C(auto) %d' --date=relative -n"
+alias logg="git --no-pager log --pretty=tformat:'%Cred%h %C(cyan bold)%s %Creset%Cblue%cd %C(magenta)%an %Cred%C(auto)%d' --date=relative -n"
 # log branches
 alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(color:magenta) %(committerdate:short) %(color:yellow) %(authorname) %09 %(color:red) %(refname:short) %(color:yellow) %(upstream:short) %(color:red) %(upstream:track)'"
 # show changed files
