@@ -219,7 +219,7 @@ apaste(){
 }
 
 # ------- Run ---------------------------------------------------------------------------------------------------
-alias ngrok='~/workspace/RESOURCES/UTILITIES/ngrok'
+alias ngrok='~/workspace/UTIL/ngrok'
 grok(){
   ngrok http -subdomain rachio --host-header=rewrite "$1"
 }
@@ -358,7 +358,9 @@ rangelog() {
 alias gp='git pull'
 alias push='git push -u'
 alias gs='git status'
-alias gg='git checkout'
+gg(){
+  git checkout "$@" && meteor npm i; 
+}
 alias mg='git merge master'
 alias amend='git add -A; git commit --amend'
 alias g3='git checkout dev'
