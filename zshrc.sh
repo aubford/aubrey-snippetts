@@ -20,7 +20,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Set the Android home for the location they are found when SDK is installed using Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
 # Add Android tools locations to PATH
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 # set Java Developent Kit home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/$JDK_HOME/Contents/Home
 # Set location
@@ -93,10 +93,18 @@ source "$ZSH/oh-my-zsh.sh"
 
 # -------- Current Job -------------------------------------------------------------------------------------------
 alias gogo="open http://localhost:5000/login"
-alias launch="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
-alias launch-comp="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
-alias launch-local="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh"
-alias build="/Users/aubreyford/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
+alias launch="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
+alias launch-comp="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
+alias launch-comp-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh"
+alias launch-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh"
+alias launch-android="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh"
+alias launch-android-device="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh"
+alias launch-android-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh"
+alias build="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
+kill-meteor-debug-break(){
+ cd "$HOME/.meteor/packages/meteor-tool"
+ find . -name boot.js | xargs sed -i '' -e "/maybeWaitForDebuggerToAttach();/d"
+}
 
 # ------- Shell ---------------------------------------------------------------------------------------------------
 # sed this file
@@ -210,27 +218,27 @@ alias pac='idea package.json'
 alias ww='wd 3'
 alias snip='idea ~/workspace/aubrey-snippetts'
 
-# ------- Java/Android -----------------------------------------------------------------------------------------
+# ------- Java/Android/iPhone -----------------------------------------------------------------------------------------
+# AVD: list installed emlators
+alias avd-ls="emulator -list-avds"
+# AVD: start and AVD
+alias avd-start="emulator -avd" #[avd_version]#   
 # list installed JDK versions
 alias jdk='/usr/libexec/java_home -V'
 # input text into Android emulator
 apaste(){
   adb shell input text "$1"
 }
+alias simcr='~/workspace/RESOURCES/chromium-tools/chromium/src/out/Debug-iphonesimulator/iossim ~/workspace/RE`SOURCE`S/chromium-tools/chromium/src/out/Debug-iphonesimulator/Chromium.app'
+jav(){
+  javac *.java
+  java "$1"
+}
 
 # ------- Run ---------------------------------------------------------------------------------------------------
 alias ngrok='~/workspace/UTIL/ngrok'
 grok(){
   ngrok http -subdomain rachio --host-header=rewrite "$1"
-}
-alias simcr='~/workspace/RESOURCES/chromium-tools/chromium/src/out/Debug-iphonesimulator/iossim ~/workspace/RE`SOURCE`S/chromium-tools/chromium/src/out/Debug-iphonesimulator/Chromium.app'
-# react native run ios emulator
-alias ios='react-native run-ios'
-# react native run android emulator
-alias droid='react-native run-android'
-jav(){
-  javac *.java
-  java "$1"
 }
 
 # ------- Mac --------------------------------------------------------------------------------------------------
@@ -358,9 +366,7 @@ rangelog() {
 alias gp='git pull'
 alias push='git push -u'
 alias gs='git status'
-gg(){
-  git checkout "$@" && meteor npm i; 
-}
+alias gg='git checkout'
 alias mg='git merge master'
 alias amend='git add -A; git commit --amend'
 alias g3='git checkout dev'
