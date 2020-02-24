@@ -100,6 +100,7 @@ alias launch-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-loc
 alias launch-android="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh"
 alias launch-android-device="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh"
 alias launch-android-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh"
+alias dump-suredb="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh"
 alias build="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
 kill-meteor-debug-break(){
  cd "$HOME/.meteor/packages/meteor-tool"
