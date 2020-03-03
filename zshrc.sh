@@ -91,22 +91,6 @@ source "$ZSH/oh-my-zsh.sh"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# -------- Current Job -------------------------------------------------------------------------------------------
-alias gogo="open http://localhost:5000/login"
-alias launch="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
-alias launch-comp="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
-alias launch-comp-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh"
-alias launch-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh"
-alias launch-android="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh"
-alias launch-android-device="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh"
-alias launch-android-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh"
-alias dump-suredb="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh"
-alias build="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
-kill-meteor-debug-break(){
- cd "$HOME/.meteor/packages/meteor-tool"
- find . -name boot.js | xargs sed -i '' -e "/maybeWaitForDebuggerToAttach();/d"
-}
-
 # ------- Shell ---------------------------------------------------------------------------------------------------
 # sed this file
 alias alialist="tail -n +8 zrc"
@@ -310,6 +294,9 @@ alias mong='mongod --config /usr/local/etc/mongod.conf'
 mongotcp(){
   lsof -Pc mongo -i TCP -a
 }
+mongo-drop(){
+  mongo "$1" --eval "db.dropDatabase()"
+}
 # ------- Github -----------------------------------------------------------------------------------------------------
 # return github repo http addy
 ghurl() {
@@ -443,3 +430,22 @@ alias docker-rmall='docker rm $(docker ps -a -q)'
 alias heroku-config-to-env="heroku config | sed 's/:  */=/g; /^=/d' >> .env.heroku"
 alias env-to-heroku-config="heroku-config-to-env; heroku config:set \$(cat .env | sed '/^$/d; /#[[:print:]]*$/d')"
 
+# -------- Current Job -------------------------------------------------------------------------------------------
+alias gogo="open http://localhost:5000/login"
+alias launch="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
+alias launch-comp="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
+alias launch-comp-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh"
+alias launch-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh"
+alias launch-android="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh"
+alias launch-android-device="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh"
+alias launch-android-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh"
+alias dump-suredb="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh"
+alias build="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
+kill-meteor-debug-break(){
+ cd "$HOME/.meteor/packages/meteor-tool"
+ find . -name boot.js | xargs sed -i '' -e "/maybeWaitForDebuggerToAttach();/d"
+}
+
+# stash and switch to dev and mateor npm i
+alias cdev="stash && g3 && meteor npm i"
+alias cback="gg - && apply && meteor npm i"

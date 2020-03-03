@@ -2,7 +2,7 @@
 
 cd /Users/aubreyford/workspace/brasch/comparison-suremeteor/suremeteor || return;
 
-export MONGO_URL="mongodb://localhost:27017/20-01-17_17_23"
+export MONGO_URL="mongodb://localhost:27017/local-suredb"
 export METEOR_OFFLINE_CATALOG=1
 #export METEOR_PROFILE=1
 
