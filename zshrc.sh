@@ -357,6 +357,7 @@ alias gs='git status'
 alias gg='git checkout'
 alias mg='git merge master'
 alias ginit='git init && echo ".idea" >> .gitignore && git add -A && git commit -m "init"'
+alias abort-='git merge --abort'
 alias amend='git add -A; git commit --amend'
 alias g3='git checkout dev'
 # ignore changes to files
