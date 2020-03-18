@@ -356,6 +356,7 @@ alias push='git push -u'
 alias gs='git status'
 alias gg='git checkout'
 alias mg='git merge master'
+alias ginit='git init && echo ".idea" >> .gitignore && git add -A && git commit -m "init"'
 alias amend='git add -A; git commit --amend'
 alias g3='git checkout dev'
 # ignore changes to files
@@ -433,8 +434,8 @@ alias env-to-heroku-config="heroku-config-to-env; heroku config:set \$(cat .env 
 # -------- Current Job -------------------------------------------------------------------------------------------
 alias gogo="open http://localhost:5000/login"
 alias launch="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
-alias launch-comp="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
-alias launch-comp-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh"
+alias launch-compare="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
+alias launch-compare-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh"
 alias launch-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh"
 alias launch-android="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh"
 alias launch-android-device="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh"
