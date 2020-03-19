@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /Users/aubreyford/workspace/brasch/comparison-suremeteor/suremeteor || return;
+cd $BRASCH_LOCATION/comparison-suremeteor/suremeteor || return;
 
 export MONGO_URL="mongodb://localhost:27017/local-suredb"
 export METEOR_OFFLINE_CATALOG=1

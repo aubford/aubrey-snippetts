@@ -15,6 +15,7 @@
 
 # --- Set Locations -------------------------------------------------------------------------
 
+export BRASCH_LOCATION="/Users/aubreyford/workspace/brasch"
 # set global bin locations
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Set the Android home for the location they are found when SDK is installed using Android Studio

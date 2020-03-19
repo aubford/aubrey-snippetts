@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /Users/aubreyford/workspace/brasch/suremeteor || return;
+cd $BRASCH_LOCATION/suremeteor || return;
 
 yes '' | sed 5q
 clear
