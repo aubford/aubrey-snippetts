@@ -1,5 +1,5 @@
 #!/bin/sh
-cd $BRASCH_LOCATION/suremeteor || return;
+cd "$BRASCH_LOCATION/suremeteor" || return;
 
 yes '' | sed 5q
 clear

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd $BRASCH_LOCATION/suremeteor || return;
+cd "$BRASCH_LOCATION/suremeteor" || return;
 
 echo "Creating local Meteor build of: $(pwd) in /Users/aubreyford/workspace/UTIL"
 

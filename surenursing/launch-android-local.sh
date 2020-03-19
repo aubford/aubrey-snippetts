@@ -1,7 +1,7 @@
 #!/bin/sh
 
 avd-start Nexus_6_API_29 &
-cd $BRASCH_LOCATION/suremeteor || return;
+cd "$BRASCH_LOCATION/suremeteor" || return;
 
 yes '' | sed 5q
 clear
