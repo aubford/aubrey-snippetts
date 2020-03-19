@@ -10,12 +10,13 @@
 #>  source "/Users/aubreyford/workspace/UTIL/aubrey-snippetts/zshrc.sh"
 #>  JDK_HOME="WHATEVER_CURRENT_JDK_IS" (e.g.: JDK_HOME="jdk1.8.0_231.jdk")
 #>  METEOR_VERSION_DIR="WHATEVER_CURRENT_METEOR_VERSION"
+#>  METEOR_VERSION_DIR="WHATEVER_CURRENT_METEOR_VERSION"
+#>  export BRASCH_LOCATION="location of brasch dir"
 
 ########################################################################
 
 # --- Set Locations -------------------------------------------------------------------------
 
-export BRASCH_LOCATION="/Users/aubreyford/workspace/brasch"
 # set global bin locations
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Set the Android home for the location they are found when SDK is installed using Android Studio
