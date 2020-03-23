@@ -229,6 +229,8 @@ grok(){
 }
 
 # ------- Mac --------------------------------------------------------------------------------------------------
+# get machine model
+alias getmodel="sysctl hw.model"
 # retrieve password from keychain
 alias key='security find-generic-password -w -ga'
 # give file full permissions
@@ -436,17 +438,17 @@ alias env-to-heroku-config="heroku-config-to-env; heroku config:set \$(cat .env 
 
 # -------- Current Job -------------------------------------------------------------------------------------------
 alias gogo="open http://localhost:5000/login"
-alias launch="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh"
-alias launch-compare="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh"
-alias launch-compare-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh"
-alias launch-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh"
-alias launch-android="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh"
-alias launch-android-device="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh"
-alias launch-android-local="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh"
-alias dump-suredb="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh"
-alias build="$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh"
+alias launch='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh'
+alias launch-compare='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh'
+alias launch-compare-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh'
+alias launch-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh'
+alias launch-android='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh'
+alias launch-android-device='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh'
+alias launch-android-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh'
+alias dump-suredb='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh'
+alias build='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh'
 kill-meteor-debug-break(){
- cd "$HOME/.meteor/packages/meteor-tool"
+ cd "$HOME/.meteor/packages/meteor-tool" || exit;
  find . -name boot.js | xargs sed -i '' -e "/maybeWaitForDebuggerToAttach();/d"
 }
 

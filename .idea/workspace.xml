@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="" />
+    <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +50,6 @@
     <option name="compactDirectories" value="true" />
     <option name="flattenModules" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showModules" value="false" />
   </component>
   <component name="PropertiesComponent">
@@ -317,10 +319,6 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1356.1463.1366.1001/-84.1463.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1582655097867" />
-    <state x="2105" y="-273" key="CommitChangelistDialog2" timestamp="1575934724331">
-      <screen x="1440" y="-517" width="2560" height="1417" />
-    </state>
-    <state x="2105" y="-273" key="CommitChangelistDialog2/0.23.1440.877/1440.-517.2560.1417@1440.-517.2560.1417" timestamp="1575934724331" />
     <state x="-1920" y="-157" width="1125" height="1057" key="SettingsEditor" timestamp="1580923983161">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
@@ -356,12 +354,12 @@
       <screen x="-2560" y="-319" width="2560" height="1417" />
     </state>
     <state x="-1280" y="-319" width="1280" height="1417" key="dock-window-4/0.23.1440.877/-2560.-319.2560.1417/-4480.-99.1920.1057@-2560.-319.2560.1417" timestamp="1578885892203" />
-    <state x="2301" y="-352" width="1118" height="1033" key="search.everywhere.popup" timestamp="1582256307781">
-      <screen x="1440" y="-670" width="2560" height="1417" />
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup" timestamp="1584746062581">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="-1274" y="80" width="838" height="770" key="search.everywhere.popup/-3286.-101.1366.1001/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1581119779344" />
     <state x="-1699" y="-1" width="838" height="1032" key="search.everywhere.popup/0.23.1440.877/-2560.-319.2560.1417/-4480.-99.1920.1057@-2560.-319.2560.1417" timestamp="1579203467945" />
-    <state x="-1699" y="-199" width="838" height="1032" key="search.everywhere.popup/0.23.1440.877/-2560.-517.2560.1417@-2560.-517.2560.1417" timestamp="1575510506097" />
     <state x="2301" y="-352" width="1118" height="1033" key="search.everywhere.popup/0.23.1440.877/1440.-670.2560.1417@1440.-670.2560.1417" timestamp="1582256307781" />
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1584746062581" />
   </component>
 </project>
