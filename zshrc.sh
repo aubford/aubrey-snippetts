@@ -266,11 +266,6 @@ _backup_what(){
   (cd "$HOME/Google Drive/Backup/" && zip -9rm "$BACKUP_DATE" "$BACKUP_DATE")
 }
 
-daily_backup(){
-  export BACKUP_DATE=$(date +"%y-%m-%d");
-  _backup_what;
-}
-
 do_backup(){
   export BACKUP_DATE=$(date +"%y-%m-%d-T-%T");
   _backup_what;
