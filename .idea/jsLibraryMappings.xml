@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{Node.js Core}" />
+    <file url="file://$PROJECT_DIR$" libraries="{aubrey-snippetts/node_modules}" />
+    <file url="PROJECT" libraries="{@types/babel-core, @types/babel-plugin-syntax-jsx, @types/babel-types, @types/babel-webpack-plugin, @types/chai, @types/css, @types/enzyme, @types/enzyme-adapter-react-15, @types/enzyme-adapter-react-16, @types/es-feature-detection, @types/es6-collections, @types/es6-set-proptypes, @types/jest, @types/leaflet, @types/leaflet-areaselect, @types/leaflet-draw, @types/less, @types/lodash, @types/mapbox, @types/meteor, @types/meteor-roles, @types/mocha, @types/moment-timezone, @types/mongodb, @types/node, @types/react, @types/react-addons-create-fragment, @types/react-dom, @types/underscore, aubrey-snippetts/node_modules}" />
+    <includedPredefinedLibrary name="HTTP Response Handler" />
+    <includedPredefinedLibrary name="Nashorn" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>
