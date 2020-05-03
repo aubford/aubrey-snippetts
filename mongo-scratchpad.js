@@ -55,7 +55,7 @@ clientConnection.connect(async function(err, client) {
       .toArray();
 
   try {
-    const timezone = "America/San_Francisco";
+    const timezone = "America/New_York";
     const numDays = 1;
 
     //
@@ -80,8 +80,8 @@ clientConnection.connect(async function(err, client) {
         begin.format("YYYY-MM-DD"),
         status,
         availableStatusColors[status],
-        begin.toArray(),
-        end.toArray()
+        [0, 0, 0, ...begin.toArray().slice(-4)],
+        [0, 0, 0, ...end.toArray().slice(-4)]
       ];
     };
 
@@ -101,32 +101,66 @@ clientConnection.connect(async function(err, client) {
       ];
     };
 
-    const chart = segments.reduce((acc, { values }) => {
-      return acc.concat(
-        values.reduce((acc, { end_timestamp, start_timestamp, value }) => {
-          const startTimestamp = moment(start_timestamp).tz(timezone);
-          const endTimestamp = moment(end_timestamp).tz(timezone);
-          const isCurrentlyRunning = endTimestamp.isSame(zeroDate);
+    const segmentValues = _.sortBy(
+      segments.reduce((acc, { values }) => acc.concat(values),[]),
+      "start_timestamp"
+    ); /* ?+*/
+    const chart = segmentValues.reduce(
+      (acc, { end_timestamp, start_timestamp, value }) => {
+        const startTimestamp = moment(start_timestamp).tz(timezone);
+        const endTimestamp = moment(end_timestamp).tz(timezone);
+        const isCurrentlyRunning = endTimestamp.isSame(zeroDate);
 
-          const isInRange =
-            !startTimestamp.isSame(zeroDate) &&
-            startTimestamp.isBefore(rangeEnd) &&
-            (endTimestamp.isAfter(rangeStart) || isCurrentlyRunning);
+        const isInRange =
+          !startTimestamp.isSame(zeroDate) &&
+          startTimestamp.isBefore(rangeEnd) &&
+          (endTimestamp.isAfter(rangeStart) || isCurrentlyRunning);
 
-          if (isInRange) {
-            const begin = moment.max(startTimestamp, rangeStart);
-            const end = isCurrentlyRunning
-              ? rangeEnd
-              : moment.min(endTimestamp, rangeEnd);
+        if (isInRange) {
+          const begin = moment.max(startTimestamp, rangeStart);
+          const end = isCurrentlyRunning
+            ? rangeEnd
+            : moment.min(endTimestamp, rangeEnd);
 
-            return acc.concat(splitDayOverlapAndFormat(begin, end, value));
-          }
-          return acc;
-        }, [])
-      );
-    }, []); 
+          return acc.concat(splitDayOverlapAndFormat(begin, end, value));
+        }
+        return acc;
+      },
+      []
+    );
 
-    chart.map(event => [...event.slice(0,3), new Date(...event[3]), new Date(...event[4])]) /* ?+*/ ;
+    // const chart = segments
+    //   .reduce((acc, { values }) => {
+    //     return acc.concat(
+    //       values.reduce((acc, { end_timestamp, start_timestamp, value }) => {
+    //         const startTimestamp = moment(start_timestamp).tz(timezone);
+    //         const endTimestamp = moment(end_timestamp).tz(timezone);
+    //         const isCurrentlyRunning = endTimestamp.isSame(zeroDate);
+    //
+    //         const isInRange =
+    //           !startTimestamp.isSame(zeroDate) &&
+    //           startTimestamp.isBefore(rangeEnd) &&
+    //           (endTimestamp.isAfter(rangeStart) || isCurrentlyRunning);
+    //
+    //         if (isInRange) {
+    //           const begin = moment.max(startTimestamp, rangeStart);
+    //           const end = isCurrentlyRunning
+    //             ? rangeEnd
+    //             : moment.min(endTimestamp, rangeEnd);
+    //
+    //           return acc.concat(splitDayOverlapAndFormat(begin, end, value));
+    //         }
+    //         return acc;
+    //       }, [])
+    //     );
+    //   }, [])
+    //   .sort((a, b) => (new Date(...a[3]) > new Date(...b[3]) ? 1 : -1));
+
+    chart.map(event => [
+      ...event.slice(0, 3),
+      new Date(...event[3]),
+      new Date(...event[4])
+    ]); /* ?+*/
   } catch (e) {
     console.log("**** e ****", e);
   }

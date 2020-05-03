@@ -107,7 +107,7 @@ alias nodem="node --max-old-space-size=4096"
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
 alias -g openmulti='open -n'
 # start npm http server
-alias http='http-server -c-1'
+alias http='http-server -c-1' #[path] --port 8000
 # re-source zsh shell
 alias rl='source ~/.zshrc'
 # kill all node processes
@@ -209,9 +209,14 @@ alias snip='idea ~/workspace/aubrey-snippetts'
 # AVD: list installed emlators
 alias avd-ls="emulator -list-avds"
 # AVD: start and AVD
-alias avd-start="emulator -avd" #[avd_version]#   
+alias avd-start="emulator -avd" #[avd_version]#
 # list installed JDK versions
 alias jdk='/usr/libexec/java_home -V'
+loadem(){
+  cp -r "$1" "$ANDROID_HOME/platform-tools/" &&
+  cd "$ANDROID_HOME/platform-tools/"
+  ./adb install "$1"
+}
 # input text into Android emulator
 apaste(){
   adb shell input text "$1"
@@ -252,8 +257,8 @@ hide(){
 _backup_home_folder_item_tool(){
   BACKUP_LOCATION="$BACKUP_LOCATION_DIR/$1"
   BACKUP_SOURCE="$HOME/$1/"
-  
-  mkdir -p "$BACKUP_LOCATION"; 
+
+  mkdir -p "$BACKUP_LOCATION";
   cp -r "$BACKUP_SOURCE" "$BACKUP_LOCATION";
 }
 
