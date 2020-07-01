@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,24 +306,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add auto-backup functionality" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="220" y="46" key="#Notifications" timestamp="1582054549938">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="220" y="46" key="#Notifications/1440.23.1366.1001/0.23.1440.877/-305.-1417.2560.1417@0.23.1440.877" timestamp="1582054549938" />
     <state x="-1373" y="604" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588031785406">
       <screen x="-1440" y="563" width="1440" height="877" />
     </state>
-    <state x="59" y="214" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1581353095885" />
     <state x="-1373" y="604" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417/-1440.563.1440.877@-1440.563.1440.877" timestamp="1588031785406" />
-    <state x="-1412" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580924590647">
-      <screen x="-1920" y="-157" width="1920" height="1057" />
-    </state>
-    <state x="-1412" y="166" key="#com.intellij.fileTypes.FileTypeChooser/-3286.-101.1366.1001/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1580924590647" />
     <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585964364378">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1585964364378" />
-    <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1356.1463.1366.1001/-84.1463.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1582655097867" />
     <state x="269" y="402" key="MultipleFileMergeDialog" timestamp="1588376247931">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -336,30 +325,22 @@
     <state x="0" y="23" width="1280" height="1417" key="SettingsEditor" timestamp="1588545891501">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="-1920" y="-157" width="1125" height="1057" key="SettingsEditor/-3286.-101.1366.1001/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1580923983161" />
     <state x="221" y="78" width="900" height="722" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588369261113" />
     <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588541789678" />
     <state x="0" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1588545891501" />
     <state width="834" height="671" key="SwitcherDM" timestamp="1588376017457">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="625" height="500" key="SwitcherDM/-3286.-101.1366.1001/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1580929159885" />
-    <state width="834" height="671" key="SwitcherDM/0.23.1440.877/1440.-670.2560.1417@1440.-670.2560.1417" timestamp="1582257251704" />
     <state width="834" height="671" key="SwitcherDM/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588376017457" />
-    <state x="0" y="23" width="1440" height="877" key="dock-window-1" timestamp="1582257092086">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="0" y="23" width="1440" height="877" key="dock-window-1/0.23.1440.877/1440.-670.2560.1417@1440.-670.2560.1417" timestamp="1582257092086" />
     <state x="309" y="488" width="661" height="486" key="find.popup" timestamp="1585173355385">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="309" y="488" width="661" height="486" key="find.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1585173355385" />
-    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup" timestamp="1588545380363">
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup" timestamp="1592955873738">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="-1274" y="80" width="838" height="770" key="search.everywhere.popup/-3286.-101.1366.1001/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1581119779344" />
-    <state x="2301" y="-352" width="1118" height="1033" key="search.everywhere.popup/0.23.1440.877/1440.-670.2560.1417@1440.-670.2560.1417" timestamp="1582256307781" />
     <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1586174734419" />
     <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1588545380363" />
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1592955873738" />
   </component>
 </project>
