@@ -17,6 +17,9 @@
 
 # --- Set Locations -------------------------------------------------------------------------
 
+#surenursing database uri
+SURENURSING_DATABASE_URI="mongodb://development-mongodb-replicaset-0.development-mongodb-replicaset.development-mongodb-replicaset.svc.cluster.local:27017,development-mongodb-replicaset-1.development-mongodb-replicaset.development-mongodb-replicaset.svc.cluster.local:27017,development-mongodb-replicaset-2.development-mongodb-replicaset.development-mongodb-replicaset.svc.cluster.local:27017/suredb?replicaSet=rs0&readPreference=primaryPreferred"
+
 # set global bin locations
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Set the Android home for the location they are found when SDK is installed using Android Studio
@@ -445,7 +448,8 @@ alias launch-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-loc
 alias launch-android='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh'
 alias launch-android-device='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh'
 alias launch-android-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh'
-alias dump-suredb='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh'
+alias dump-restore-suredb='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh'
+alias dump-suredb="mongodump --uri=\"$SURENURSING_DATABASE_URI\""
 alias build='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh'
 kill-meteor-debug-break(){
  cd "$HOME/.meteor/packages/meteor-tool" || exit;

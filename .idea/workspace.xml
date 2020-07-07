@@ -33,14 +33,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.quokka" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quokka/timeline.es6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/surenursing/dump-suredb.sh" beforeDir="false" afterPath="$PROJECT_DIR$/surenursing/dump-suredb.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/ConnectedUsers.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/ConnectedUsers.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEvents.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEvents.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEventsCurrent.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEventsCurrent.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/RolesAvailable.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/RolesAvailable.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/SurveyTracker.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/SurveyTracker.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_app_tokens.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_app_tokens.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_notifications.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_notifications.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/areas.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/areas.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/billing.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/billing.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/changelog.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/changelog.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/devices.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/devices.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/events.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/events.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/facilities.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/facilities.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/meteor_accounts_loginServiceConfiguration.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/meteor_accounts_loginServiceConfiguration.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/nodes.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/nodes.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/roles.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/roles.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/sensors.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/sensors.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/statistic_label.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/statistic_label.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyNew.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyNew.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyResult.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyResult.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/time_series.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/time_series.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/users.bson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/users.metadata.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,16 +143,17 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/IntelliJ Settings" />
-      <recent name="$PROJECT_DIR$/surenursing" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/surenursing" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb" />
+      <recent name="$PROJECT_DIR$/IntelliJ Settings" />
+      <recent name="$PROJECT_DIR$/surenursing" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -332,7 +369,9 @@
     <MESSAGE value="Add Java/Android locations" />
     <MESSAGE value="reorganize locations and gloal settings to top of file" />
     <MESSAGE value="Add auto-backup functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add auto-backup functionality" />
+    <MESSAGE value="quokka changes" />
+    <MESSAGE value="suredump changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="suredump changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1105" y="574" key="#Notifications" timestamp="1594080619206">
@@ -368,6 +407,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1278" height="403" key="GridCell.Tab.0.right/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1593650882959" />
+    <state width="396" height="556" key="HiddenNamespacesPopup" timestamp="1594087660162">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="396" height="556" key="HiddenNamespacesPopup/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594087660162" />
     <state x="764" y="411" key="IDE.errors.dialog" timestamp="1594082588697">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -380,13 +423,13 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1591" y="373" key="RollbackChangesDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1588544010062" />
-    <state x="0" y="23" width="2560" height="1417" key="SettingsEditor" timestamp="1594080648901">
+    <state x="0" y="23" width="2560" height="1417" key="SettingsEditor" timestamp="1594088662122">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="221" y="78" width="900" height="722" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588369261113" />
     <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588541789678" />
     <state x="0" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1588545891501" />
-    <state x="0" y="23" width="2560" height="1417" key="SettingsEditor/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594080648901" />
+    <state x="0" y="23" width="2560" height="1417" key="SettingsEditor/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594088662122" />
     <state width="834" height="671" key="SwitcherDM" timestamp="1588376017457">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
