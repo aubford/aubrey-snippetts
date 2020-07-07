@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.quokka" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quokka/timeline.es6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/surenursing/dump-suredb.sh" beforeDir="false" afterPath="$PROJECT_DIR$/surenursing/dump-suredb.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="ExportToHTMLSettings">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
@@ -35,6 +59,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -59,11 +86,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql&#10;mongo" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
+    <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/surenursing" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -78,7 +107,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -306,14 +335,43 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add auto-backup functionality" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1373" y="604" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588031785406">
-      <screen x="-1440" y="563" width="1440" height="877" />
+    <state x="1105" y="574" key="#Notifications" timestamp="1594080619206">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1105" y="574" key="#Notifications/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594080619205" />
+    <state x="0" y="23" width="1280" height="1417" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594087492885">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="-1373" y="604" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417/-1440.563.1440.877@-1440.563.1440.877" timestamp="1588031785406" />
+    <state x="0" y="23" width="1280" height="1417" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594087492885" />
+    <state x="1485" y="523" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594080502392">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1485" y="523" key="#com.intellij.fileTypes.FileTypeChooser/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594080502392" />
     <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585964364378">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1585964364378" />
+    <state width="1278" height="403" key="GridCell.Tab.0.bottom" timestamp="1593650882959">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1278" height="403" key="GridCell.Tab.0.bottom/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1593650882959" />
+    <state width="1278" height="403" key="GridCell.Tab.0.center" timestamp="1593650882958">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1278" height="403" key="GridCell.Tab.0.center/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1593650882958" />
+    <state width="1278" height="403" key="GridCell.Tab.0.left" timestamp="1593650882958">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1278" height="403" key="GridCell.Tab.0.left/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1593650882958" />
+    <state width="1278" height="403" key="GridCell.Tab.0.right" timestamp="1593650882959">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1278" height="403" key="GridCell.Tab.0.right/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1593650882959" />
+    <state x="764" y="411" key="IDE.errors.dialog" timestamp="1594082588697">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="764" y="411" key="IDE.errors.dialog/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594082588697" />
     <state x="269" y="402" key="MultipleFileMergeDialog" timestamp="1588376247931">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -322,25 +380,22 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1591" y="373" key="RollbackChangesDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1588544010062" />
-    <state x="0" y="23" width="1280" height="1417" key="SettingsEditor" timestamp="1588545891501">
+    <state x="0" y="23" width="2560" height="1417" key="SettingsEditor" timestamp="1594080648901">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="221" y="78" width="900" height="722" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588369261113" />
     <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588541789678" />
     <state x="0" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1588545891501" />
+    <state x="0" y="23" width="2560" height="1417" key="SettingsEditor/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594080648901" />
     <state width="834" height="671" key="SwitcherDM" timestamp="1588376017457">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="834" height="671" key="SwitcherDM/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588376017457" />
-    <state x="309" y="488" width="661" height="486" key="find.popup" timestamp="1585173355385">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="309" y="488" width="661" height="486" key="find.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1585173355385" />
-    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup" timestamp="1592955873738">
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup" timestamp="1594086443009">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1586174734419" />
     <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1588545380363" />
-    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1592955873738" />
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/2560.563.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1594086443009" />
   </component>
 </project>
