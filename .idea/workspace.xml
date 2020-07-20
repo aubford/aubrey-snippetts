@@ -33,50 +33,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/ConnectedUsers.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/ConnectedUsers.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEvents.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEvents.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEventsCurrent.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/LoginEventsCurrent.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/RolesAvailable.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/RolesAvailable.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/SurveyTracker.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/SurveyTracker.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_app_tokens.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_app_tokens.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_notifications.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/_raix_push_notifications.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/areas.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/areas.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/billing.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/billing.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/changelog.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/changelog.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/devices.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/devices.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/events.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/events.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/facilities.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/facilities.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/meteor_accounts_loginServiceConfiguration.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/meteor_accounts_loginServiceConfiguration.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/nodes.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/nodes.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/roles.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/roles.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/sensors.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/sensors.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/statistic_label.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/statistic_label.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyNew.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyNew.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyResult.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/surveyResult.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/time_series.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/time_series.metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/users.bson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/surenursing/dump_20-07-06_T_17_38/suredb/users.metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
