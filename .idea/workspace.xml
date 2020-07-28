@@ -2,27 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/surenursing/launch-android.sh" beforeDir="false" afterPath="$PROJECT_DIR$/surenursing/launch-android.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="ExportToHTMLSettings">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
@@ -47,7 +35,7 @@
     <scope name="Git Scope" pattern="" />
   </component>
   <component name="ProjectId" id="1SvzExBDzE5UniN49SjiMSXIz0o" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -79,7 +67,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -252,6 +240,10 @@
       <workItem from="1588541714835" duration="49000" />
       <workItem from="1588541776054" duration="38000" />
       <workItem from="1588543291816" duration="34000" />
+      <workItem from="1588565174165" duration="9000" />
+      <workItem from="1588703565115" duration="396000" />
+      <workItem from="1588707019173" duration="627000" />
+      <workItem from="1588904914424" duration="114000" />
     </task>
     <task id="LOCAL-00001" summary="Add Java/Android commands">
       <created>1573849242120</created>
@@ -325,6 +317,14 @@
     </state>
     <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1585964364378" />
     <state x="968" y="457" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1356.1463.1366.1001/-84.1463.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1582655097867" />
+    <state x="1270" y="114" width="1080" height="1217" key="AVDManager" timestamp="1588878364353">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1270" y="114" width="1080" height="1217" key="AVDManager/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588878364353" />
+    <state x="125" y="421" key="IDE.errors.dialog" timestamp="1588878613013">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="125" y="421" key="IDE.errors.dialog/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588878613013" />
     <state x="269" y="402" key="MultipleFileMergeDialog" timestamp="1588376247931">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -333,12 +333,13 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1591" y="373" key="RollbackChangesDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1588544010062" />
-    <state x="0" y="23" width="1280" height="1417" key="SettingsEditor" timestamp="1588545891501">
+    <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor" timestamp="1588707050297">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="-1920" y="-157" width="1125" height="1057" key="SettingsEditor/-3286.-101.1366.1001/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1580923983161" />
     <state x="221" y="78" width="900" height="722" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588369261113" />
-    <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588541789678" />
+    <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588703983733" />
+    <state x="1280" y="23" key="SettingsEditor/0.23.2560.1417/2560.563.1440.877@0.23.2560.1417" timestamp="1588707050297" />
     <state x="0" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1588545891501" />
     <state width="834" height="671" key="SwitcherDM" timestamp="1588376017457">
       <screen x="0" y="23" width="2560" height="1417" />
@@ -354,12 +355,12 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="309" y="488" width="661" height="486" key="find.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1585173355385" />
-    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup" timestamp="1588545380363">
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup" timestamp="1588874212101">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="-1274" y="80" width="838" height="770" key="search.everywhere.popup/-3286.-101.1366.1001/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1581119779344" />
     <state x="2301" y="-352" width="1118" height="1033" key="search.everywhere.popup/0.23.1440.877/1440.-670.2560.1417@1440.-670.2560.1417" timestamp="1582256307781" />
-    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1586174734419" />
+    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588874212101" />
     <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1588545380363" />
   </component>
 </project>

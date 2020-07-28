@@ -15,6 +15,10 @@
 
 ########################################################################
 
+# --- TEMP ----------------------------------------------------------------------------------
+alias copy-apk='cp /Users/aubreyford/workspace/brasch/suremeteor/.meteor/local/cordova-build/platforms/android/app/build/outputs/apk/debug/app-debug.apk /Users/aubreyford/workspace/brasch/version-url/'
+alias desktop-apk='cp /Users/aubreyford/workspace/brasch/suremeteor/.meteor/local/cordova-build/platforms/android/app/build/outputs/apk/debug/app-debug.apk /Users/aubreyford/Desktop'
+
 # --- Set Locations -------------------------------------------------------------------------
 
 # set global bin locations
@@ -154,7 +158,7 @@ when(){
   fi;
 }
 #search for file by name starting at .
-alias sch='find . -name'
+alias sch='find . -iname'
 # 'ls' after changing directory
 chpwd(){
   lsa
@@ -209,17 +213,19 @@ alias snip='idea ~/workspace/aubrey-snippetts'
 # AVD: list installed emlators
 alias avd-ls="emulator -list-avds"
 # AVD: start and AVD
-alias avd-start="emulator -avd" #[avd_version]#
+alias avd-start="emulator -avd Pixel_3a_API_25" #[avd_version]#
 # list installed JDK versions
 alias jdk='/usr/libexec/java_home -V'
+alias platform-tools="cd $ANDROID_HOME/platform-tools/"
 loadem(){
   cp -r "$1" "$ANDROID_HOME/platform-tools/" &&
-  cd "$ANDROID_HOME/platform-tools/"
-  ./adb install "$1"
+  cd "$ANDROID_HOME/platform-tools/" &&
+  ./adb install "$1" &&
+  cd -
 }
 # input text into Android emulator
 apaste(){
-  adb shell input text "$1"
+  adb shell input text $1
 }
 alias simcr='~/workspace/RESOURCES/chromium-tools/chromium/src/out/Debug-iphonesimulator/iossim ~/workspace/RE`SOURCE`S/chromium-tools/chromium/src/out/Debug-iphonesimulator/Chromium.app'
 jav(){
@@ -230,10 +236,11 @@ jav(){
 # ------- Run ---------------------------------------------------------------------------------------------------
 alias ngrok='~/workspace/UTIL/ngrok'
 grok(){
-  ngrok http -subdomain rachio --host-header=rewrite "$1"
+  ngrok http "$1"
 }
 
 # ------- Mac --------------------------------------------------------------------------------------------------
+alias downloads="cd $HOME/downloads"
 # get machine model
 alias getmodel="sysctl hw.model"
 # retrieve password from keychain
@@ -445,12 +452,15 @@ alias launch-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-loc
 alias launch-android='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh'
 alias launch-android-device='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh'
 alias launch-android-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh'
-alias dump-suredb='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh'
 alias build='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh'
 kill-meteor-debug-break(){
  cd "$HOME/.meteor/packages/meteor-tool" || exit;
  find . -name boot.js | xargs sed -i '' -e "/maybeWaitForDebuggerToAttach();/d"
 }
+
+#copy and paste username/password
+alias ppass="apaste 2vtdfbF4RTh^"
+alias puser="apaste aford@braschgroup.com"
 
 # stash and switch to dev and mateor npm i
 alias cdev="stash && g3 && meteor npm i"
