@@ -99,7 +99,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -312,6 +312,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sh" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -325,6 +328,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <MESSAGE value="Add Java/Android commands" />
     <MESSAGE value="Add Java/Android locations" />
     <MESSAGE value="reorganize locations and gloal settings to top of file" />
@@ -376,10 +382,11 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1591" y="373" key="RollbackChangesDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1588544010062" />
-    <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor" timestamp="1588707050297">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="555" y="23" width="1125" height="1027" key="SettingsEditor" timestamp="1595981419400">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="221" y="78" width="900" height="722" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588369261113" />
+    <state x="555" y="23" width="1125" height="1027" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1595981419400" />
     <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588703983733" />
     <state x="1280" y="23" key="SettingsEditor/0.23.2560.1417/2560.563.1440.877@0.23.2560.1417" timestamp="1588707050297" />
     <state x="0" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1588545891501" />
