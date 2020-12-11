@@ -33,8 +33,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/quokka/stock_tool.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cron-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backup-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daily-backups.sh" beforeDir="false" afterPath="$PROJECT_DIR$/daily-backups.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quokka/timeline.es6" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,67 +342,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add auto-backup functionality" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="339" y="98" key="#Plugins" timestamp="1595980332231">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="339" y="98" key="#Plugins/0.23.1680.1027@0.23.1680.1027" timestamp="1595980332231" />
-    <state x="-1373" y="604" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588031785406">
-      <screen x="-1440" y="563" width="1440" height="877" />
-    </state>
-    <state x="-1373" y="604" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417/-1440.563.1440.877@-1440.563.1440.877" timestamp="1588031785406" />
-    <state x="524" y="384" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1595980265339">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="524" y="384" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1595980265339" />
-    <state x="1270" y="114" width="1080" height="1217" key="AVDManager" timestamp="1588878364353">
+    <state x="1599" y="541" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1607727666970">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="1270" y="114" width="1080" height="1217" key="AVDManager/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588878364353" />
-    <state width="1678" height="275" key="GridCell.Tab.0.bottom" timestamp="1595980380028">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1678" height="275" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1595980380028" />
-    <state width="1678" height="275" key="GridCell.Tab.0.center" timestamp="1595980380028">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1678" height="275" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1595980380028" />
-    <state width="1678" height="275" key="GridCell.Tab.0.left" timestamp="1595980380027">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1678" height="275" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1595980380027" />
-    <state width="1678" height="275" key="GridCell.Tab.0.right" timestamp="1595980380028">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state width="1678" height="275" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1595980380028" />
-    <state x="125" y="421" key="IDE.errors.dialog" timestamp="1588878613013">
+    <state x="1599" y="541" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1607727666970" />
+    <state x="708" y="283" key="SettingsEditor" timestamp="1607725651455">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="125" y="421" key="IDE.errors.dialog/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588878613013" />
-    <state x="269" y="402" key="MultipleFileMergeDialog" timestamp="1588376247931">
+    <state x="708" y="283" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1607725651455" />
+    <state x="901" y="440" width="757" height="582" key="find.popup" timestamp="1607725821797">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="269" y="402" key="MultipleFileMergeDialog/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588376247931" />
-    <state x="1591" y="373" key="RollbackChangesDialog" timestamp="1588544010062">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="1591" y="373" key="RollbackChangesDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1588544010062" />
-    <state x="555" y="23" width="1125" height="1027" key="SettingsEditor" timestamp="1595981419400">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="221" y="78" width="900" height="722" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588369261113" />
-    <state x="555" y="23" width="1125" height="1027" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1595981419400" />
-    <state x="1280" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588703983733" />
-    <state x="1280" y="23" key="SettingsEditor/0.23.2560.1417/2560.563.1440.877@0.23.2560.1417" timestamp="1588707050297" />
-    <state x="0" y="23" width="1280" height="1417" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1588545891501" />
-    <state width="834" height="671" key="SwitcherDM" timestamp="1588376017457">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state width="834" height="671" key="SwitcherDM/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588376017457" />
-    <state x="565" y="253" width="840" height="749" key="search.everywhere.popup" timestamp="1595980167987">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="565" y="253" width="840" height="749" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1595980167987" />
-    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417/-1440.563.1440.877@0.23.2560.1417" timestamp="1588874212101" />
-    <state x="861" y="341" width="1118" height="1033" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1588545380363" />
+    <state x="901" y="440" width="757" height="582" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1607725821797" />
   </component>
 </project>

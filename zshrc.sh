@@ -7,7 +7,7 @@
 #>  #@IgnoreInspection BashAddShebang
 #>  AUBREY="aubreyford"
 #>  path+="/usr/local/mysql/bin"
-#>  source "/Users/aubreyford/workspace/UTIL/aubrey-snippetts/zshrc.sh"
+#>  source "/Users/aubreyford/workspace/aubrey-snippetts/zshrc.sh"
 #>  JDK_HOME="WHATEVER_CURRENT_JDK_IS" (e.g.: JDK_HOME="jdk1.8.0_231.jdk")
 #>  METEOR_VERSION_DIR="WHATEVER_CURRENT_METEOR_VERSION"
 #>  METEOR_VERSION_DIR="WHATEVER_CURRENT_METEOR_VERSION"
@@ -46,7 +46,7 @@ export ZSH=/Users/$AUBREY/.oh-my-zsh
 # ---- Global settings ---------------------------------------------------------------------
 
 # PUT PATH TO THIS FILE HERE; '-g' aliases can be used anywhere in the command, not just the beginning
-alias -g zrc=~/workspace/UTIL/aubrey-snippetts/zshrc.sh
+alias -g zrc=~/workspace/aubrey-snippetts/zshrc.sh
 
 # on git push, set default remote tracking branch if none exists
 git config --global push.default current
@@ -107,9 +107,9 @@ alias alialist="tail -n +8 zrc"
 alias cppwd="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
 zzz(){
-  (cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .)
+  (cd "/Users/aubreyford/workspace/aubrey-snippetts" && idea .)
 }
-alias zz="open /Users/aubreyford/workspace/UTIL/aubrey-snippetts"
+alias zz="open /Users/aubreyford/workspace/aubrey-snippetts"
 
 alias nodem="node --max-old-space-size=4096"
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
@@ -449,16 +449,16 @@ alias env-to-heroku-config="heroku-config-to-env; heroku config:set \$(cat .env 
 
 # -------- Current Job -------------------------------------------------------------------------------------------
 alias gogo="open http://localhost:5000/login"
-alias launch='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-development.sh'
-alias launch-compare='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp.sh'
-alias launch-compare-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-comp-local.sh'
-alias launch-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-local.sh'
-alias launch-android='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android.sh'
-alias launch-android-device='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-device.sh'
-alias launch-android-local='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/launch-android-local.sh'
-alias dump-restore-suredb='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/dump-suredb.sh'
+alias launch='$HOME/workspace/aubrey-snippetts/surenursing/launch-development.sh'
+alias launch-compare='$HOME/workspace/aubrey-snippetts/surenursing/launch-comp.sh'
+alias launch-compare-local='$HOME/workspace/aubrey-snippetts/surenursing/launch-comp-local.sh'
+alias launch-local='$HOME/workspace/aubrey-snippetts/surenursing/launch-local.sh'
+alias launch-android='$HOME/workspace/aubrey-snippetts/surenursing/launch-android.sh'
+alias launch-android-device='$HOME/workspace/aubrey-snippetts/surenursing/launch-android-device.sh'
+alias launch-android-local='$HOME/workspace/aubrey-snippetts/surenursing/launch-android-local.sh'
+alias dump-restore-suredb='$HOME/workspace/aubrey-snippetts/surenursing/dump-suredb.sh'
 alias dump-suredb="mongodump --uri=\"$SURENURSING_DATABASE_URI\""
-alias build='$HOME/workspace/UTIL/aubrey-snippetts/surenursing/build-dev-local.sh'
+alias build='$HOME/workspace/aubrey-snippetts/surenursing/build-dev-local.sh'
 kill-meteor-debug-break(){
  cd "$HOME/.meteor/packages/meteor-tool" || exit;
  find . -name boot.js | xargs sed -i '' -e "/maybeWaitForDebuggerToAttach();/d"
