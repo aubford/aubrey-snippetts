@@ -109,6 +109,7 @@ alias cppwd="pwd | tr -d '\n' | pbcopy"
 zzz(){
   (cd "/Users/aubreyford/workspace/UTIL/aubrey-snippetts" && idea .)
 }
+alias zz="open /Users/aubreyford/workspace/UTIL/aubrey-snippetts"
 
 alias nodem="node --max-old-space-size=4096"
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning
