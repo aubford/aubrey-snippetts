@@ -173,7 +173,7 @@ function buildCompanyData(yahooData, atData) {
       divGrowthRate3Year,
       dividendPayAmount,
       dividendPayDate,
-    } = atData
+    } = atData.fundamental
 
     // ------------------------------- //
     
