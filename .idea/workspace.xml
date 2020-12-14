@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -33,11 +36,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/quokka/stock_tool.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/stock-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cron-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backup-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daily-backups.sh" beforeDir="false" afterPath="$PROJECT_DIR$/daily-backups.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quokka/timeline.es6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo-scratchpad.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quokka/stock_tool.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/getAmeritradeData.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,12 +62,6 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
-  </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
   </component>
   <component name="NamedScopeManager">
     <scope name="Git Scope" pattern="" />
@@ -89,8 +86,8 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="javascript.nodejs.core.library.typings.version" value="10.17.28" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/surenursing" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.48" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/stock-analysis-tool" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -103,17 +100,28 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stock-analysis-tool" />
+      <recent name="$PROJECT_DIR$/surenursing" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/IntelliJ Settings" />
       <recent name="$PROJECT_DIR$/surenursing" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/surenursing" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="stock_tool.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" working-dir="$PROJECT_DIR$/stock-analysis-tool">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.stock_tool.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -340,19 +348,5 @@
     <MESSAGE value="reorganize locations and gloal settings to top of file" />
     <MESSAGE value="Add auto-backup functionality" />
     <option name="LAST_COMMIT_MESSAGE" value="Add auto-backup functionality" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1599" y="541" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1607727666970">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="1599" y="541" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1607727666970" />
-    <state x="708" y="283" key="SettingsEditor" timestamp="1607725651455">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="708" y="283" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1607725651455" />
-    <state x="901" y="440" width="757" height="582" key="find.popup" timestamp="1607725821797">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="901" y="440" width="757" height="582" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1607725821797" />
   </component>
 </project>
