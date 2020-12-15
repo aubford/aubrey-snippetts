@@ -16,7 +16,7 @@ function getNonIndexOwners(ownershipList) {
       indexFundTags.every(name => !owner.organization.includes(name))
     )
     .map(({ organization, pctHeld }) => `${organization}: ${pctHeld.fmt}`)
-    .join(",")
+    .join(" <|> ")
 }
 
 function buildCompanyData(yahooData, atData) {
@@ -82,7 +82,10 @@ function buildCompanyData(yahooData, atData) {
         earnings: { earningsAverage, earningsLow, earningsHigh, earningsDate } // upcoming quarter-end projections
       },
       earnings: {
-        earningsChart: { quarterly: quarterlyEPSActualEstimateChart }
+        earningsChart: {
+          quarterly: quarterlyEPSActualEstimateChart,
+          currentQuarterEstimate
+        }
       },
       majorHoldersBreakdown: { institutionsCount },
       earningsTrend: {
@@ -94,21 +97,46 @@ function buildCompanyData(yahooData, atData) {
               "30daysAgo": monthEpsEstimate,
               "60daysAgo": monthsEpsEstimate,
               "90daysAgo": quarterEpsEstimate
-            }
-          },
-          1: {
-            epsTrend: {
-              current: currentEpsEstimateNextQuarter,
-              "7daysAgo": weekEpsEstimateNextQuarter,
-              "30daysAgo": monthEpsEstimateNextQuarter,
-              "60daysAgo": monthsEpsEstimateNextQuarter,
-              "90daysAgo": quarterEpsEstimateNextQuarter
             },
             revenueEstimate: {
               avg: revenueEstimateAvg,
               low: revenueEstimateLow,
-              high: revenueEstimateHigh
-            }
+              high: revenueEstimateHigh,
+              growth: revenueEstimateGrowth
+            },
+            earningsEstimate: { growth: earningsEstimateGrowth }
+          },
+          1: {
+            epsTrend: {
+              current: currentEpsEstimateFollowingQuarter,
+              "7daysAgo": weekEpsEstimateFollowingQuarter,
+              "30daysAgo": monthEpsEstimateFollowingQuarter,
+              "60daysAgo": monthsEpsEstimateFollowingQuarter,
+              "90daysAgo": quarterEpsEstimateFollowingQuarter
+            },
+            revenueEstimate: {
+              avg: revenueEstimateFollowingQuarterAvg,
+              low: revenueEstimateFollowingQuarterLow,
+              high: revenueEstimateFollowingQuarterHigh,
+              growth: revenueEstimateFollowingQuarterGrowth
+            },
+            earningsEstimate: { growth: earningsEstimateFollowingQuarterGrowth }
+          },
+          3: {
+            epsTrend: {
+              current: currentEpsEstimateNextYear,
+              "7daysAgo": weekEpsEstimateNextYear,
+              "30daysAgo": monthEpsEstimateNextYear,
+              "60daysAgo": monthsEpsEstimateNextYear,
+              "90daysAgo": quarterEpsEstimateNextYear
+            },
+            revenueEstimate: {
+              avg: revenueEstimateNextYearAvg,
+              low: revenueEstimateNextYearLow,
+              high: revenueEstimateNextYearHigh,
+              growth: revenueEstimateNextYearGrowth
+            },
+            earningsEstimate: { growth: earningsEstimateNextYearGrowth }
           }
         }
       },
@@ -128,13 +156,13 @@ function buildCompanyData(yahooData, atData) {
         grossProfits,
         operatingCashflow,
         earningsGrowth,
-        revenueGrowth,
+        revenueGrowth, // Quarterly Revenue Growth (yoy)
         operatingMargins
       },
       upgradeDowngradeHistory: { history: upgradeDowngradeHistory },
       price: { regularMarketPrice }
     } = yahooData.quoteSummary.result[0]
-    
+
     const {
       dividendAmount,
       dividendYield,
@@ -170,19 +198,19 @@ function buildCompanyData(yahooData, atData) {
       bookValuePerShare,
       shortIntToFloat,
       shortIntDayToCover,
-      divGrowthRate3Year,
+      divGrowthRate3Year: divGrowthRateThreeYear,
       dividendPayAmount,
-      dividendPayDate,
+      dividendPayDate
     } = atData.fundamental
 
     // ------------------------------- //
-    
+
     const { strongSell, sell, hold, buy, strongBuy } = recommendationTrend.find(
       t => t.period === "0m"
     )
     return {
       // TO DO //
-      
+
       //netIncome,
       //revenue,
       //costOfRevenue,
@@ -212,49 +240,49 @@ function buildCompanyData(yahooData, atData) {
       //repurchaseOfStock,
       //projRevenueGrowth: revenueEstimateAvg.raw / totalRevenue.raw - 1,
       //capexRaD: capitalExpenditures + radExpenditures,
-      
+
       // TD Ameritrade //
-      
-      bookValuePerShare,
-      currentRatio,
-      divGrowthRate3Year,
+
       dividendAmount,
-      dividendDate,
-      dividendPayAmount,
-      dividendPayDate,
-      dividendYield,
-      epsChange,
-      epsChangePercentTTM,
-      epsChangeYear,
-      epsTTM,
-      grossMarginMRQ,
-      grossMarginTTM,
-      interestCoverage,
-      ltDebtToEquity,
-      netProfitMarginMRQ,
-      netProfitMarginTTM,
-      operatingMarginMRQ,
-      operatingMarginTTM,
-      pbRatio,
-      pcfRatio,
-      pegRatio,
-      peRatio,
-      prRatio,
-      quickRatio,
-      returnOnAssets,
-      returnOnEquity,
-      returnOnInvestment,
-      revChangeIn,
-      revChangeTTM,
-      revChangeYear,
-      sharesOutstanding,
+      shortIntToFloat, // nope
       shortIntDayToCover,
-      shortIntToFloat,
-      totalDebtToCapital,
+      divGrowthRateThreeYear,
+      currentRatio, // nope
+      dividendPayAmount,
+      returnOnEquity,
+      dividendPayDate,
+      quickRatio, // nope
       totalDebtToEquity,
-      
+      ltDebtToEquity,
+      totalDebtToCapital, // nope
+      dividendDate,
+      peRatio,
+      pbRatio,
+      prRatio,
+      pcfRatio,
+      grossMarginTTM,
+      grossMarginMRQ,
+      netProfitMarginTTM,
+      netProfitMarginMRQ,
+      operatingMarginTTM,
+      operatingMarginMRQ,
+      returnOnInvestment, // nope
+      interestCoverage, // nope
+      epsTTM,
+      epsChangePercentTTM, // nope
+      epsChangeYear, // nope
+      epsChange, // nope
+      revChangeYear,
+      revChangeTTM, // nope
+      revChangeIn,
+      bookValuePerShare,
+      sharesOutstanding,
+      dividendYield,
+      pegRatio,
+      returnOnAssets,
+
       // yahoo //
-      
+
       ...selectValueTypes(
         {
           regularMarketPrice,
@@ -273,16 +301,29 @@ function buildCompanyData(yahooData, atData) {
           netIncomeToCommon,
           trailingAnnualDividendRate,
           twoHundredDayAverage,
-          currentEpsEstimate,
-          currentEpsEstimateNextQuarter,
-          weekEpsEstimate,
-          weekEpsEstimateNextQuarter,
+          currentEpsEstimate, // current estimate for this quarter
+          currentEpsEstimateFollowingQuarter, //current estimate for next quarter
+          currentEpsEstimateNextYear,
+          weekEpsEstimate, // estimate from a week ago for this quarter
+          weekEpsEstimateFollowingQuarter, // estimate from a week ago for next quarter
+          weekEpsEstimateNextYear,
           monthEpsEstimate,
-          monthEpsEstimateNextQuarter,
-          monthsEpsEstimate,
-          monthsEpsEstimateNextQuarter,
+          monthEpsEstimateFollowingQuarter,
+          monthEpsEstimateNextYear,
+          monthsEpsEstimate, // estimate from 2 months ago for this quarter
+          monthsEpsEstimateFollowingQuarter, // // estimate from 2 months ago for next quarter
+          monthsEpsEstimateNextYear,
           quarterEpsEstimate,
-          quarterEpsEstimateNextQuarter,
+          quarterEpsEstimateFollowingQuarter,
+          quarterEpsEstimateNextYear,
+
+          revenueEstimateFollowingQuarterAvg,
+          revenueEstimateFollowingQuarterLow,
+          revenueEstimateFollowingQuarterHigh,
+          revenueEstimateNextYearAvg,
+          revenueEstimateNextYearLow,
+          revenueEstimateNextYearHigh,
+
           currentPrice,
           targetHighPrice,
           targetLowPrice,
@@ -304,7 +345,7 @@ function buildCompanyData(yahooData, atData) {
           yahReturnOnEquity,
           beta,
           earningsGrowth,
-          revenueGrowth,
+          revenueGrowth, // Quarterly Revenue Growth (yoy)
           operatingMargins,
           bookValue,
           dateShortInterest,
@@ -327,7 +368,13 @@ function buildCompanyData(yahooData, atData) {
           shortPercentOfFloat,
           shortRatio,
           trailingAnnualDividendYield,
-          trailingPE
+          trailingPE,
+          revenueEstimateGrowth, // estimated revenue growth (YoY) for this quarter
+          revenueEstimateFollowingQuarterGrowth,
+          revenueEstimateNextYearGrowth, // estimated revenue growth (YoY) for next year
+          earningsEstimateGrowth, // estimated earnings growth (YoY) for this quarter
+          earningsEstimateFollowingQuarterGrowth,
+          earningsEstimateNextYearGrowth // estimated earnings growth (YoY) for next year
         },
         "fmt"
       ),
@@ -353,13 +400,14 @@ function buildCompanyData(yahooData, atData) {
       anaylstRecommendations: [strongSell, sell, hold, buy, strongBuy],
       institutionsCount: institutionsCount.longFmt,
       nonIndexOwners: getNonIndexOwners(ownershipList),
-      projEPSGrowth: forwardEps.raw / trailingEps.raw - 1,
-      quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart.map(
-        ({ actual, estimate }) => ({
-          actual: actual.raw,
-          estimate: estimate.raw
-        })
-      ),
+      projEPSGrowth: earningsEstimateFollowingQuarterGrowth,
+      projSalesGrowth: revenueEstimateFollowingQuarterGrowth,
+      quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
+        .reduce(
+          (acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0],
+          []
+        )
+        .concat([currentQuarterEstimate.raw]),
       shortVMonthAgoRatio: sharesShort.raw / sharesShortPriorMonth.raw
     }
   } catch (error) {

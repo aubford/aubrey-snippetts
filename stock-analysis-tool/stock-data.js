@@ -8913,7 +8913,7 @@ export const stockData = {
             raw: -0.324,
             fmt: "-32.40%"
           },
-          revenueGrowth: {  // Quarterly Revenue Growth (yoy)
+          revenueGrowth: {
             raw: -0.061,
             fmt: "-6.10%"
           },
