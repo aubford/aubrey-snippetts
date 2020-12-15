@@ -1,3 +1,6 @@
+import { stockData } from "./stock-data"
+buildCompanyData(stockData)
+
 function selectValueTypes(multiValues, type) {
   return Object.keys(multiValues).reduce(
     (acc, key) => ({
@@ -19,7 +22,7 @@ function getNonIndexOwners(ownershipList) {
     .join(" <|> ")
 }
 
-function buildCompanyData(yahooData, atData) {
+function buildCompanyData(yahooData) {
   try {
     const {
       assetProfile: {
@@ -51,22 +54,22 @@ function buildCompanyData(yahooData, atData) {
         lastFiscalYearEnd,
         mostRecentQuarter,
         netIncomeToCommon,
-        pegRatio: yahPegRatio,
+        pegRatio,
         priceToBook,
         profitMargins,
-        sharesOutstanding: yahSharesOutstanding,
+        sharesOutstanding,
         sharesPercentSharesOut, // "Short % of Shares Outstanding"
         sharesShort,
         sharesShortPreviousMonthDate,
         sharesShortPriorMonth,
         shortPercentOfFloat,
         shortRatio,
-        trailingEps // essentiall current EPS
+        trailingEps // current EPS
       },
       fundOwnership: { ownershipList },
       summaryDetail: {
         dividendRate, // "Forward Dividend
-        dividendYield: yahDivYield, // & Yield"
+        dividendYield, // & Yield"
         exDividendDate,
         fiftyDayAverage,
         fiveYearAvgDividendYield,
@@ -78,6 +81,7 @@ function buildCompanyData(yahooData, atData) {
         regularMarketVolume,
         twoHundredDayAverage
       },
+      majorHoldersBreakdown: { institutionsCount },
       calendarEvents: {
         earnings: { earningsAverage, earningsLow, earningsHigh, earningsDate } // upcoming quarter-end projections
       },
@@ -87,10 +91,10 @@ function buildCompanyData(yahooData, atData) {
           currentQuarterEstimate
         }
       },
-      majorHoldersBreakdown: { institutionsCount },
       earningsTrend: {
         trend: {
           0: {
+            // This quarter estimates
             epsTrend: {
               current: currentEpsEstimate,
               "7daysAgo": weekEpsEstimate,
@@ -107,6 +111,7 @@ function buildCompanyData(yahooData, atData) {
             growth: earningsEstimateGrowth
           },
           1: {
+            // +1 Quarter estimates
             epsTrend: {
               current: currentEpsEstimateFollowingQuarter,
               "7daysAgo": weekEpsEstimateFollowingQuarter,
@@ -123,6 +128,7 @@ function buildCompanyData(yahooData, atData) {
             growth: earningsEstimateFollowingQuarterGrowth
           },
           3: {
+            // +1 Year estimates
             epsTrend: {
               current: currentEpsEstimateNextYear,
               "7daysAgo": weekEpsEstimateNextYear,
@@ -151,8 +157,8 @@ function buildCompanyData(yahooData, atData) {
         totalCashPerShare,
         totalDebt,
         revenuePerShare,
-        returnOnAssets: yahReturnOnAssets,
-        returnOnEquity: yahReturnOnEquity,
+        returnOnAssets,
+        returnOnEquity,
         grossProfits,
         operatingCashflow,
         earningsGrowth,
@@ -160,219 +166,272 @@ function buildCompanyData(yahooData, atData) {
         operatingMargins
       },
       upgradeDowngradeHistory: { history: upgradeDowngradeHistory },
-      price: { regularMarketPrice }
-    } = yahooData.quoteSummary.result[0]
-
-    const {
-      cusip,
-      fundamental: {
-        dividendAmount,
-        dividendYield,
-        dividendDate,
-        peRatio,
-        pegRatio,
-        pbRatio,
-        prRatio,
-        pcfRatio,
-        grossMarginTTM,
-        grossMarginMRQ,
-        netProfitMarginTTM,
-        netProfitMarginMRQ,
-        operatingMarginTTM,
-        operatingMarginMRQ,
-        returnOnEquity,
-        returnOnAssets,
-        returnOnInvestment,
-        quickRatio,
-        currentRatio,
-        interestCoverage,
-        totalDebtToCapital,
-        ltDebtToEquity,
-        totalDebtToEquity,
-        epsTTM,
-        epsChangePercentTTM,
-        epsChangeYear,
-        epsChange,
-        revChangeYear,
-        revChangeTTM,
-        revChangeIn,
-        sharesOutstanding,
-        bookValuePerShare,
-        shortIntToFloat,
-        shortIntDayToCover,
-        divGrowthRate3Year: divGrowthRateThreeYear,
-        dividendPayAmount,
-        dividendPayDate
+      price: { regularMarketPrice },
+      cashflowStatementHistoryQuarterly: {
+        cashflowStatements: {
+          0: {
+            depreciation,
+            changeToNetincome,
+            changeToOperatingActivities,
+            totalCashFromOperatingActivities,
+            capitalExpenditures,
+            investments,
+            totalCashflowsFromInvestingActivities,
+            dividendsPaid,
+            netBorrowings,
+            totalCashFromFinancingActivities,
+            effectOfExchangeRate,
+            changeInCash,
+            repurchaseOfStock
+          }
+        }
+      },
+      incomeStatementHistoryQuarterly: {
+        incomeStatementHistory: {
+          0: {
+            totalRevenue,
+            costOfRevenue,
+            grossProfit,
+            researchDevelopment,
+            sellingGeneralAdministrative,
+            nonRecurring,
+            totalOperatingExpenses,
+            operatingIncome,
+            ebit,
+            interestExpense,
+            incomeBeforeTax,
+            netIncomeFromContinuingOps,
+            discontinuedOperations,
+            netIncome,
+            netIncomeApplicableToCommonShares
+          }
+        }
+      },
+      balanceSheetHistoryQuarterly: {
+        balanceSheetStatements: {
+          0: {
+            inventory,
+            totalCurrentAssets,
+            longTermInvestments,
+            propertyPlantEquipment,
+            goodWill,
+            intangibleAssets,
+            totalAssets,
+            accountsPayable,
+            shortLongTermDebt,
+            longTermDebt,
+            minorityInterest,
+            totalCurrentLiabilities,
+            totalLiab,
+            commonStock,
+            retainedEarnings,
+            capitalSurplus,
+            totalStockholderEquity,
+            netTangibleAssets
+          }
+        }
       }
-    } = atData
+    } = yahooData.quoteSummary.result[0]
 
     // ------------------------------- //
 
     const { strongSell, sell, hold, buy, strongBuy } = recommendationTrend.find(
       t => t.period === "0m"
     )
+
+    const freeCashFlow = operatingCashflow.raw - capitalExpenditures.raw
+    const freeCashFlowPerShare = freeCashFlow / sharesOutstanding.raw
+
     return {
-      // TO DO //
-
-      //netIncome,
-      //revenue,
-      //costOfRevenue,
-      //grossProfit,
-      //researchDevelopment,
-      //sellingGeneralAdministrative,
-      //totalOperatingExpenses,
-      //operatingIncome,
-      //totalOtherIncomeExpenseNet,
-      //interestExpense,
-      //incomeBeforeTax,
-      //netIncomeApplicableToCommonShares,
-      //netTangibleAssets,
-      //totalStockholderEquity,
-      //retainedEarnings,
-      //totalCurrentAssets,
-      //propertyPlantEquipment,
-      //totalAssets,
-      //totalLiab,
-      //totalCurrentLiabilities,
-      //longTermDebt,
-      //shortLongTermDebt,
-      //depreciation,
-      //investments,
-      //issuanceOfStock,
-      //changeInCash,
-      //repurchaseOfStock,
-      //projRevenueGrowth: revenueEstimateAvg.raw / totalRevenue.raw - 1,
-      //capexRaD: capitalExpenditures + radExpenditures,
-
-      // TD Ameritrade //
-
-      cusip,
-      dividendAmount,
-      shortIntToFloat, // nope
-      shortIntDayToCover,
-      divGrowthRateThreeYear,
-      currentRatio, // nope
-      dividendPayAmount,
-      returnOnEquity,
-      dividendPayDate,
-      quickRatio, // nope
-      totalDebtToEquity,
-      ltDebtToEquity,
-      totalDebtToCapital, // nope
-      dividendDate,
-      peRatio,
-      pbRatio,
-      prRatio,
-      pcfRatio,
-      grossMarginTTM,
-      grossMarginMRQ,
-      netProfitMarginTTM,
-      netProfitMarginMRQ,
-      operatingMarginTTM,
-      operatingMarginMRQ,
-      returnOnInvestment, // nope
-      interestCoverage, // nope
-      epsTTM,
-      epsChangePercentTTM, // nope
-      epsChangeYear, // nope
-      epsChange, // nope
-      revChangeYear,
-      revChangeTTM, // nope
-      revChangeIn,
-      bookValuePerShare,
-      sharesOutstanding,
-      dividendYield,
-      pegRatio,
-      returnOnAssets,
-
-      // yahoo //
-
       ...selectValueTypes(
+        // RAW //
         {
+          // PRICE //
+
           regularMarketPrice,
-          revenueEstimateAvg,
-          revenueEstimateLow,
-          revenueEstimateHigh,
-          dividendRate,
-          earningsAverage,
-          earningsHigh,
-          earningsLow,
-          enterpriseValue,
-          fiftyDayAverage,
-          fiveYearAvgDividendYield,
+
+          // FINANCIAL DATA
+
+          currentPrice,
+          grossProfits,
+          operatingCashflow,
+          revenuePerShare,
+          totalCash,
+          totalDebt,
+          totalCashPerShare,
+
+          // DEFAULT KEY STATISTICS
+
           floatShares,
+          enterpriseValue,
+          forwardEps,
           heldPercentInsiders,
           netIncomeToCommon,
-          trailingAnnualDividendRate,
+          sharesOutstanding,
+          trailingEps,
+
+          // CALENDAR EVENTS //
+
+          earningsAverage, // upcoming quarter-end projection
+          earningsHigh, // upcoming quarter-end projection
+          earningsLow, // upcoming quarter-end projection
+
+          // SUMMARY DETAIL //
+
           twoHundredDayAverage,
-          currentEpsEstimate, // current estimate for this quarter
-          currentEpsEstimateFollowingQuarter, //current estimate for next quarter
-          currentEpsEstimateNextYear,
-          weekEpsEstimate, // estimate from a week ago for this quarter
-          weekEpsEstimateFollowingQuarter, // estimate from a week ago for next quarter
+          fiftyDayAverage,
+
+          // ANALYSTS
+
+          numberOfAnalystOpinions,
+          targetHighPrice,
+          targetLowPrice,
+          targetMeanPrice,
+
+          // DIVIDEND
+
+          trailingAnnualDividendRate,
+          fiveYearAvgDividendYield,
+          dividendRate,
+          lastDividendValue,
+
+          // EARNINGS TREND
+
+          currentEpsEstimate, //  estimate for this quater results; as of now
+          currentEpsEstimateFollowingQuarter, // estimate for following quater results; as of now
+          currentEpsEstimateNextYear, // estimate for following year results; as of now
+          weekEpsEstimate,
+          weekEpsEstimateFollowingQuarter,
           weekEpsEstimateNextYear,
           monthEpsEstimate,
           monthEpsEstimateFollowingQuarter,
           monthEpsEstimateNextYear,
-          monthsEpsEstimate, // estimate from 2 months ago for this quarter
-          monthsEpsEstimateFollowingQuarter, // // estimate from 2 months ago for next quarter
-          monthsEpsEstimateNextYear,
+          monthsEpsEstimate, // estimate for this quater results; 2 months ago
+          monthsEpsEstimateFollowingQuarter, // estimate for following quater results; 2 months ago
+          monthsEpsEstimateNextYear, // estimate for following year results; 2 months ago
           quarterEpsEstimate,
           quarterEpsEstimateFollowingQuarter,
           quarterEpsEstimateNextYear,
 
+          // REVENUE ESTIMATES (All "as of now")
+
+          revenueEstimateLow, // estimate for this quarter revenue
+          revenueEstimateAvg,
+          revenueEstimateHigh,
+          revenueEstimateFollowingQuarterLow, // estimate for following quarter revenue
           revenueEstimateFollowingQuarterAvg,
-          revenueEstimateFollowingQuarterLow,
           revenueEstimateFollowingQuarterHigh,
+          revenueEstimateNextYearLow, // estimate for next year revenue
           revenueEstimateNextYearAvg,
-          revenueEstimateNextYearLow,
           revenueEstimateNextYearHigh,
 
-          currentPrice,
-          targetHighPrice,
-          targetLowPrice,
-          targetMeanPrice,
-          numberOfAnalystOpinions,
-          totalCash,
-          totalCashPerShare,
-          totalDebt,
-          revenuePerShare,
-          grossProfits,
-          operatingCashflow,
-          lastDividendValue
+          //  BALANCE SHEET
+
+          inventory,
+          totalCurrentAssets,
+          longTermInvestments,
+          propertyPlantEquipment,
+          goodWill,
+          intangibleAssets,
+          totalAssets,
+          accountsPayable,
+          shortLongTermDebt,
+          longTermDebt,
+          minorityInterest,
+          totalCurrentLiabilities,
+          totalLiab,
+          commonStock,
+          retainedEarnings,
+          capitalSurplus,
+          totalStockholderEquity,
+          netTangibleAssets,
+
+          // INCOME STATEMENT
+
+          totalRevenue,
+          costOfRevenue,
+          grossProfit,
+          researchDevelopment,
+          sellingGeneralAdministrative,
+          nonRecurring,
+          totalOperatingExpenses,
+          operatingIncome,
+          ebit,
+          interestExpense,
+          incomeBeforeTax,
+          netIncomeFromContinuingOps,
+          discontinuedOperations,
+          netIncome,
+          netIncomeApplicableToCommonShares,
+
+          // CASH FLOW STATEMENT
+
+          depreciation,
+          changeToNetincome,
+          changeToOperatingActivities,
+          totalCashFromOperatingActivities,
+          capitalExpenditures,
+          investments,
+          totalCashflowsFromInvestingActivities,
+          dividendsPaid,
+          netBorrowings,
+          totalCashFromFinancingActivities,
+          effectOfExchangeRate,
+          changeInCash,
+          repurchaseOfStock
         },
         "raw"
       ),
       ...selectValueTypes(
+        // FORMATTED //
         {
-          yahReturnOnAssets,
-          yahReturnOnEquity,
+          // INFO //
+
+          lastFiscalYearEnd,
+          mostRecentQuarter,
+          regularMarketVolume,
+
+          // DIVIDEND //
+
+          dividendYield,
+          exDividendDate,
+          trailingAnnualDividendYield,
+          lastDividendDate,
+          payoutRatio,
+
+          // VALUATION //
+
+          priceToBook,
+          priceToSalesTrailing12Months,
+          forwardPE,
+          trailingPE,
+          pegRatio,
+          enterpriseToRevenue,
+
+          // FUNDAMENTALS //
+
+          profitMargins, // probably TTM
+          operatingMargins, // TTM
+          returnOnAssets,
+          returnOnEquity,
           beta,
           earningsGrowth,
           revenueGrowth, // Quarterly Revenue Growth (yoy)
-          operatingMargins,
           bookValue,
-          dateShortInterest,
-          earningsDate,
-          earningsQuarterlyGrowth,
-          enterpriseToRevenue,
-          exDividendDate,
-          forwardPE,
+
+          // MARKET SENTIMENT //
+
           heldPercentInstitutions,
-          lastDividendDate,
-          lastFiscalYearEnd,
-          mostRecentQuarter,
-          payoutRatio,
-          priceToBook,
-          priceToSalesTrailing12Months,
-          profitMargins,
-          regularMarketVolume,
           sharesPercentSharesOut,
           sharesShortPreviousMonthDate,
           shortPercentOfFloat,
           shortRatio,
-          trailingAnnualDividendYield,
-          trailingPE,
+          dateShortInterest,
+
+          // EARNINGS/REVENUE //
+
+          earningsDate,
+          earningsQuarterlyGrowth,
           revenueEstimateGrowth, // estimated revenue growth (YoY) for this quarter
           revenueEstimateFollowingQuarterGrowth,
           revenueEstimateNextYearGrowth, // estimated revenue growth (YoY) for next year
@@ -392,6 +451,8 @@ function buildCompanyData(yahooData, atData) {
       recommendationKey,
       sector,
       shareHolderRightsRisk,
+      freeCashFlow,
+      freeCashFlowPerShare,
       priceToSalesTTMCurr: `${priceToSalesTrailing12Months.raw.toFixed(
         2
       )} <> ${(regularMarketPrice.raw / revenuePerShare.raw).toFixed(2)}`,
