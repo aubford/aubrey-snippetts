@@ -94,7 +94,7 @@ function buildCompanyData(yahooData) {
       earningsTrend: {
         trend: {
           0: {
-            // This quarter estimates
+            // Estimates for this Quarter-end earnings
             epsTrend: {
               current: currentEpsEstimate,
               "7daysAgo": weekEpsEstimate,
@@ -111,7 +111,7 @@ function buildCompanyData(yahooData) {
             growth: earningsEstimateGrowth
           },
           1: {
-            // +1 Quarter estimates
+            // Estimates for +1 Quarter earnings
             epsTrend: {
               current: currentEpsEstimateFollowingQuarter,
               "7daysAgo": weekEpsEstimateFollowingQuarter,
@@ -128,7 +128,7 @@ function buildCompanyData(yahooData) {
             growth: earningsEstimateFollowingQuarterGrowth
           },
           3: {
-            // +1 Year estimates
+            // Estimates for year-end earnings
             epsTrend: {
               current: currentEpsEstimateNextYear,
               "7daysAgo": weekEpsEstimateNextYear,
@@ -239,7 +239,7 @@ function buildCompanyData(yahooData) {
       t => t.period === "0m"
     )
 
-    const freeCashFlow = operatingCashflow.raw - capitalExpenditures.raw
+    const freeCashFlow = (operatingCashflow.raw - capitalExpenditures.raw) * 4 // ANNUALIZED!!!
     const freeCashFlowPerShare = freeCashFlow / sharesOutstanding.raw
 
     return {
@@ -453,6 +453,8 @@ function buildCompanyData(yahooData) {
       shareHolderRightsRisk,
       freeCashFlow,
       freeCashFlowPerShare,
+      operatingCashFlowPerShare: operatingCashflow.raw / sharesOutstanding.raw,
+      debtToCapital: shortLongTermDebt.raw / (shortLongTermDebt.raw + totalStockholderEquity.raw),
       priceToSalesTTMCurr: `${priceToSalesTrailing12Months.raw.toFixed(
         2
       )} <> ${(regularMarketPrice.raw / revenuePerShare.raw).toFixed(2)}`,
@@ -465,8 +467,6 @@ function buildCompanyData(yahooData) {
       anaylstRecommendations: [strongSell, sell, hold, buy, strongBuy],
       institutionsCount: institutionsCount.longFmt,
       nonIndexOwners: getNonIndexOwners(ownershipList),
-      projEPSGrowth: earningsEstimateFollowingQuarterGrowth.raw,
-      projSalesGrowth: revenueEstimateFollowingQuarterGrowth.raw,
       quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
         .reduce(
           (acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0],

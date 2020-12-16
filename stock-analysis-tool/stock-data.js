@@ -1851,7 +1851,7 @@ export const stockData = {
             }
           ],
           maxAge: 86400
-        },  // !!!
+        },
         price: {
           maxAge: 1,
           preMarketChangePercent: {
