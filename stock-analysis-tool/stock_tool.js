@@ -1,31 +1,31 @@
-/*
-  
-  assetProfile,summaryProfile,summaryDetail,esgScores,price,defaultKeyStatistics,financialData,calendarEvents,secFilings,recommendationTrend,upgradeDowngradeHistory,institutionOwnership,fundOwnership,majorDirectHolders,majorHoldersBreakdown,insiderTransactions,insiderHolders,netSharePurchaseActivity,earnings,earningsTrend,industryTrend,indexTrend,sectorTrend,cashflowStatementHistoryQuarterly,incomeStatementHistoryQuarterly,balanceSheetHistoryQuarterly
-  
-*/
-
-import stockData from "./citiData"
-buildCompanyData(stockData)
+import data from "./slfData.json"
+const million = 1000000
+buildCompanyData(data)
 
 function selectValueTypes(multiValues, type) {
   return Object.keys(multiValues).reduce(
     (acc, key) => ({
       ...acc,
-      [key]: multiValues[key] ? multiValues[key][type] : null
+      [key]: multiValues[key] ? multiValues[key][type] : 0
     }),
     {}
   )
 }
 
+function annu(val) {
+  return val * 4
+}
+
 function getNonIndexOwners(ownershipList) {
+  if (!ownershipList) {
+    return ""
+  }
   const indexFundTags = ["Index", "500"]
 
   return ownershipList
-    .filter(owner =>
-      indexFundTags.every(name => !owner.organization.includes(name))
-    )
+    .filter(owner => indexFundTags.every(name => !owner.organization.includes(name)))
     .map(({ organization, pctHeld }) => `${organization}: ${pctHeld.fmt}`)
-    .join(" <|> ")
+    .join("\n")
 }
 
 function buildCompanyData(yahooData) {
@@ -41,13 +41,14 @@ function buildCompanyData(yahooData) {
       industry,
       country
     },
-    recommendationTrend: { trend: recommendationTrend },
+    recommendationTrend: { trend: recommendationTrend } = {},
     defaultKeyStatistics: {
       beta, // "Beta (5Y Monthly)"
       bookValue, // "Book Value Per Share (mrq)"
       dateShortInterest,
       earningsQuarterlyGrowth, // "Quarterly Earnings Growth (yoy)"
       enterpriseToRevenue,
+      enterpriseToEbitda,
       enterpriseValue,
       floatShares,
       forwardEps,
@@ -71,7 +72,7 @@ function buildCompanyData(yahooData) {
       shortRatio,
       trailingEps // current EPS
     },
-    fundOwnership: { ownershipList },
+    fundOwnership: { ownershipList } = {},
     summaryDetail: {
       dividendRate, // "Forward Dividend
       dividendYield, // & Yield"
@@ -86,16 +87,13 @@ function buildCompanyData(yahooData) {
       regularMarketVolume,
       twoHundredDayAverage
     },
-    majorHoldersBreakdown: { institutionsCount },
+    majorHoldersBreakdown: { institutionsCount } = {},
     calendarEvents: {
-      earnings: { earningsAverage, earningsLow, earningsHigh, earningsDate } // upcoming quarter-end projections
-    },
+      earnings: { earningsAverage, earningsLow, earningsHigh, earningsDate } = {} // upcoming quarter-end projections
+    } = {},
     earnings: {
-      earningsChart: {
-        quarterly: quarterlyEPSActualEstimateChart,
-        currentQuarterEstimate
-      }
-    },
+      earningsChart: { quarterly: quarterlyEPSActualEstimateChart, currentQuarterEstimate } = {}
+    } = {},
     earningsTrend: {
       trend: {
         0: {
@@ -160,12 +158,12 @@ function buildCompanyData(yahooData) {
       numberOfAnalystOpinions,
       totalCash,
       totalCashPerShare,
-      totalDebt,
+      totalDebt, //  Total Debt MRQ from "statistics" page
       revenuePerShare,
       returnOnAssets,
       returnOnEquity,
       grossProfits,
-      operatingCashflow,
+      operatingCashflow: operatingCashflowTTM, // verified this is TTM from Schwab cash flow statement
       earningsGrowth,
       revenueGrowth, // Quarterly Revenue Growth (yoy)
       operatingMargins
@@ -241,38 +239,90 @@ function buildCompanyData(yahooData) {
 
   // ------------------------------- //
 
-  const { strongSell, sell, hold, buy, strongBuy } = recommendationTrend.find(
-    t => t.period === "0m"
-  )
-
   const {
-    operatingCashflow: operatingCashflowRaw,
     capitalExpenditures: capitalExpendituresRaw,
+    cash: cashRaw,
+    currentQuarterEstimate: currentQuarterEstimateRaw,
+    ebit: ebitRaw,
+    longTermDebt: longTermDebtRaw,
+    operatingCashflowTTM: operatingCashflowTTMRaw,
+    operatingMargins: operatingMarginsRaw,
+    regularMarketPrice: regularMarketPriceRaw,
     sharesOutstanding: sharesOutstandingRaw,
+    sharesShort: sharesShortRaw,
+    sharesShortPriorMonth: sharesShortPriorMonthRaw,
     shortLongTermDebt: shortLongTermDebtRaw,
+    totalCashFromOperatingActivities: totalCashFromOperatingActivitiesRaw,
+    totalCurrentLiabilities: totalCurrentLiabilitiesRaw,
+    totalDebt: totalDebtRaw,
+    totalRevenue: totalRevenueRaw,
     totalStockholderEquity: totalStockholderEquityRaw,
-    revenuePerShare: revenuePerShareRaw,
-    priceToSalesTrailing12Months: priceToSalesTrailing12MonthsRaw,
-    regularMarketPrice: regularMarketPriceRaw
+    enterpriseValue: enterpriseValueRaw
   } = selectValueTypes(
     {
-      operatingCashflow,
-      capitalExpenditures,
-      sharesOutstanding,
-      shortLongTermDebt,
-      totalStockholderEquity,
-      revenuePerShare,
-      priceToSalesTrailing12Months,
-      regularMarketPrice
+      capitalExpenditures, // STATEMENT
+      cash,
+      ebit, // STATEMENT
+      longTermDebt, // STATEMENT
+      shortLongTermDebt, // STATEMENT
+      totalCashFromOperatingActivities, // STATEMENT
+      totalCurrentLiabilities, // STATEMENT
+      totalRevenue, // STATEMENT
+      totalStockholderEquity, // STATEMENT
+
+      currentQuarterEstimate, // earinings
+      operatingCashflowTTM, // financialData
+      operatingMargins, // financialData
+      regularMarketPrice, // price
+      revenuePerShare, // financialData
+      sharesOutstanding, // defaultKeyStats
+      sharesShort, // defaultKeyStats
+      sharesShortPriorMonth, // defaultKeyStats
+      totalDebt, // financialData
+      enterpriseValue // defaultKeyStats
     },
     "raw"
   )
 
-  const freeCashFlow = (operatingCashflowRaw - capitalExpendituresRaw) * 4 // ANNUALIZED!!!
-  const freeCashFlowPerShare = freeCashFlow / sharesOutstandingRaw
-  
+  const slicePerShareAnnlz = val => annu(val) / sharesOutstandingRaw
+  const slicePerShare = val => val / sharesOutstandingRaw
 
+  const { strongSell, sell, hold, buy, strongBuy } = recommendationTrend.find(
+    t => t.period === "0m"
+  )
+  const mTotalDebt = totalDebtRaw
+    ? totalDebtRaw
+    : totalCurrentLiabilitiesRaw + longTermDebtRaw + shortLongTermDebtRaw
+
+  const mOperatingCashflowAnnlz =
+    operatingCashflowTTMRaw || annu(totalCashFromOperatingActivitiesRaw)
+  const mFreeCashFlowAnnlz = mOperatingCashflowAnnlz - annu(capitalExpendituresRaw)
+  const totalRevenueAnnlz = annu(totalRevenueRaw)
+  
   return {
+    totalDebt: mTotalDebt,
+    debtToCapital: mTotalDebt / (mTotalDebt + totalStockholderEquityRaw),
+    operatingMargins: operatingMarginsRaw || ebitRaw / totalRevenueRaw, // TTM
+    priceToSalesMRQ:
+      regularMarketPriceRaw && totalRevenueRaw
+        ? (regularMarketPriceRaw / slicePerShareAnnlz(totalRevenueRaw)).toFixed(2)
+        : "na",
+    freeCashFlow: mFreeCashFlowAnnlz,
+    freeCashFlowPerShare: slicePerShare(mFreeCashFlowAnnlz),
+    totalCashPerShare: slicePerShare(cashRaw),
+    operatingCashFlowPerShare: slicePerShare(mOperatingCashflowAnnlz),
+    upgradeDowngradeHistory: upgradeDowngradeHistory.reduce((acc, { firm, toGrade, fromGrade }) => {
+      return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
+    }, ""),
+    anaylstRecommendations: [strongSell, sell, hold, buy, strongBuy],
+    institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
+    nonIndexOwners: getNonIndexOwners(ownershipList),
+    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
+      .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
+      .concat([currentQuarterEstimateRaw]),
+    shortVMonthAgoRatio: sharesShortRaw / sharesShortPriorMonthRaw,
+    totalRevenueAnnlz,
+    enterpriseToRevenue: enterpriseValueRaw / totalRevenueAnnlz,
     ...selectValueTypes(
       // RAW //
       {
@@ -284,11 +334,7 @@ function buildCompanyData(yahooData) {
 
         currentPrice,
         grossProfits,
-        operatingCashflow,
         revenuePerShare,
-        totalCash,
-        totalDebt,
-        totalCashPerShare,
 
         // DEFAULT KEY STATISTICS
 
@@ -437,12 +483,11 @@ function buildCompanyData(yahooData) {
         forwardPE,
         trailingPE,
         pegRatio,
-        enterpriseToRevenue,
+        enterpriseToEbitda,
 
         // FUNDAMENTALS //
 
         profitMargins, // probably TTM
-        operatingMargins, // TTM
         returnOnAssets,
         returnOnEquity,
         beta,
@@ -481,31 +526,6 @@ function buildCompanyData(yahooData) {
     overallRisk,
     recommendationKey,
     sector,
-    shareHolderRightsRisk,
-    freeCashFlow,
-    freeCashFlowPerShare,
-    operatingCashFlowPerShare: operatingCashflowRaw / sharesOutstandingRaw,
-    debtToCapital:
-      shortLongTermDebtRaw /
-      (shortLongTermDebtRaw + totalStockholderEquityRaw),
-    priceToSalesTTMCurr: `${priceToSalesTrailing12MonthsRaw.toFixed(2)} <> ${(
-      regularMarketPriceRaw / revenuePerShareRaw
-    ).toFixed(2)}`,
-    upgradeDowngradeHistory: upgradeDowngradeHistory.reduce(
-      (acc, { firm, toGrade, fromGrade }) => {
-        return acc + ` ${firm}: ${fromGrade} => ${toGrade}`
-      },
-      ""
-    ),
-    anaylstRecommendations: [strongSell, sell, hold, buy, strongBuy],
-    institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
-    nonIndexOwners: getNonIndexOwners(ownershipList),
-    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
-      .reduce(
-        (acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0],
-        []
-      )
-      .concat([currentQuarterEstimate]),
-    shortVMonthAgoRatio: sharesShort / sharesShortPriorMonth
+    shareHolderRightsRisk
   }
 }

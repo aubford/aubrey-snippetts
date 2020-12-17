@@ -36,12 +36,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/citiData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/slackData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/slfData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/attData.json" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/attData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/getAmeritradeData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/stock-data.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -353,5 +349,9 @@
     <MESSAGE value="reorganize locations and gloal settings to top of file" />
     <MESSAGE value="Add auto-backup functionality" />
     <option name="LAST_COMMIT_MESSAGE" value="Add auto-backup functionality" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
