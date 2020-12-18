@@ -1,4 +1,4 @@
-import data from "./powerData.json"
+import data from "./hubsData.json"
 const million = 1000000
 buildCompanyData(data)
 
