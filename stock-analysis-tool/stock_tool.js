@@ -1,4 +1,4 @@
-import data from "./slfData.json"
+import data from "./powerData.json"
 const million = 1000000
 buildCompanyData(data)
 
@@ -26,6 +26,16 @@ function getNonIndexOwners(ownershipList) {
     .filter(owner => indexFundTags.every(name => !owner.organization.includes(name)))
     .map(({ organization, pctHeld }) => `${organization}: ${pctHeld.fmt}`)
     .join("\n")
+}
+
+function getAnalystRecommendations(recommendationTrend) {
+  if (!recommendationTrend) {
+    return []
+  }
+  const { strongSell, sell, hold, buy, strongBuy } = recommendationTrend.find(
+    t => t.period === "0m"
+  )
+  return [strongSell, sell, hold, buy, strongBuy]
 }
 
 function buildCompanyData(yahooData) {
@@ -104,15 +114,15 @@ function buildCompanyData(yahooData) {
             "30daysAgo": monthEpsEstimate,
             "60daysAgo": monthsEpsEstimate,
             "90daysAgo": quarterEpsEstimate
-          },
+          } = {},
           revenueEstimate: {
             avg: revenueEstimateAvg,
             low: revenueEstimateLow,
             high: revenueEstimateHigh,
             growth: revenueEstimateGrowth
-          },
+          } = {},
           growth: earningsEstimateGrowth
-        },
+        } = {},
         1: {
           // Estimates for +1 Quarter earnings
           epsTrend: {
@@ -121,15 +131,15 @@ function buildCompanyData(yahooData) {
             "30daysAgo": monthEpsEstimateFollowingQuarter,
             "60daysAgo": monthsEpsEstimateFollowingQuarter,
             "90daysAgo": quarterEpsEstimateFollowingQuarter
-          },
+          } = {},
           revenueEstimate: {
             avg: revenueEstimateFollowingQuarterAvg,
             low: revenueEstimateFollowingQuarterLow,
             high: revenueEstimateFollowingQuarterHigh,
             growth: revenueEstimateFollowingQuarterGrowth
-          },
+          } = {},
           growth: earningsEstimateFollowingQuarterGrowth
-        },
+        } = {},
         3: {
           // Estimates for year-end earnings
           epsTrend: {
@@ -138,17 +148,17 @@ function buildCompanyData(yahooData) {
             "30daysAgo": monthEpsEstimateNextYear,
             "60daysAgo": monthsEpsEstimateNextYear,
             "90daysAgo": quarterEpsEstimateNextYear
-          },
+          } = {},
           revenueEstimate: {
             avg: revenueEstimateNextYearAvg,
             low: revenueEstimateNextYearLow,
             high: revenueEstimateNextYearHigh,
             growth: revenueEstimateNextYearGrowth
-          },
+          } = {},
           growth: earningsEstimateNextYearGrowth
-        }
-      }
-    },
+        } = {}
+      } = {}
+    } = {},
     financialData: {
       currentPrice,
       targetHighPrice,
@@ -168,7 +178,7 @@ function buildCompanyData(yahooData) {
       revenueGrowth, // Quarterly Revenue Growth (yoy)
       operatingMargins
     },
-    upgradeDowngradeHistory: { history: upgradeDowngradeHistory },
+    upgradeDowngradeHistory: { history: upgradeDowngradeHistory } = {},
     price: { regularMarketPrice },
     cashflowStatementHistoryQuarterly: {
       cashflowStatements: {
@@ -287,9 +297,6 @@ function buildCompanyData(yahooData) {
   const slicePerShareAnnlz = val => annu(val) / sharesOutstandingRaw
   const slicePerShare = val => val / sharesOutstandingRaw
 
-  const { strongSell, sell, hold, buy, strongBuy } = recommendationTrend.find(
-    t => t.period === "0m"
-  )
   const mTotalDebt = totalDebtRaw
     ? totalDebtRaw
     : totalCurrentLiabilitiesRaw + longTermDebtRaw + shortLongTermDebtRaw
@@ -298,7 +305,7 @@ function buildCompanyData(yahooData) {
     operatingCashflowTTMRaw || annu(totalCashFromOperatingActivitiesRaw)
   const mFreeCashFlowAnnlz = mOperatingCashflowAnnlz - annu(capitalExpendituresRaw)
   const totalRevenueAnnlz = annu(totalRevenueRaw)
-  
+
   return {
     totalDebt: mTotalDebt,
     debtToCapital: mTotalDebt / (mTotalDebt + totalStockholderEquityRaw),
@@ -306,20 +313,20 @@ function buildCompanyData(yahooData) {
     priceToSalesMRQ:
       regularMarketPriceRaw && totalRevenueRaw
         ? (regularMarketPriceRaw / slicePerShareAnnlz(totalRevenueRaw)).toFixed(2)
-        : "na",
+        : "n/a",
     freeCashFlow: mFreeCashFlowAnnlz,
     freeCashFlowPerShare: slicePerShare(mFreeCashFlowAnnlz),
     totalCashPerShare: slicePerShare(cashRaw),
     operatingCashFlowPerShare: slicePerShare(mOperatingCashflowAnnlz),
-    upgradeDowngradeHistory: upgradeDowngradeHistory.reduce((acc, { firm, toGrade, fromGrade }) => {
+    upgradeDowngradeHistory: upgradeDowngradeHistory ? upgradeDowngradeHistory.reduce((acc, { firm, toGrade, fromGrade }) => {
       return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
-    }, ""),
-    anaylstRecommendations: [strongSell, sell, hold, buy, strongBuy],
+    }, "") : "n/a",
+    anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
-    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
+    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart ? quarterlyEPSActualEstimateChart
       .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
-      .concat([currentQuarterEstimateRaw]),
+      .concat([currentQuarterEstimateRaw]) : [],
     shortVMonthAgoRatio: sharesShortRaw / sharesShortPriorMonthRaw,
     totalRevenueAnnlz,
     enterpriseToRevenue: enterpriseValueRaw / totalRevenueAnnlz,
