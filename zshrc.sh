@@ -238,7 +238,7 @@ jav(){
 }
 
 # ------- Run ---------------------------------------------------------------------------------------------------
-alias ngrok='~/workspace/UTIL/ngrok'
+alias ngrok='~/workspace/aubrey-snippetts/util/ngrok'
 grok(){
   ngrok http "$1"
 }

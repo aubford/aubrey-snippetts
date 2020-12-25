@@ -1,6 +1,8 @@
-import data from "./hubsData.json"
-const million = 1000000
+import data from "./slfData.json"
 buildCompanyData(data)
+
+//noinspection JSUnusedLocalSymbols
+const million = 1000000
 
 function selectValueTypes(multiValues, type) {
   return Object.keys(multiValues).reduce(
@@ -38,7 +40,8 @@ function getAnalystRecommendations(recommendationTrend) {
   return [strongSell, sell, hold, buy, strongBuy]
 }
 
-function buildCompanyData(yahooData) {
+function buildCompanyData({ quoteSummary }) {
+  //noinspection JSUnusedLocalSymbols
   const {
     assetProfile: {
       longBusinessSummary,
@@ -245,7 +248,7 @@ function buildCompanyData(yahooData) {
         }
       }
     }
-  } = yahooData.quoteSummary.result[0]
+  } = quoteSummary.result[0]
 
   // ------------------------------- //
 
@@ -318,15 +321,19 @@ function buildCompanyData(yahooData) {
     freeCashFlowPerShare: slicePerShare(mFreeCashFlowAnnlz),
     totalCashPerShare: slicePerShare(cashRaw),
     operatingCashFlowPerShare: slicePerShare(mOperatingCashflowAnnlz),
-    upgradeDowngradeHistory: upgradeDowngradeHistory ? upgradeDowngradeHistory.reduce((acc, { firm, toGrade, fromGrade }) => {
-      return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
-    }, "") : "n/a",
+    upgradeDowngradeHistory: upgradeDowngradeHistory
+      ? upgradeDowngradeHistory.reduce((acc, { firm, toGrade, fromGrade }) => {
+          return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
+        }, "")
+      : "n/a",
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
-    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart ? quarterlyEPSActualEstimateChart
-      .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
-      .concat([currentQuarterEstimateRaw]) : [],
+    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
+      ? quarterlyEPSActualEstimateChart
+          .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
+          .concat([currentQuarterEstimateRaw])
+      : [],
     shortVMonthAgoRatio: sharesShortRaw / sharesShortPriorMonthRaw,
     totalRevenueAnnlz,
     enterpriseToRevenue: enterpriseValueRaw / totalRevenueAnnlz,
