@@ -147,7 +147,7 @@ function quarterStrIsTooOld(qtrString) {
   return Boolean(qtrString.slice(2) < new Date().getFullYear() - 1)
 }
 
-function dateStrIsTooOld(dateStr) {
+function dateStrIsBeforeNow(dateStr) {
   return Boolean(new Date(dateStr) < addDays(new Date(), -4))
 }
 
@@ -161,7 +161,8 @@ function cleanEarningsChart(earningsChart) {
 
   return {
     quarterlyEPSActualEstimateChart: quarterlyOk && quarterly,
-    currentQuarterEstimateRaw: !dateStrIsTooOld(earningsDate[0].fmt) && currentQuarterEstimate.raw
+    currentQuarterEstimateRaw:
+      !dateStrIsBeforeNow(earningsDate[0].fmt) && currentQuarterEstimate.raw
   }
 }
 
@@ -174,6 +175,18 @@ function cleanFinancialsChart(financialsChart) {
   const quarterlyOk = quarterly.every(({ date }) => !quarterStrIsTooOld(date))
 
   return quarterlyOk && quarterly
+}
+
+function dateStrIsBeforeQtr(dateStr) {
+  return Boolean(new Date(dateStr) < addDays(new Date(), -4))
+}
+
+function cleanStatements(bs, income, cash) {
+  return {
+    ...(dateStrIsBeforeQtr(bs.endDate) ? {} : bs[0]),
+    ...(dateStrIsBeforeQtr(income.endDate) ? {} : income[0]),
+    ...(dateStrIsBeforeQtr(cash.endDate) ? {} : cash[0])
+  }
 }
 
 function buildCompanyData({ quoteSummary }) {
@@ -263,74 +276,65 @@ function buildCompanyData({ quoteSummary }) {
     },
     upgradeDowngradeHistory: { history: upgradeDowngradeHistory } = {},
     price: { regularMarketPrice },
-    cashflowStatementHistoryQuarterly: {
-      cashflowStatements: {
-        0: {
-          depreciation,
-          changeToNetincome,
-          changeToOperatingActivities,
-          totalCashFromOperatingActivities,
-          capitalExpenditures,
-          investments,
-          totalCashflowsFromInvestingActivities,
-          dividendsPaid,
-          netBorrowings,
-          totalCashFromFinancingActivities,
-          effectOfExchangeRate,
-          changeInCash,
-          repurchaseOfStock
-        }
-      }
-    },
-    incomeStatementHistoryQuarterly: {
-      incomeStatementHistory: {
-        0: {
-          totalRevenue,
-          costOfRevenue,
-          grossProfit,
-          researchDevelopment,
-          sellingGeneralAdministrative,
-          nonRecurring,
-          totalOperatingExpenses,
-          operatingIncome,
-          ebit,
-          interestExpense,
-          incomeBeforeTax,
-          netIncomeFromContinuingOps,
-          discontinuedOperations,
-          netIncome,
-          netIncomeApplicableToCommonShares
-        }
-      }
-    },
-    balanceSheetHistoryQuarterly: {
-      balanceSheetStatements: {
-        0: {
-          cash,
-          inventory,
-          totalCurrentAssets,
-          longTermInvestments,
-          propertyPlantEquipment,
-          goodWill,
-          intangibleAssets,
-          totalAssets,
-          accountsPayable,
-          shortLongTermDebt,
-          longTermDebt,
-          minorityInterest,
-          totalCurrentLiabilities,
-          totalLiab,
-          commonStock,
-          retainedEarnings,
-          capitalSurplus,
-          totalStockholderEquity, // common stock
-          netTangibleAssets
-        }
-      }
-    }
+    cashflowStatementHistoryQuarterly: { cashflowStatements },
+    incomeStatementHistoryQuarterly: { incomeStatementHistory },
+    balanceSheetHistoryQuarterly: { balanceSheetStatements }
   } = quoteSummary.result[0]
 
   // ------------------------------- //
+
+  const {
+    // balance sheet
+    cash,
+    inventory,
+    totalCurrentAssets,
+    longTermInvestments,
+    propertyPlantEquipment,
+    goodWill,
+    intangibleAssets,
+    totalAssets,
+    accountsPayable,
+    shortLongTermDebt,
+    longTermDebt,
+    minorityInterest,
+    totalCurrentLiabilities,
+    totalLiab,
+    commonStock,
+    retainedEarnings,
+    capitalSurplus,
+    totalStockholderEquity, // common stock
+    netTangibleAssets,
+    // income statement
+    totalRevenue,
+    costOfRevenue,
+    grossProfit,
+    researchDevelopment,
+    sellingGeneralAdministrative,
+    nonRecurring,
+    totalOperatingExpenses,
+    operatingIncome,
+    ebit,
+    interestExpense,
+    incomeBeforeTax,
+    netIncomeFromContinuingOps,
+    discontinuedOperations,
+    netIncome,
+    netIncomeApplicableToCommonShares,
+    // cashflow statement
+    depreciation,
+    changeToNetincome,
+    changeToOperatingActivities,
+    totalCashFromOperatingActivities,
+    capitalExpenditures,
+    investments,
+    totalCashflowsFromInvestingActivities,
+    dividendsPaid,
+    netBorrowings,
+    totalCashFromFinancingActivities,
+    effectOfExchangeRate,
+    changeInCash,
+    repurchaseOfStock
+  } = cleanStatements(balanceSheetStatements, incomeStatementHistory, cashflowStatements)
 
   const {
     currentEpsEstimate,
