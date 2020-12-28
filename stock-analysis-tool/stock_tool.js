@@ -1,4 +1,4 @@
-import data from "./slfData.json"
+import data from "./citiData.json"
 buildCompanyData(data)
 
 //noinspection JSUnusedLocalSymbols
@@ -38,6 +38,142 @@ function getAnalystRecommendations(recommendationTrend) {
     t => t.period === "0m"
   )
   return [strongSell, sell, hold, buy, strongBuy]
+}
+
+function addDays(incomingDate, daysToAdd) {
+  const newDate = new Date(incomingDate)
+  const gotDate = newDate.getDate()
+  return new Date(newDate.setDate(gotDate + daysToAdd))
+}
+
+function cleanEarningsTrend(trend) {
+  if (!trend) {
+    return {}
+  }
+
+  if (new Date(trend[0].endDate) < addDays(new Date(), -5)) {
+    return {}
+  }
+
+  const {
+    0: {
+      // Estimates for this Quarter-end earnings
+      epsTrend: {
+        current: currentEpsEstimate,
+        "7daysAgo": weekEpsEstimate,
+        "30daysAgo": monthEpsEstimate,
+        "60daysAgo": monthsEpsEstimate,
+        "90daysAgo": quarterEpsEstimate
+      } = {},
+      revenueEstimate: {
+        avg: revenueEstimateAvg,
+        low: revenueEstimateLow,
+        high: revenueEstimateHigh,
+        growth: revenueEstimateGrowth
+      } = {},
+      growth: earningsEstimateGrowth
+    } = {},
+    1: {
+      // Estimates for +1 Quarter earnings
+      epsTrend: {
+        current: currentEpsEstimateFollowingQuarter,
+        "7daysAgo": weekEpsEstimateFollowingQuarter,
+        "30daysAgo": monthEpsEstimateFollowingQuarter,
+        "60daysAgo": monthsEpsEstimateFollowingQuarter,
+        "90daysAgo": quarterEpsEstimateFollowingQuarter
+      } = {},
+      revenueEstimate: {
+        avg: revenueEstimateFollowingQuarterAvg,
+        low: revenueEstimateFollowingQuarterLow,
+        high: revenueEstimateFollowingQuarterHigh,
+        growth: revenueEstimateFollowingQuarterGrowth
+      } = {},
+      growth: earningsEstimateFollowingQuarterGrowth
+    } = {},
+    3: {
+      // Estimates for year-end earnings
+      epsTrend: {
+        current: currentEpsEstimateNextYear,
+        "7daysAgo": weekEpsEstimateNextYear,
+        "30daysAgo": monthEpsEstimateNextYear,
+        "60daysAgo": monthsEpsEstimateNextYear,
+        "90daysAgo": quarterEpsEstimateNextYear
+      } = {},
+      revenueEstimate: {
+        avg: revenueEstimateNextYearAvg,
+        low: revenueEstimateNextYearLow,
+        high: revenueEstimateNextYearHigh,
+        growth: revenueEstimateNextYearGrowth
+      } = {},
+      growth: earningsEstimateNextYearGrowth
+    } = {}
+  } = trend
+
+  return {
+    currentEpsEstimate,
+    weekEpsEstimate,
+    monthEpsEstimate,
+    monthsEpsEstimate,
+    quarterEpsEstimate,
+    revenueEstimateAvg,
+    revenueEstimateLow,
+    revenueEstimateHigh,
+    revenueEstimateGrowth,
+    earningsEstimateGrowth,
+    currentEpsEstimateFollowingQuarter,
+    weekEpsEstimateFollowingQuarter,
+    monthEpsEstimateFollowingQuarter,
+    monthsEpsEstimateFollowingQuarter,
+    quarterEpsEstimateFollowingQuarter,
+    revenueEstimateFollowingQuarterAvg,
+    revenueEstimateFollowingQuarterLow,
+    revenueEstimateFollowingQuarterHigh,
+    revenueEstimateFollowingQuarterGrowth,
+    earningsEstimateFollowingQuarterGrowth,
+    currentEpsEstimateNextYear,
+    weekEpsEstimateNextYear,
+    monthEpsEstimateNextYear,
+    monthsEpsEstimateNextYear,
+    quarterEpsEstimateNextYear,
+    revenueEstimateNextYearAvg,
+    revenueEstimateNextYearLow,
+    revenueEstimateNextYearHigh,
+    revenueEstimateNextYearGrowth,
+    earningsEstimateNextYearGrowth
+  }
+}
+
+function quarterStrIsTooOld(qtrString) {
+  return Boolean(qtrString.slice(2) < new Date().getFullYear() - 1)
+}
+
+function dateStrIsTooOld(dateStr) {
+  return Boolean(new Date(dateStr) < addDays(new Date(), -4))
+}
+
+function cleanEarningsChart(earningsChart) {
+  if (!earningsChart) {
+    return {}
+  }
+
+  const { quarterly, currentQuarterEstimate, earningsDate } = earningsChart
+  const quarterlyOk = quarterly.every(({ date }) => !quarterStrIsTooOld(date))
+
+  return {
+    quarterlyEPSActualEstimateChart: quarterlyOk && quarterly,
+    currentQuarterEstimateRaw: !dateStrIsTooOld(earningsDate[0].fmt) && currentQuarterEstimate.raw
+  }
+}
+
+function cleanFinancialsChart(financialsChart) {
+  if (!financialsChart) {
+    return {}
+  }
+
+  const { quarterly } = financialsChart
+  const quarterlyOk = quarterly.every(({ date }) => !quarterStrIsTooOld(date))
+
+  return quarterlyOk && quarterly
 }
 
 function buildCompanyData({ quoteSummary }) {
@@ -104,64 +240,8 @@ function buildCompanyData({ quoteSummary }) {
     calendarEvents: {
       earnings: { earningsAverage, earningsLow, earningsHigh, earningsDate } = {} // upcoming quarter-end projections
     } = {},
-    earnings: {
-      earningsChart: { quarterly: quarterlyEPSActualEstimateChart, currentQuarterEstimate } = {}
-    } = {},
-    earningsTrend: {
-      trend: {
-        0: {
-          // Estimates for this Quarter-end earnings
-          epsTrend: {
-            current: currentEpsEstimate,
-            "7daysAgo": weekEpsEstimate,
-            "30daysAgo": monthEpsEstimate,
-            "60daysAgo": monthsEpsEstimate,
-            "90daysAgo": quarterEpsEstimate
-          } = {},
-          revenueEstimate: {
-            avg: revenueEstimateAvg,
-            low: revenueEstimateLow,
-            high: revenueEstimateHigh,
-            growth: revenueEstimateGrowth
-          } = {},
-          growth: earningsEstimateGrowth
-        } = {},
-        1: {
-          // Estimates for +1 Quarter earnings
-          epsTrend: {
-            current: currentEpsEstimateFollowingQuarter,
-            "7daysAgo": weekEpsEstimateFollowingQuarter,
-            "30daysAgo": monthEpsEstimateFollowingQuarter,
-            "60daysAgo": monthsEpsEstimateFollowingQuarter,
-            "90daysAgo": quarterEpsEstimateFollowingQuarter
-          } = {},
-          revenueEstimate: {
-            avg: revenueEstimateFollowingQuarterAvg,
-            low: revenueEstimateFollowingQuarterLow,
-            high: revenueEstimateFollowingQuarterHigh,
-            growth: revenueEstimateFollowingQuarterGrowth
-          } = {},
-          growth: earningsEstimateFollowingQuarterGrowth
-        } = {},
-        3: {
-          // Estimates for year-end earnings
-          epsTrend: {
-            current: currentEpsEstimateNextYear,
-            "7daysAgo": weekEpsEstimateNextYear,
-            "30daysAgo": monthEpsEstimateNextYear,
-            "60daysAgo": monthsEpsEstimateNextYear,
-            "90daysAgo": quarterEpsEstimateNextYear
-          } = {},
-          revenueEstimate: {
-            avg: revenueEstimateNextYearAvg,
-            low: revenueEstimateNextYearLow,
-            high: revenueEstimateNextYearHigh,
-            growth: revenueEstimateNextYearGrowth
-          } = {},
-          growth: earningsEstimateNextYearGrowth
-        } = {}
-      } = {}
-    } = {},
+    earnings: { earningsChart, financialsChart } = {},
+    earningsTrend: { trend },
     financialData: {
       currentPrice,
       targetHighPrice,
@@ -253,9 +333,41 @@ function buildCompanyData({ quoteSummary }) {
   // ------------------------------- //
 
   const {
+    currentEpsEstimate,
+    weekEpsEstimate,
+    monthEpsEstimate,
+    monthsEpsEstimate,
+    quarterEpsEstimate,
+    revenueEstimateAvg,
+    revenueEstimateLow,
+    revenueEstimateHigh,
+    revenueEstimateGrowth,
+    earningsEstimateGrowth,
+    currentEpsEstimateFollowingQuarter,
+    weekEpsEstimateFollowingQuarter,
+    monthEpsEstimateFollowingQuarter,
+    monthsEpsEstimateFollowingQuarter,
+    quarterEpsEstimateFollowingQuarter,
+    revenueEstimateFollowingQuarterAvg,
+    revenueEstimateFollowingQuarterLow,
+    revenueEstimateFollowingQuarterHigh,
+    revenueEstimateFollowingQuarterGrowth,
+    earningsEstimateFollowingQuarterGrowth,
+    currentEpsEstimateNextYear,
+    weekEpsEstimateNextYear,
+    monthEpsEstimateNextYear,
+    monthsEpsEstimateNextYear,
+    quarterEpsEstimateNextYear,
+    revenueEstimateNextYearAvg,
+    revenueEstimateNextYearLow,
+    revenueEstimateNextYearHigh,
+    revenueEstimateNextYearGrowth,
+    earningsEstimateNextYearGrowth
+  } = cleanEarningsTrend(trend)
+
+  const {
     capitalExpenditures: capitalExpendituresRaw,
     cash: cashRaw,
-    currentQuarterEstimate: currentQuarterEstimateRaw,
     ebit: ebitRaw,
     longTermDebt: longTermDebtRaw,
     operatingCashflowTTM: operatingCashflowTTMRaw,
@@ -270,7 +382,8 @@ function buildCompanyData({ quoteSummary }) {
     totalDebt: totalDebtRaw,
     totalRevenue: totalRevenueRaw,
     totalStockholderEquity: totalStockholderEquityRaw,
-    enterpriseValue: enterpriseValueRaw
+    enterpriseValue: enterpriseValueRaw,
+    revenueEstimateAvg: revenueEstimateAvgRaw
   } = selectValueTypes(
     {
       capitalExpenditures, // STATEMENT
@@ -282,8 +395,6 @@ function buildCompanyData({ quoteSummary }) {
       totalCurrentLiabilities, // STATEMENT
       totalRevenue, // STATEMENT
       totalStockholderEquity, // STATEMENT
-
-      currentQuarterEstimate, // earinings
       operatingCashflowTTM, // financialData
       operatingMargins, // financialData
       regularMarketPrice, // price
@@ -292,9 +403,14 @@ function buildCompanyData({ quoteSummary }) {
       sharesShort, // defaultKeyStats
       sharesShortPriorMonth, // defaultKeyStats
       totalDebt, // financialData
-      enterpriseValue // defaultKeyStats
+      enterpriseValue, // defaultKeyStats
+      revenueEstimateAvg // earnings trend
     },
     "raw"
+  )
+
+  const { quarterlyEPSActualEstimateChart, currentQuarterEstimateRaw } = cleanEarningsChart(
+    earningsChart
   )
 
   const slicePerShareAnnlz = val => annu(val) / sharesOutstandingRaw
@@ -333,6 +449,11 @@ function buildCompanyData({ quoteSummary }) {
       ? quarterlyEPSActualEstimateChart
           .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
           .concat([currentQuarterEstimateRaw])
+      : [],
+    quarterlyRevenueChart: cleanFinancialsChart(financialsChart)
+      ? cleanFinancialsChart(financialsChart)
+          .reduce((acc, { revenue }) => [...acc, revenue.raw, 0], [])
+          .concat([revenueEstimateAvgRaw])
       : [],
     shortVMonthAgoRatio: sharesShortRaw / sharesShortPriorMonthRaw,
     totalRevenueAnnlz,
