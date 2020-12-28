@@ -147,8 +147,8 @@ function quarterStrIsTooOld(qtrString) {
   return Boolean(qtrString.slice(2) < new Date().getFullYear() - 1)
 }
 
-function dateStrIsBeforeNow(dateStr) {
-  return Boolean(new Date(dateStr) < addDays(new Date(), -4))
+function dateStrIsBeforeNow(dateStr, daysToAdd) {
+  return Boolean(new Date(dateStr) < addDays(new Date(), daysToAdd))
 }
 
 function cleanEarningsChart(earningsChart) {
@@ -162,13 +162,13 @@ function cleanEarningsChart(earningsChart) {
   return {
     quarterlyEPSActualEstimateChart: quarterlyOk && quarterly,
     currentQuarterEstimateRaw:
-      !dateStrIsBeforeNow(earningsDate[0].fmt) && currentQuarterEstimate.raw
+      !dateStrIsBeforeNow(earningsDate[0].fmt, -4) && currentQuarterEstimate.raw
   }
 }
 
 function cleanFinancialsChart(financialsChart) {
   if (!financialsChart) {
-    return {}
+    return []
   }
 
   const { quarterly } = financialsChart
@@ -177,15 +177,12 @@ function cleanFinancialsChart(financialsChart) {
   return quarterlyOk && quarterly
 }
 
-function dateStrIsBeforeQtr(dateStr) {
-  return Boolean(new Date(dateStr) < addDays(new Date(), -4))
-}
-
 function cleanStatements(bs, income, cash) {
+  const numDaysToBeforeLastQtr = -120
   return {
-    ...(dateStrIsBeforeQtr(bs.endDate) ? {} : bs[0]),
-    ...(dateStrIsBeforeQtr(income.endDate) ? {} : income[0]),
-    ...(dateStrIsBeforeQtr(cash.endDate) ? {} : cash[0])
+    ...(dateStrIsBeforeNow(bs.endDate, numDaysToBeforeLastQtr) ? {} : bs[0]),
+    ...(dateStrIsBeforeNow(income.endDate, numDaysToBeforeLastQtr) ? {} : income[0]),
+    ...(dateStrIsBeforeNow(cash.endDate, numDaysToBeforeLastQtr) ? {} : cash[0])
   }
 }
 
@@ -207,7 +204,6 @@ function buildCompanyData({ quoteSummary }) {
     defaultKeyStatistics: {
       beta, // "Beta (5Y Monthly)"
       bookValue, // "Book Value Per Share (mrq)"
-      dateShortInterest,
       earningsQuarterlyGrowth, // "Quarterly Earnings Growth (yoy)"
       enterpriseToRevenue,
       enterpriseToEbitda,
@@ -228,6 +224,7 @@ function buildCompanyData({ quoteSummary }) {
       sharesOutstanding,
       sharesPercentSharesOut, // "Short % of Shares Outstanding"
       sharesShort,
+      dateShortInterest,
       sharesShortPreviousMonthDate,
       sharesShortPriorMonth,
       shortPercentOfFloat,
@@ -254,7 +251,7 @@ function buildCompanyData({ quoteSummary }) {
       earnings: { earningsAverage, earningsLow, earningsHigh, earningsDate } = {} // upcoming quarter-end projections
     } = {},
     earnings: { earningsChart, financialsChart } = {},
-    earningsTrend: { trend },
+    earningsTrend: { trend } = {},
     financialData: {
       currentPrice,
       targetHighPrice,
@@ -273,7 +270,7 @@ function buildCompanyData({ quoteSummary }) {
       earningsGrowth,
       revenueGrowth, // Quarterly Revenue Growth (yoy)
       operatingMargins
-    },
+    } = {},
     upgradeDowngradeHistory: { history: upgradeDowngradeHistory } = {},
     price: { regularMarketPrice },
     cashflowStatementHistoryQuarterly: { cashflowStatements },
@@ -378,8 +375,6 @@ function buildCompanyData({ quoteSummary }) {
     operatingMargins: operatingMarginsRaw,
     regularMarketPrice: regularMarketPriceRaw,
     sharesOutstanding: sharesOutstandingRaw,
-    sharesShort: sharesShortRaw,
-    sharesShortPriorMonth: sharesShortPriorMonthRaw,
     shortLongTermDebt: shortLongTermDebtRaw,
     totalCashFromOperatingActivities: totalCashFromOperatingActivitiesRaw,
     totalCurrentLiabilities: totalCurrentLiabilitiesRaw,
@@ -404,8 +399,6 @@ function buildCompanyData({ quoteSummary }) {
       regularMarketPrice, // price
       revenuePerShare, // financialData
       sharesOutstanding, // defaultKeyStats
-      sharesShort, // defaultKeyStats
-      sharesShortPriorMonth, // defaultKeyStats
       totalDebt, // financialData
       enterpriseValue, // defaultKeyStats
       revenueEstimateAvg // earnings trend
@@ -462,10 +455,9 @@ function buildCompanyData({ quoteSummary }) {
       : [],
     quarterlyRevenueChart: cleanFinancialsChart(financialsChart)
       ? cleanFinancialsChart(financialsChart)
-          .reduce((acc, { revenue }) => [...acc, revenue.raw, 0], [])
-          .concat([revenueEstimateAvgRaw])
+          .reduce((acc, { revenue }) => [...acc, revenue.raw], [])
+          .concat([0, revenueEstimateAvgRaw])
       : [],
-    shortVMonthAgoRatio: sharesShortRaw / sharesShortPriorMonthRaw,
     totalRevenueAnnlz,
     enterpriseToRevenue: enterpriseValueRaw / totalRevenueAnnlz,
     ...selectValueTypes(
@@ -490,6 +482,8 @@ function buildCompanyData({ quoteSummary }) {
         netIncomeToCommon,
         sharesOutstanding,
         trailingEps,
+        sharesShort,
+        sharesShortPriorMonth,
 
         // CALENDAR EVENTS //
 
