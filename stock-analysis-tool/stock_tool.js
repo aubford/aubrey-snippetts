@@ -1,4 +1,4 @@
-import data from "./citiData.json"
+import data from "./slfData.json"
 buildCompanyData(data)
 
 //noinspection JSUnusedLocalSymbols
@@ -438,9 +438,15 @@ function buildCompanyData({ quoteSummary }) {
     totalCashPerShare: slicePerShare(cashRaw),
     operatingCashFlowPerShare: slicePerShare(mOperatingCashflowAnnlz),
     upgradeDowngradeHistory: upgradeDowngradeHistory
-      ? upgradeDowngradeHistory.reduce((acc, { firm, toGrade, fromGrade }) => {
-          return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
-        }, "")
+      ? upgradeDowngradeHistory
+          .filter(({ firm, epochGradeDate }) =>
+            upgradeDowngradeHistory.every(
+              comparison => firm !== comparison.firm || epochGradeDate >= comparison.epochGradeDate
+            )
+          )
+          .reduce((acc, { firm, toGrade, fromGrade }) => {
+            return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
+          }, "")
       : "n/a",
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
