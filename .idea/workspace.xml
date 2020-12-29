@@ -36,7 +36,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/data/nvsData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/attData.json" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/data/attData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/citiData.json" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/data/citiData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/dataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/dataView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/hubsData.json" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/data/hubsData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/powerData.json" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/data/powerData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/slackData.json" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/data/slackData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/slfData.json" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/data/slfData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +127,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="aJavascript" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -128,6 +136,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stock-analysis-tool/data" />
       <recent name="$PROJECT_DIR$/IntelliJ Settings" />
       <recent name="$PROJECT_DIR$/surenursing" />
     </key>

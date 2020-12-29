@@ -5,7 +5,7 @@
 */
 
 
-import stockData from "./attData"
+import stockData from "./data/attData.json"
 import { isNumber } from "underscore"
 
 const billion = 1000000000

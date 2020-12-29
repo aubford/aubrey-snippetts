@@ -1,4 +1,4 @@
-import data from "./slfData.json"
+import data from "./data/nvsData.json"
 buildCompanyData(data)
 
 //noinspection JSUnusedLocalSymbols
@@ -143,12 +143,12 @@ function cleanEarningsTrend(trend) {
   }
 }
 
-function quarterStrIsTooOld(qtrString) {
-  return Boolean(qtrString.slice(2) < new Date().getFullYear() - 1)
-}
-
 function dateStrIsBeforeNow(dateStr, daysToAdd) {
   return Boolean(new Date(dateStr) < addDays(new Date(), daysToAdd))
+}
+
+function quarterStrIsTooOld(qtrString) {
+  return Boolean(qtrString.slice(2) < new Date().getFullYear() - 1)
 }
 
 function cleanEarningsChart(earningsChart) {
@@ -162,7 +162,9 @@ function cleanEarningsChart(earningsChart) {
   return {
     quarterlyEPSActualEstimateChart: quarterlyOk && quarterly,
     currentQuarterEstimateRaw:
-      !dateStrIsBeforeNow(earningsDate[0].fmt, -4) && currentQuarterEstimate.raw
+      Boolean(earningsDate[0]) &&
+      !dateStrIsBeforeNow(earningsDate[0].fmt, -4) &&
+      currentQuarterEstimate.raw
   }
 }
 
