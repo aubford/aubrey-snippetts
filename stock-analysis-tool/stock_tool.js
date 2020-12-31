@@ -1,14 +1,10 @@
-import data from "./data/nvsData.json"
+import data from "./data/slfData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
-
 buildCompanyData(data)
 
 ///////////////////////////////////////////////////////////////////////
-
-
-
 
 function selectValueTypes(multiValues, type) {
   return Object.keys(multiValues).reduce(
@@ -185,9 +181,9 @@ function cleanFinancialsChart(financialsChart) {
   return quarterlyOk ? quarterly.map(({ revenue }) => revenue.raw) : []
 }
 
-function getRecentStatement(statments) {
+function getRecentStatement(statements) {
   const numDaysToLastQuarter = -100
-  return statments.find(({ endDate }) => !dateStrIsBefore(endDate, numDaysToLastQuarter))
+  return statements.find(({ endDate }) => !dateStrIsBefore(endDate, numDaysToLastQuarter))
 }
 function cleanStatement(statementList) {
   const recentStatement = getRecentStatement(statementList)
@@ -283,16 +279,16 @@ function buildCompanyData({ quoteSummary }) {
     earnings: { earningsChart, financialsChart } = {},
     earningsTrend: { trend } = {},
     financialData: {
-      //totalRevenue,
+      totalRevenue,
       revenuePerShare,
       returnOnAssets,
       returnOnEquity,
       grossProfits,
-      //grossMargins,
-      //ebitdaMargins,
-      //ebitda,
-      //quickRatio,
-      //currentRatio,
+      ebitda,
+      grossMargins,
+      ebitdaMargins,
+      quickRatio,
+      currentRatio,
       freeCashflow: leveredFreeCashFlow,
       currentPrice,
       targetHighPrice,
@@ -303,7 +299,7 @@ function buildCompanyData({ quoteSummary }) {
       totalCash,
       totalCashPerShare,
       totalDebt, //  Total Debt MRQ from "statistics" page
-      // operatingCashflow: operatingCashflowTTM, // verified this is TTM from Schwab cash flow statement
+      operatingCashflow: operatingCashflowTTM, // verified this is TTM from Schwab cash flow statement
       earningsGrowth,
       revenueGrowth, // Quarterly Revenue Growth (yoy)
       operatingMargins // TTM
@@ -370,25 +366,37 @@ function buildCompanyData({ quoteSummary }) {
 
   const operatingCashFlowMRQ = annu(cashFlows.totalCashFromOperatingActivities)
 
-  const freeCashFlowTTM = cashflowStatements.reduce(
-    (acc, curr) =>
-      acc +
-      (curr.totalCashFromOperatingActivities ? curr.totalCashFromOperatingActivities.raw : 0) +
-      (curr.capitalExpenditures ? curr.capitalExpenditures.raw : 0),
-    0
+  const freeCashFlowMRQ = annu(
+    cashFlows.totalCashFromOperatingActivities + cashFlows.capitalExpenditures
   )
-  
-  const freeCashFlowMRQ = annu(cashFlows.totalCashFromOperatingActivities + cashFlows.capitalExpenditures)
 
-  const totalRevenueTTM = incomeStatementHistory.reduce(
-    (acc, curr) => acc + (curr.totalRevenue ? curr.totalRevenue.raw : 0),
-    0
-  )
-  
+  const freeCashFlowTTM =
+    cashflowStatements.length === 4
+      ? cashflowStatements.reduce(
+          (acc, curr) =>
+            acc +
+            (curr.totalCashFromOperatingActivities
+              ? curr.totalCashFromOperatingActivities.raw
+              : 0) +
+            (curr.capitalExpenditures ? curr.capitalExpenditures.raw : 0),
+          0
+        )
+      : 0
+
+  const statementTotalRevenueSum =
+    incomeStatementHistory.length === 4
+      ? incomeStatementHistory.reduce(
+          (acc, curr) => acc + (curr.totalRevenue ? curr.totalRevenue.raw : 0),
+          0
+        )
+      : 0
+  const totalRevenueTTM =
+    totalRevenue && totalRevenue.raw ? totalRevenue.raw : statementTotalRevenueSum
+
   return {
     ...balanceSheet,
-    incomeStatement,
-    cashFlows,
+    ...incomeStatement,
+    ...cashFlows,
     ...selectValueTypes(
       // RAW //
       {
@@ -402,6 +410,7 @@ function buildCompanyData({ quoteSummary }) {
         grossProfits,
         revenuePerShare,
         totalCash,
+        ebitda,
 
         // DEFAULT KEY STATISTICS
 
@@ -505,6 +514,10 @@ function buildCompanyData({ quoteSummary }) {
         earningsGrowth,
         revenueGrowth, // Quarterly Revenue Growth (yoy)
         bookValue,
+        quickRatio,
+        currentRatio,
+        grossMargins,
+        ebitdaMargins,
 
         // MARKET SENTIMENT //
 
@@ -532,7 +545,7 @@ function buildCompanyData({ quoteSummary }) {
       sharesShortPriorMonth,
       shortPercentOfFloat,
       sharesShort
-    ) /* ?*/ ,
+    ),
     auditRisk,
     boardRisk,
     compensationRisk,
@@ -543,12 +556,14 @@ function buildCompanyData({ quoteSummary }) {
     recommendationKey,
     sector,
     shareHolderRightsRisk,
+    totalRevenueTTM,
+    operatingCashflowTTM,
+    totalDebt: mTotalDebt,
     buybackRatio:
       cashFlows.netIncome > 0
         ? -((cashFlows.issuanceOfStock || 0) + (cashFlows.repurchaseOfStock || 0)) /
           cashFlows.netIncome
         : "n/a", // validated this data w/ other brokerages
-    totalDebt: mTotalDebt,
     debtToCapital: mTotalDebt / (mTotalDebt + balanceSheet.totalStockholderEquity),
     operatingMargins:
       operatingMargins && operatingMargins.raw
@@ -558,11 +573,16 @@ function buildCompanyData({ quoteSummary }) {
       regularMarketPrice && regularMarketPrice.raw && incomeStatement.totalRevenue
         ? (regularMarketPrice.raw / slicePerShareAnnlz(incomeStatement.totalRevenue)).toFixed(2)
         : "n/a",
-    leveredFreeCashFlowPerShare: leveredFreeCashFlow ? slicePerShare(leveredFreeCashFlow.raw) : false,
+    leveredFreeCashFlowPerShare: leveredFreeCashFlow ? slicePerShare(leveredFreeCashFlow.raw) : 0,
     freeCashFlowPerShareTTM: slicePerShare(freeCashFlowTTM),
     freeCashFlowPerShareMRQ: slicePerShare(freeCashFlowMRQ),
     totalCashPerShare: totalCashPerShare ? totalCashPerShare.raw : slicePerShare(balanceSheet.cash),
-    operatingCashFlowPerShare: slicePerShare(operatingCashFlowMRQ),
+    operatingCashFlowPerShareMRQ: slicePerShare(operatingCashFlowMRQ),
+    enterpriseToRevenue: enterpriseToRevenue
+      ? enterpriseToRevenue.raw
+      : enterpriseValue.raw / totalRevenueTTM,
+    
+    // non-numbers:
     upgradeDowngradeHistory: upgradeDowngradeHistory
       ? upgradeDowngradeHistory
           .filter(({ firm, epochGradeDate }) =>
@@ -584,8 +604,6 @@ function buildCompanyData({ quoteSummary }) {
       : [],
     quarterlyRevenueChart: cleanFinancialsChart(financialsChart).concat(
       revenueEstimateAvg ? [0, revenueEstimateAvg.raw] : []
-    ),
-    totalRevenueTTM,
-    enterpriseToRevenue: enterpriseToRevenue ? enterpriseToRevenue.raw : enterpriseValue.raw / totalRevenueTTM
+    )
   }
 }
