@@ -1,8 +1,14 @@
 import data from "./data/nvsData.json"
-buildCompanyData(data)
-
+import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
+
+buildCompanyData(data)
+
+///////////////////////////////////////////////////////////////////////
+
+
+
 
 function selectValueTypes(multiValues, type) {
   return Object.keys(multiValues).reduce(
@@ -143,7 +149,7 @@ function cleanEarningsTrend(trend) {
   }
 }
 
-function dateStrIsBeforeNow(dateStr, daysToAdd) {
+function dateStrIsBefore(dateStr, daysToAdd) {
   return Boolean(new Date(dateStr) < addDays(new Date(), daysToAdd))
 }
 
@@ -163,7 +169,7 @@ function cleanEarningsChart(earningsChart) {
     quarterlyEPSActualEstimateChart: quarterlyOk && quarterly,
     currentQuarterEstimateRaw:
       Boolean(earningsDate[0]) &&
-      !dateStrIsBeforeNow(earningsDate[0].fmt, -4) &&
+      !dateStrIsBefore(earningsDate[0].fmt, -4) &&
       currentQuarterEstimate.raw
   }
 }
@@ -176,20 +182,42 @@ function cleanFinancialsChart(financialsChart) {
   const { quarterly } = financialsChart
   const quarterlyOk = quarterly.every(({ date }) => !quarterStrIsTooOld(date))
 
-  return quarterlyOk && quarterly
+  return quarterlyOk ? quarterly.map(({ revenue }) => revenue.raw) : []
 }
 
-function cleanStatements(bs, income, cash) {
-  const numDaysToBeforeLastQtr = -120
+function getRecentStatement(statments) {
+  const numDaysToLastQuarter = -100
+  return statments.find(({ endDate }) => !dateStrIsBefore(endDate, numDaysToLastQuarter))
+}
+function cleanStatement(statementList) {
+  const recentStatement = getRecentStatement(statementList)
+  return _.mapValues(recentStatement, "raw")
+}
+
+function cleanShortInterest(
+  dateShortInterest,
+  sharesShortPreviousMonthDate,
+  sharesShortPriorMonth,
+  shortPercentOfFloat,
+  sharesShort
+) {
+  const twoMonthsAgo = -60
+  const threeMonthsAgo = -90
+  if (
+    dateStrIsBefore(dateShortInterest.fmt, twoMonthsAgo) ||
+    dateStrIsBefore(sharesShortPreviousMonthDate.fmt, threeMonthsAgo)
+  ) {
+    return {}
+  }
+
   return {
-    ...(dateStrIsBeforeNow(bs.endDate, numDaysToBeforeLastQtr) ? {} : bs[0]),
-    ...(dateStrIsBeforeNow(income.endDate, numDaysToBeforeLastQtr) ? {} : income[0]),
-    ...(dateStrIsBeforeNow(cash.endDate, numDaysToBeforeLastQtr) ? {} : cash[0])
+    sharesShortPriorMonth: sharesShortPriorMonth.raw,
+    sharesShort: sharesShort.raw,
+    shortPercentOfFloat: shortPercentOfFloat.raw
   }
 }
 
 function buildCompanyData({ quoteSummary }) {
-  //noinspection JSUnusedLocalSymbols
   const {
     assetProfile: {
       longBusinessSummary,
@@ -219,10 +247,10 @@ function buildCompanyData({ quoteSummary }) {
       lastDividendValue,
       lastFiscalYearEnd,
       mostRecentQuarter,
-      netIncomeToCommon,
+      netIncomeToCommon, // TTM
       pegRatio,
       priceToBook,
-      profitMargins,
+      profitMargins, // probably TMM
       sharesOutstanding,
       sharesPercentSharesOut, // "Short % of Shares Outstanding"
       sharesShort,
@@ -255,6 +283,17 @@ function buildCompanyData({ quoteSummary }) {
     earnings: { earningsChart, financialsChart } = {},
     earningsTrend: { trend } = {},
     financialData: {
+      //totalRevenue,
+      revenuePerShare,
+      returnOnAssets,
+      returnOnEquity,
+      grossProfits,
+      //grossMargins,
+      //ebitdaMargins,
+      //ebitda,
+      //quickRatio,
+      //currentRatio,
+      freeCashflow: leveredFreeCashFlow,
       currentPrice,
       targetHighPrice,
       targetLowPrice,
@@ -264,14 +303,10 @@ function buildCompanyData({ quoteSummary }) {
       totalCash,
       totalCashPerShare,
       totalDebt, //  Total Debt MRQ from "statistics" page
-      revenuePerShare,
-      returnOnAssets,
-      returnOnEquity,
-      grossProfits,
-      operatingCashflow: operatingCashflowTTM, // verified this is TTM from Schwab cash flow statement
+      // operatingCashflow: operatingCashflowTTM, // verified this is TTM from Schwab cash flow statement
       earningsGrowth,
       revenueGrowth, // Quarterly Revenue Growth (yoy)
-      operatingMargins
+      operatingMargins // TTM
     } = {},
     upgradeDowngradeHistory: { history: upgradeDowngradeHistory } = {},
     price: { regularMarketPrice },
@@ -281,59 +316,6 @@ function buildCompanyData({ quoteSummary }) {
   } = quoteSummary.result[0]
 
   // ------------------------------- //
-
-  const {
-    // balance sheet
-    cash,
-    inventory,
-    totalCurrentAssets,
-    longTermInvestments,
-    propertyPlantEquipment,
-    goodWill,
-    intangibleAssets,
-    totalAssets,
-    accountsPayable,
-    shortLongTermDebt,
-    longTermDebt,
-    minorityInterest,
-    totalCurrentLiabilities,
-    totalLiab,
-    commonStock,
-    retainedEarnings,
-    capitalSurplus,
-    totalStockholderEquity, // common stock
-    netTangibleAssets,
-    // income statement
-    totalRevenue,
-    costOfRevenue,
-    grossProfit,
-    researchDevelopment,
-    sellingGeneralAdministrative,
-    nonRecurring,
-    totalOperatingExpenses,
-    operatingIncome,
-    ebit,
-    interestExpense,
-    incomeBeforeTax,
-    netIncomeFromContinuingOps,
-    discontinuedOperations,
-    netIncome,
-    netIncomeApplicableToCommonShares,
-    // cashflow statement
-    depreciation,
-    changeToNetincome,
-    changeToOperatingActivities,
-    totalCashFromOperatingActivities,
-    capitalExpenditures,
-    investments,
-    totalCashflowsFromInvestingActivities,
-    dividendsPaid,
-    netBorrowings,
-    totalCashFromFinancingActivities,
-    effectOfExchangeRate,
-    changeInCash,
-    repurchaseOfStock
-  } = cleanStatements(balanceSheetStatements, incomeStatementHistory, cashflowStatements)
 
   const {
     currentEpsEstimate,
@@ -368,100 +350,45 @@ function buildCompanyData({ quoteSummary }) {
     earningsEstimateNextYearGrowth
   } = cleanEarningsTrend(trend)
 
-  const {
-    capitalExpenditures: capitalExpendituresRaw,
-    cash: cashRaw,
-    ebit: ebitRaw,
-    longTermDebt: longTermDebtRaw,
-    operatingCashflowTTM: operatingCashflowTTMRaw,
-    operatingMargins: operatingMarginsRaw,
-    regularMarketPrice: regularMarketPriceRaw,
-    sharesOutstanding: sharesOutstandingRaw,
-    shortLongTermDebt: shortLongTermDebtRaw,
-    totalCashFromOperatingActivities: totalCashFromOperatingActivitiesRaw,
-    totalCurrentLiabilities: totalCurrentLiabilitiesRaw,
-    totalDebt: totalDebtRaw,
-    totalRevenue: totalRevenueRaw,
-    totalStockholderEquity: totalStockholderEquityRaw,
-    enterpriseValue: enterpriseValueRaw,
-    revenueEstimateAvg: revenueEstimateAvgRaw
-  } = selectValueTypes(
-    {
-      capitalExpenditures, // STATEMENT
-      cash,
-      ebit, // STATEMENT
-      longTermDebt, // STATEMENT
-      shortLongTermDebt, // STATEMENT
-      totalCashFromOperatingActivities, // STATEMENT
-      totalCurrentLiabilities, // STATEMENT
-      totalRevenue, // STATEMENT
-      totalStockholderEquity, // STATEMENT
-      operatingCashflowTTM, // financialData
-      operatingMargins, // financialData
-      regularMarketPrice, // price
-      revenuePerShare, // financialData
-      sharesOutstanding, // defaultKeyStats
-      totalDebt, // financialData
-      enterpriseValue, // defaultKeyStats
-      revenueEstimateAvg // earnings trend
-    },
-    "raw"
-  )
-
   const { quarterlyEPSActualEstimateChart, currentQuarterEstimateRaw } = cleanEarningsChart(
     earningsChart
   )
 
-  const slicePerShareAnnlz = val => annu(val) / sharesOutstandingRaw
-  const slicePerShare = val => val / sharesOutstandingRaw
+  const balanceSheet = cleanStatement(balanceSheetStatements)
+  const incomeStatement = cleanStatement(incomeStatementHistory)
+  const cashFlows = cleanStatement(cashflowStatements)
 
-  const mTotalDebt = totalDebtRaw
-    ? totalDebtRaw
-    : totalCurrentLiabilitiesRaw + longTermDebtRaw + shortLongTermDebtRaw
+  const slicePerShareAnnlz = val => annu(val) / sharesOutstanding.raw
+  const slicePerShare = val => val / sharesOutstanding.raw
 
-  const mOperatingCashflowAnnlz =
-    operatingCashflowTTMRaw || annu(totalCashFromOperatingActivitiesRaw)
-  const mFreeCashFlowAnnlz = mOperatingCashflowAnnlz - annu(capitalExpendituresRaw)
-  const totalRevenueAnnlz = annu(totalRevenueRaw)
+  const mTotalDebt =
+    totalDebt && totalDebt.raw
+      ? totalDebt.raw
+      : balanceSheet.totalCurrentLiabilities +
+        balanceSheet.longTermDebt +
+        (balanceSheet.shortLongTermDebt || 0)
 
+  const operatingCashFlowMRQ = annu(cashFlows.totalCashFromOperatingActivities)
+
+  const freeCashFlowTTM = cashflowStatements.reduce(
+    (acc, curr) =>
+      acc +
+      (curr.totalCashFromOperatingActivities ? curr.totalCashFromOperatingActivities.raw : 0) +
+      (curr.capitalExpenditures ? curr.capitalExpenditures.raw : 0),
+    0
+  )
+  
+  const freeCashFlowMRQ = annu(cashFlows.totalCashFromOperatingActivities + cashFlows.capitalExpenditures)
+
+  const totalRevenueTTM = incomeStatementHistory.reduce(
+    (acc, curr) => acc + (curr.totalRevenue ? curr.totalRevenue.raw : 0),
+    0
+  )
+  
   return {
-    totalDebt: mTotalDebt,
-    debtToCapital: mTotalDebt / (mTotalDebt + totalStockholderEquityRaw),
-    operatingMargins: operatingMarginsRaw || ebitRaw / totalRevenueRaw, // TTM
-    priceToSalesMRQ:
-      regularMarketPriceRaw && totalRevenueRaw
-        ? (regularMarketPriceRaw / slicePerShareAnnlz(totalRevenueRaw)).toFixed(2)
-        : "n/a",
-    freeCashFlow: mFreeCashFlowAnnlz,
-    freeCashFlowPerShare: slicePerShare(mFreeCashFlowAnnlz),
-    totalCashPerShare: slicePerShare(cashRaw),
-    operatingCashFlowPerShare: slicePerShare(mOperatingCashflowAnnlz),
-    upgradeDowngradeHistory: upgradeDowngradeHistory
-      ? upgradeDowngradeHistory
-          .filter(({ firm, epochGradeDate }) =>
-            upgradeDowngradeHistory.every(
-              comparison => firm !== comparison.firm || epochGradeDate >= comparison.epochGradeDate
-            )
-          )
-          .reduce((acc, { firm, toGrade, fromGrade }) => {
-            return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
-          }, "")
-      : "n/a",
-    anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
-    institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
-    nonIndexOwners: getNonIndexOwners(ownershipList),
-    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
-      ? quarterlyEPSActualEstimateChart
-          .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
-          .concat([currentQuarterEstimateRaw])
-      : [],
-    quarterlyRevenueChart: cleanFinancialsChart(financialsChart)
-      ? cleanFinancialsChart(financialsChart)
-          .reduce((acc, { revenue }) => [...acc, revenue.raw], [])
-          .concat([0, revenueEstimateAvgRaw])
-      : [],
-    totalRevenueAnnlz,
-    enterpriseToRevenue: enterpriseValueRaw / totalRevenueAnnlz,
+    ...balanceSheet,
+    incomeStatement,
+    cashFlows,
     ...selectValueTypes(
       // RAW //
       {
@@ -474,6 +401,7 @@ function buildCompanyData({ quoteSummary }) {
         currentPrice,
         grossProfits,
         revenuePerShare,
+        totalCash,
 
         // DEFAULT KEY STATISTICS
 
@@ -484,8 +412,6 @@ function buildCompanyData({ quoteSummary }) {
         netIncomeToCommon,
         sharesOutstanding,
         trailingEps,
-        sharesShort,
-        sharesShortPriorMonth,
 
         // CALENDAR EVENTS //
 
@@ -540,63 +466,7 @@ function buildCompanyData({ quoteSummary }) {
         revenueEstimateFollowingQuarterHigh,
         revenueEstimateNextYearLow, // estimate for next year revenue
         revenueEstimateNextYearAvg,
-        revenueEstimateNextYearHigh,
-
-        //  BALANCE SHEET
-
-        cash,
-        inventory,
-        totalCurrentAssets,
-        longTermInvestments,
-        propertyPlantEquipment,
-        goodWill,
-        intangibleAssets,
-        totalAssets,
-        accountsPayable,
-        shortLongTermDebt,
-        longTermDebt,
-        minorityInterest,
-        totalCurrentLiabilities,
-        totalLiab,
-        commonStock,
-        retainedEarnings,
-        capitalSurplus,
-        totalStockholderEquity,
-        netTangibleAssets,
-
-        // INCOME STATEMENT
-
-        totalRevenue,
-        costOfRevenue,
-        grossProfit,
-        researchDevelopment,
-        sellingGeneralAdministrative,
-        nonRecurring,
-        totalOperatingExpenses,
-        operatingIncome,
-        ebit,
-        interestExpense,
-        incomeBeforeTax,
-        netIncomeFromContinuingOps,
-        discontinuedOperations,
-        netIncome,
-        netIncomeApplicableToCommonShares,
-
-        // CASH FLOW STATEMENT
-
-        depreciation,
-        changeToNetincome,
-        changeToOperatingActivities,
-        totalCashFromOperatingActivities,
-        capitalExpenditures,
-        investments,
-        totalCashflowsFromInvestingActivities,
-        dividendsPaid,
-        netBorrowings,
-        totalCashFromFinancingActivities,
-        effectOfExchangeRate,
-        changeInCash,
-        repurchaseOfStock
+        revenueEstimateNextYearHigh
       },
       "raw"
     ),
@@ -640,10 +510,8 @@ function buildCompanyData({ quoteSummary }) {
 
         heldPercentInstitutions,
         sharesPercentSharesOut,
-        sharesShortPreviousMonthDate,
         shortPercentOfFloat,
         shortRatio,
-        dateShortInterest,
 
         // EARNINGS/REVENUE //
 
@@ -658,6 +526,13 @@ function buildCompanyData({ quoteSummary }) {
       },
       "fmt"
     ),
+    ...cleanShortInterest(
+      dateShortInterest,
+      sharesShortPreviousMonthDate,
+      sharesShortPriorMonth,
+      shortPercentOfFloat,
+      sharesShort
+    ) /* ?*/ ,
     auditRisk,
     boardRisk,
     compensationRisk,
@@ -667,6 +542,50 @@ function buildCompanyData({ quoteSummary }) {
     overallRisk,
     recommendationKey,
     sector,
-    shareHolderRightsRisk
+    shareHolderRightsRisk,
+    buybackRatio:
+      cashFlows.netIncome > 0
+        ? -((cashFlows.issuanceOfStock || 0) + (cashFlows.repurchaseOfStock || 0)) /
+          cashFlows.netIncome
+        : "n/a", // validated this data w/ other brokerages
+    totalDebt: mTotalDebt,
+    debtToCapital: mTotalDebt / (mTotalDebt + balanceSheet.totalStockholderEquity),
+    operatingMargins:
+      operatingMargins && operatingMargins.raw
+        ? operatingMargins.raw
+        : incomeStatement.ebit / incomeStatement.totalRevenue,
+    priceToSalesMRQ:
+      regularMarketPrice && regularMarketPrice.raw && incomeStatement.totalRevenue
+        ? (regularMarketPrice.raw / slicePerShareAnnlz(incomeStatement.totalRevenue)).toFixed(2)
+        : "n/a",
+    leveredFreeCashFlowPerShare: leveredFreeCashFlow ? slicePerShare(leveredFreeCashFlow.raw) : false,
+    freeCashFlowPerShareTTM: slicePerShare(freeCashFlowTTM),
+    freeCashFlowPerShareMRQ: slicePerShare(freeCashFlowMRQ),
+    totalCashPerShare: totalCashPerShare ? totalCashPerShare.raw : slicePerShare(balanceSheet.cash),
+    operatingCashFlowPerShare: slicePerShare(operatingCashFlowMRQ),
+    upgradeDowngradeHistory: upgradeDowngradeHistory
+      ? upgradeDowngradeHistory
+          .filter(({ firm, epochGradeDate }) =>
+            upgradeDowngradeHistory.every(
+              comparison => firm !== comparison.firm || epochGradeDate >= comparison.epochGradeDate
+            )
+          )
+          .reduce((acc, { firm, toGrade, fromGrade }) => {
+            return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
+          }, "")
+      : "n/a",
+    anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
+    institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
+    nonIndexOwners: getNonIndexOwners(ownershipList),
+    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
+      ? quarterlyEPSActualEstimateChart
+          .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
+          .concat([currentQuarterEstimateRaw])
+      : [],
+    quarterlyRevenueChart: cleanFinancialsChart(financialsChart).concat(
+      revenueEstimateAvg ? [0, revenueEstimateAvg.raw] : []
+    ),
+    totalRevenueTTM,
+    enterpriseToRevenue: enterpriseToRevenue ? enterpriseToRevenue.raw : enterpriseValue.raw / totalRevenueTTM
   }
 }
