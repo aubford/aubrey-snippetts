@@ -1,6 +1,69 @@
 /*
+  ALL MODULES:
+  assetProfile
+  balanceSheetHistory
+  balanceSheetHistoryQuarterly
+  calendarEvents
+  cashflowStatementHistory
+  cashflowStatementHistoryQuarterly
+  defaultKeyStatistics
+  earnings
+  earningsHistory
+  earningsTrend
+  esgScores
+  financialData
+  fundOwnership
+  fundPerformance
+  fundProfile
+  incomeStatementHistory
+  incomeStatementHistoryQuarterly
+  indexTrend
+  industryTrend
+  insiderHolders
+  insiderTransactions
+  institutionOwnership
+  majorDirectHolders
+  majorHoldersBreakdown
+  netSharePurchaseActivity
+  price
+  recommendationTrend
+  secFilings
+  sectorTrend
+  summaryDetail
+  summaryProfile
+  topHoldings
+  upgradeDowngradeHistory
   
-  assetProfile,summaryProfile,summaryDetail,esgScores,price,defaultKeyStatistics,financialData,calendarEvents,secFilings,recommendationTrend,upgradeDowngradeHistory,institutionOwnership,fundOwnership,majorDirectHolders,majorHoldersBreakdown,insiderTransactions,insiderHolders,netSharePurchaseActivity,earnings,earningsTrend,industryTrend,indexTrend,sectorTrend,cashflowStatementHistoryQuarterly,incomeStatementHistoryQuarterly,balanceSheetHistoryQuarterly
+  IN STRING FORM: assetProfile,balanceSheetHistory,balanceSheetHistoryQuarterly,calendarEvents,cashflowStatementHistory,cashflowStatementHistoryQuarterly,defaultKeyStatistics,earnings,earningsHistory,earningsTrend,esgScores,financialData,fundOwnership,fundPerformance,fundProfile,incomeStatementHistory,incomeStatementHistoryQuarterly,indexTrend,industryTrend,insiderHolders,insiderTransactions,institutionOwnership,majorDirectHolders,majorHoldersBreakdown,netSharePurchaseActivity,price,recommendationTrend,secFilings,sectorTrend,summaryDetail,summaryProfile,topHoldings,upgradeDowngradeHistory
+
+
+  MY MODULES:
+  assetProfile,
+  summaryProfile,
+  summaryDetail,
+  esgScores,
+  price,
+  defaultKeyStatistics,
+  financialData,
+  calendarEvents,
+  secFilings,
+  recommendationTrend,
+  upgradeDowngradeHistory,
+  institutionOwnership,
+  fundOwnership,
+  majorDirectHolders,
+  majorHoldersBreakdown,
+  insiderTransactions,
+  insiderHolders,
+  netSharePurchaseActivity,
+  earnings,
+  earningsTrend,
+  industryTrend,
+  indexTrend,
+  sectorTrend,
+  cashflowStatementHistoryQuarterly,
+  incomeStatementHistoryQuarterly,
+  balanceSheetHistoryQuarterly
   
 */
 
