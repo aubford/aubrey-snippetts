@@ -1,8 +1,8 @@
-import data from "./data/slfData.json"
+import data from "./data/citiData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
-buildCompanyData(data)
+buildCompanyData(data) /* ?+*/
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -159,7 +159,7 @@ function cleanEarningsChart(earningsChart) {
   }
 
   const { quarterly, currentQuarterEstimate, earningsDate } = earningsChart
-  const quarterlyOk = quarterly.every(({ date }) => !quarterStrIsTooOld(date))
+  const quarterlyOk = quarterly.some(({ date }) => !quarterStrIsTooOld(date))
 
   return {
     quarterlyEPSActualEstimateChart: quarterlyOk && quarterly,
@@ -176,7 +176,7 @@ function cleanFinancialsChart(financialsChart) {
   }
 
   const { quarterly } = financialsChart
-  const quarterlyOk = quarterly.every(({ date }) => !quarterStrIsTooOld(date))
+  const quarterlyOk = quarterly.some(({ date }) => !quarterStrIsTooOld(date))
 
   return quarterlyOk ? quarterly.map(({ revenue }) => revenue.raw) : []
 }
