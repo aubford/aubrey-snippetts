@@ -1,10 +1,12 @@
-import data from "./data/citiData.json"
+import data from "./data/axpData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
-buildCompanyData(data) /* ?+*/
 
 ///////////////////////////////////////////////////////////////////////
+
+const maxSecondsInQuarter = 8121600
+const secondsInYear = 525600 * 60
 
 function selectValueTypes(multiValues, type) {
   return Object.keys(multiValues).reduce(
@@ -211,6 +213,35 @@ function cleanShortInterest(
     sharesShort: sharesShort.raw,
     shortPercentOfFloat: shortPercentOfFloat.raw
   }
+}
+
+const reduceUpdownGrade = upgradeDowngradeHistory =>
+  _.sortBy(upgradeDowngradeHistory, "epochGradeDate")
+    .reverse()
+    .reduce((acc, { firm, toGrade, fromGrade }) => {
+      return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
+    }, "")
+function getUpgradeDowngradeHistory(upgradeDowngradeHistory) {
+  const filterDoubles = upgradeDowngradeHistory.filter(({ firm, epochGradeDate }) =>
+    upgradeDowngradeHistory.every(
+      comparison => firm !== comparison.firm || epochGradeDate >= comparison.epochGradeDate
+    )
+  )
+
+  const nowInSeconds = Date.now() / 1000
+  const quarterAgoSeconds = nowInSeconds - maxSecondsInQuarter
+  const yearAgoSeconds = nowInSeconds - secondsInYear
+
+  const pastQuarter = filterDoubles.filter(
+    ({ epochGradeDate }) => epochGradeDate >= quarterAgoSeconds
+  )
+  const restOfYear = filterDoubles.filter(
+    ({ epochGradeDate }) => epochGradeDate > yearAgoSeconds && epochGradeDate < quarterAgoSeconds
+  )
+
+  return (
+    reduceUpdownGrade(pastQuarter) + "_________Qtr_Old__________\n" + reduceUpdownGrade(restOfYear)
+  )
 }
 
 function buildCompanyData({ quoteSummary }) {
@@ -581,18 +612,10 @@ function buildCompanyData({ quoteSummary }) {
     enterpriseToRevenue: enterpriseToRevenue
       ? enterpriseToRevenue.raw
       : enterpriseValue.raw / totalRevenueTTM,
-    
+
     // non-numbers:
     upgradeDowngradeHistory: upgradeDowngradeHistory
-      ? upgradeDowngradeHistory
-          .filter(({ firm, epochGradeDate }) =>
-            upgradeDowngradeHistory.every(
-              comparison => firm !== comparison.firm || epochGradeDate >= comparison.epochGradeDate
-            )
-          )
-          .reduce((acc, { firm, toGrade, fromGrade }) => {
-            return acc + ` ${firm}: ${fromGrade} => ${toGrade}\n`
-          }, "")
+      ? getUpgradeDowngradeHistory(upgradeDowngradeHistory)
       : "n/a",
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
@@ -607,3 +630,7 @@ function buildCompanyData({ quoteSummary }) {
     )
   }
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+buildCompanyData(data)
