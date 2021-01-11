@@ -374,7 +374,7 @@ function buildCompanyData({ quoteSummary }) {
     currentQuarterEstimateDate,
     currentQuarterEstimateYear,
     earningsDate: earningsChartCurrentEstimateDates
-  } = earningsChart
+  } = earningsChart || {}
   const getEarningsChartCurrentEstimateData = () => {
     if (earningsChartCurrentEstimateDates && earningsChartCurrentEstimateDates[0]) {
       const earliestDate = earningsChartCurrentEstimateDates.map(({ fmt }) => fmt).sort()[0]
