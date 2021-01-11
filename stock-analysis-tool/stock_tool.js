@@ -1,4 +1,4 @@
-import data from "./data/crmData.json"
+import data from "./data/cscoData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -152,27 +152,11 @@ function dateStrIsBefore(dateStr, daysToAdd) {
   return Boolean(new Date(dateStr) < addDays(new Date(), daysToAdd))
 }
 
-function cleanEarningsChart(earningsChart, mrq) {
-  if (!earningsChart || !earningsChart.quarterly.some(({date}) => date === mrq)) {
-    return {}
-  }
-
-  const { quarterly, currentQuarterEstimate, earningsDate } = earningsChart
-  
-  return {
-    quarterlyEPSActualEstimateChart: quarterly,
-    currentQuarterEstimateRaw:
-      Boolean(earningsDate[0]) &&
-      !dateStrIsBefore(earningsDate[0].fmt, -4) &&
-      currentQuarterEstimate.raw
-  }
-}
-
-function cleanFinancialsChart(financialsChart, mrq) {
-  if (!financialsChart || !financialsChart.quarterly.some(({date}) => date === mrq)) {
+function validateEarningsChart(earningsChart, mrq) {
+  if (!earningsChart || !earningsChart.quarterly.some(({ date }) => date === mrq)) {
     return []
   }
-  return financialsChart.quarterly.map(({ revenue }) => revenue.raw)
+  return earningsChart.quarterly
 }
 
 function getRecentStatement(statements, mrqSeconds) {
@@ -297,7 +281,15 @@ function buildCompanyData({ quoteSummary }) {
     },
     majorHoldersBreakdown: { institutionsCount } = {},
     calendarEvents: {
-      earnings: { earningsAverage, earningsLow, earningsHigh, earningsDate } = {} // upcoming quarter-end projections
+      earnings: {
+        earningsAverage,
+        earningsLow,
+        earningsHigh,
+        revenueAverage,
+        revenueLow,
+        revenueHigh,
+        earningsDate
+      } = {} // upcoming quarter-end projections
     } = {},
     earnings: { earningsChart, financialsChart } = {},
     earningsTrend: { trend } = {},
@@ -336,10 +328,8 @@ function buildCompanyData({ quoteSummary }) {
 
   const mrqSeconds = mostRecentQuarter ? mostRecentQuarter.raw : 0
   const lfyEndSeconds = lastFiscalYearEnd ? lastFiscalYearEnd.raw : 0
-  
-  const lastReportedQuarter = Math.round(
-    (mrqSeconds - lfyEndSeconds) / (secondsInYear / 4)
-  )
+
+  const lastReportedQuarter = Math.round((mrqSeconds - lfyEndSeconds) / (secondsInYear / 4))
   const fiscalMRQQtr = mrqSeconds && lfyEndSeconds === mrqSeconds ? 4 : lastReportedQuarter
   const fiscalMRQYear = new Date(mrqSeconds * 1000).getFullYear()
   const fiscalMRQStr = `${fiscalMRQQtr}Q${fiscalMRQYear}`
@@ -379,9 +369,8 @@ function buildCompanyData({ quoteSummary }) {
     earningsEstimateNextYearGrowth
   } = validateEarningsTrend(trend)
 
-  const { quarterlyEPSActualEstimateChart, currentQuarterEstimateRaw } = cleanEarningsChart(
-    earningsChart, fiscalMRQStr
-  )
+  const earliestEarningsDate =
+    earningsDate && earningsDate[0] ? earningsDate.map(({ fmt }) => fmt).sort()[0] : 0
 
   const balanceSheet = cleanStatement(balanceSheetStatements, mrqSeconds)
   const incomeStatement = cleanStatement(incomeStatementHistory, mrqSeconds)
@@ -425,6 +414,8 @@ function buildCompanyData({ quoteSummary }) {
       : 0
   const totalRevenueTTM =
     totalRevenue && totalRevenue.raw ? totalRevenue.raw : statementTotalRevenueSum
+  
+  const cashFlowReStock = -((cashFlows.issuanceOfStock || 0) + (cashFlows.repurchaseOfStock || 0))
 
   return {
     ...balanceSheet,
@@ -460,6 +451,9 @@ function buildCompanyData({ quoteSummary }) {
         earningsAverage, // upcoming quarter-end projection
         earningsHigh, // upcoming quarter-end projection
         earningsLow, // upcoming quarter-end projection
+        revenueAverage, // upcoming quarter-end projection
+        revenueHigh, // upcoming quarter-end projection
+        revenueLow, // upcoming quarter-end projection
 
         // SUMMARY DETAIL //
 
@@ -593,11 +587,8 @@ function buildCompanyData({ quoteSummary }) {
     totalRevenueTTM,
     operatingCashflowTTM,
     totalDebt: mTotalDebt,
-    buybackRatio:
-      cashFlows.netIncome > 0
-        ? -((cashFlows.issuanceOfStock || 0) + (cashFlows.repurchaseOfStock || 0)) /
-          cashFlows.netIncome
-        : "n/a", // validated this data w/ other brokerages
+    percentRepurchasedMRQ: cashFlowReStock / fiftyDayAverage.raw / sharesOutstanding.raw,
+    buybackRatio: cashFlows.netIncome > 0 ? cashFlowReStock / cashFlows.netIncome : "n/a", // validated this data w/ other brokerages
     debtToCapital: mTotalDebt / (mTotalDebt + balanceSheet.totalStockholderEquity),
     operatingMargins:
       operatingMargins && operatingMargins.raw
@@ -623,14 +614,19 @@ function buildCompanyData({ quoteSummary }) {
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
-    quarterlyEPSActualEstimateChart: quarterlyEPSActualEstimateChart
-      ? quarterlyEPSActualEstimateChart
-          .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
-          .concat([currentQuarterEstimateRaw])
-      : [],
-    quarterlyRevenueChart: cleanFinancialsChart(financialsChart, fiscalMRQStr).concat(
-      revenueEstimateAvg ? [0, revenueEstimateAvg.raw] : []
-    )
+    earliestEarningsDate,
+    quarterlyEPSActualEstimateChart: validateEarningsChart(earningsChart, fiscalMRQStr)
+      .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw], [])
+      .concat(
+        earningsAverage && !dateStrIsBefore(earliestEarningsDate, -10)
+          ? [0, earningsAverage.raw]
+          : []
+      ),
+    quarterlyRevenueChart: validateEarningsChart(financialsChart, fiscalMRQStr)
+      .map(({ revenue }) => revenue.raw)
+      .concat(
+        revenueAverage && !dateStrIsBefore(earliestEarningsDate, -10) ? [0, revenueAverage.raw] : []
+      )
   }
 }
 
