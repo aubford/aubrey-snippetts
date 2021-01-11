@@ -1,4 +1,4 @@
-import data from "./data/cscoData.json"
+import data from "./data/radData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -369,7 +369,36 @@ function buildCompanyData({ quoteSummary }) {
     earningsEstimateNextYearGrowth
   } = validateEarningsTrend(trend)
 
-  const earliestEarningsDate =
+  const {
+    currentQuarterEstimate,
+    currentQuarterEstimateDate,
+    currentQuarterEstimateYear,
+    earningsDate: earningsChartCurrentEstimateDates
+  } = earningsChart
+  const getEarningsChartCurrentEstimateData = () => {
+    if (earningsChartCurrentEstimateDates && earningsChartCurrentEstimateDates[0]) {
+      const earliestDate = earningsChartCurrentEstimateDates.map(({ fmt }) => fmt).sort()[0]
+      return {
+        earliestDate,
+        earningsChartDateOk: !dateStrIsBefore(earliestDate, -10)
+      }
+    }
+    
+    if (currentQuarterEstimateDate && currentQuarterEstimateYear) {
+      const mrqNum = fiscalMRQYear.toString() + fiscalMRQQtr.toString()
+      const earliestDateNum = currentQuarterEstimateYear + currentQuarterEstimateDate[0]
+      
+      const earliestDate = currentQuarterEstimateDate + currentQuarterEstimateYear
+      return {
+        earliestDate,
+        earningsChartDateOk: earliestDateNum > mrqNum
+      }
+    }
+    
+    return 0
+  }
+  
+  const earliestRevenueEstimateDate =
     earningsDate && earningsDate[0] ? earningsDate.map(({ fmt }) => fmt).sort()[0] : 0
 
   const balanceSheet = cleanStatement(balanceSheetStatements, mrqSeconds)
@@ -414,7 +443,7 @@ function buildCompanyData({ quoteSummary }) {
       : 0
   const totalRevenueTTM =
     totalRevenue && totalRevenue.raw ? totalRevenue.raw : statementTotalRevenueSum
-  
+
   const cashFlowReStock = -((cashFlows.issuanceOfStock || 0) + (cashFlows.repurchaseOfStock || 0))
 
   return {
@@ -614,18 +643,20 @@ function buildCompanyData({ quoteSummary }) {
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
-    earliestEarningsDate,
+    earliestEarningsDate: getEarningsChartCurrentEstimateData().earliestDate /* ?*/ ,
     quarterlyEPSActualEstimateChart: validateEarningsChart(earningsChart, fiscalMRQStr)
-      .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw], [])
+      .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
       .concat(
-        earningsAverage && !dateStrIsBefore(earliestEarningsDate, -10)
-          ? [0, earningsAverage.raw]
+        currentQuarterEstimate && getEarningsChartCurrentEstimateData().earningsChartDateOk
+          ? currentQuarterEstimate.raw
           : []
-      ),
+      ) /* ?*/ ,
     quarterlyRevenueChart: validateEarningsChart(financialsChart, fiscalMRQStr)
       .map(({ revenue }) => revenue.raw)
       .concat(
-        revenueAverage && !dateStrIsBefore(earliestEarningsDate, -10) ? [0, revenueAverage.raw] : []
+        revenueAverage && !dateStrIsBefore(earliestRevenueEstimateDate, -10)
+          ? [0, revenueAverage.raw]
+          : []
       )
   }
 }
