@@ -1,4 +1,4 @@
-import data from "./data/axpData.json"
+import data from "./data/crmData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -46,16 +46,17 @@ function getAnalystRecommendations(recommendationTrend) {
 
 function addDays(incomingDate, daysToAdd) {
   const newDate = new Date(incomingDate)
-  const gotDate = newDate.getDate()
-  return new Date(newDate.setDate(gotDate + daysToAdd))
+  return new Date(newDate.setDate(newDate.getDate() + daysToAdd))
 }
 
-function cleanEarningsTrend(trend) {
+function validateEarningsTrend(trend) {
   if (!trend) {
     return {}
   }
 
-  if (new Date(trend[0].endDate) < addDays(new Date(), -5)) {
+  const endDatePlusDaysToReport = addDays(trend[0].endDate, 55)
+  const now = new Date()
+  if (endDatePlusDaysToReport < now) {
     return {}
   }
 
@@ -151,20 +152,15 @@ function dateStrIsBefore(dateStr, daysToAdd) {
   return Boolean(new Date(dateStr) < addDays(new Date(), daysToAdd))
 }
 
-function quarterStrIsTooOld(qtrString) {
-  return Boolean(qtrString.slice(2) < new Date().getFullYear() - 1)
-}
-
-function cleanEarningsChart(earningsChart) {
-  if (!earningsChart) {
+function cleanEarningsChart(earningsChart, mrq) {
+  if (!earningsChart || !earningsChart.quarterly.some(({date}) => date === mrq)) {
     return {}
   }
 
   const { quarterly, currentQuarterEstimate, earningsDate } = earningsChart
-  const quarterlyOk = quarterly.some(({ date }) => !quarterStrIsTooOld(date))
-
+  
   return {
-    quarterlyEPSActualEstimateChart: quarterlyOk && quarterly,
+    quarterlyEPSActualEstimateChart: quarterly,
     currentQuarterEstimateRaw:
       Boolean(earningsDate[0]) &&
       !dateStrIsBefore(earningsDate[0].fmt, -4) &&
@@ -172,23 +168,18 @@ function cleanEarningsChart(earningsChart) {
   }
 }
 
-function cleanFinancialsChart(financialsChart) {
-  if (!financialsChart) {
+function cleanFinancialsChart(financialsChart, mrq) {
+  if (!financialsChart || !financialsChart.quarterly.some(({date}) => date === mrq)) {
     return []
   }
-
-  const { quarterly } = financialsChart
-  const quarterlyOk = quarterly.some(({ date }) => !quarterStrIsTooOld(date))
-
-  return quarterlyOk ? quarterly.map(({ revenue }) => revenue.raw) : []
+  return financialsChart.quarterly.map(({ revenue }) => revenue.raw)
 }
 
-function getRecentStatement(statements) {
-  const numDaysToLastQuarter = -100
-  return statements.find(({ endDate }) => !dateStrIsBefore(endDate, numDaysToLastQuarter))
+function getRecentStatement(statements, mrqSeconds) {
+  return statements.find(({ endDate }) => endDate && endDate.raw === mrqSeconds)
 }
-function cleanStatement(statementList) {
-  const recentStatement = getRecentStatement(statementList)
+function cleanStatement(statementList, mrqSeconds) {
+  const recentStatement = getRecentStatement(statementList, mrqSeconds)
   return _.mapValues(recentStatement, "raw")
 }
 
@@ -273,6 +264,7 @@ function buildCompanyData({ quoteSummary }) {
       lastDividendDate,
       lastDividendValue,
       lastFiscalYearEnd,
+      nextFiscalYearEnd,
       mostRecentQuarter,
       netIncomeToCommon, // TTM
       pegRatio,
@@ -342,6 +334,16 @@ function buildCompanyData({ quoteSummary }) {
     balanceSheetHistoryQuarterly: { balanceSheetStatements }
   } = quoteSummary.result[0]
 
+  const mrqSeconds = mostRecentQuarter ? mostRecentQuarter.raw : 0
+  const lfyEndSeconds = lastFiscalYearEnd ? lastFiscalYearEnd.raw : 0
+  
+  const lastReportedQuarter = Math.round(
+    (mrqSeconds - lfyEndSeconds) / (secondsInYear / 4)
+  )
+  const fiscalMRQQtr = mrqSeconds && lfyEndSeconds === mrqSeconds ? 4 : lastReportedQuarter
+  const fiscalMRQYear = new Date(mrqSeconds * 1000).getFullYear()
+  const fiscalMRQStr = `${fiscalMRQQtr}Q${fiscalMRQYear}`
+
   // ------------------------------- //
 
   const {
@@ -375,15 +377,15 @@ function buildCompanyData({ quoteSummary }) {
     revenueEstimateNextYearHigh,
     revenueEstimateNextYearGrowth,
     earningsEstimateNextYearGrowth
-  } = cleanEarningsTrend(trend)
+  } = validateEarningsTrend(trend)
 
   const { quarterlyEPSActualEstimateChart, currentQuarterEstimateRaw } = cleanEarningsChart(
-    earningsChart
+    earningsChart, fiscalMRQStr
   )
 
-  const balanceSheet = cleanStatement(balanceSheetStatements)
-  const incomeStatement = cleanStatement(incomeStatementHistory)
-  const cashFlows = cleanStatement(cashflowStatements)
+  const balanceSheet = cleanStatement(balanceSheetStatements, mrqSeconds)
+  const incomeStatement = cleanStatement(incomeStatementHistory, mrqSeconds)
+  const cashFlows = cleanStatement(cashflowStatements, mrqSeconds)
 
   const slicePerShareAnnlz = val => annu(val) / sharesOutstanding.raw
   const slicePerShare = val => val / sharesOutstanding.raw
@@ -516,6 +518,7 @@ function buildCompanyData({ quoteSummary }) {
         // INFO //
 
         lastFiscalYearEnd,
+        nextFiscalYearEnd,
         mostRecentQuarter,
         regularMarketVolume,
 
@@ -625,7 +628,7 @@ function buildCompanyData({ quoteSummary }) {
           .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
           .concat([currentQuarterEstimateRaw])
       : [],
-    quarterlyRevenueChart: cleanFinancialsChart(financialsChart).concat(
+    quarterlyRevenueChart: cleanFinancialsChart(financialsChart, fiscalMRQStr).concat(
       revenueEstimateAvg ? [0, revenueEstimateAvg.raw] : []
     )
   }
