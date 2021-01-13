@@ -1,4 +1,4 @@
-import data from "./data/ntdoyData.json"
+import data from "./data/fuboData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -326,6 +326,8 @@ function buildCompanyData({ quoteSummary }) {
     balanceSheetHistoryQuarterly: { balanceSheetStatements }
   } = quoteSummary.result[0]
 
+  earningsChart /* ?+*/
+
   const mrqSeconds = mostRecentQuarter ? mostRecentQuarter.raw : 0
   const lfyEndSeconds = lastFiscalYearEnd ? lastFiscalYearEnd.raw : 0
 
@@ -376,26 +378,23 @@ function buildCompanyData({ quoteSummary }) {
     earningsDate: earningsChartCurrentEstimateDates
   } = earningsChart || {}
   const getEarningsChartCurrentEstimateData = () => {
-    if (earningsChartCurrentEstimateDates && earningsChartCurrentEstimateDates[0]) {
-      const earliestDate = earningsChartCurrentEstimateDates.map(({ fmt }) => fmt).sort()[0]
-      return {
-        earliestDate,
-        earningsChartDateOk: !dateStrIsBefore(earliestDate, -10)
-      }
-    }
-
     if (currentQuarterEstimateDate && currentQuarterEstimateYear) {
-      const mrqNum = fiscalMRQYear.toString() + fiscalMRQQtr.toString()
+      const mrqNum = `${fiscalMRQYear}${fiscalMRQQtr}`
       const earliestDateNum = currentQuarterEstimateYear + currentQuarterEstimateDate[0]
 
-      const earliestDate = currentQuarterEstimateDate + currentQuarterEstimateYear
       return {
-        earliestDate,
+        earliestDate:
+          earningsChartCurrentEstimateDates && earningsChartCurrentEstimateDates[0]
+            ? earningsChartCurrentEstimateDates.map(({ fmt }) => fmt).sort()[0]
+            : currentQuarterEstimateDate + currentQuarterEstimateYear,
         earningsChartDateOk: earliestDateNum > mrqNum
       }
     }
 
-    return 0
+    return {
+      earliestDate: 0,
+      earningsChartDateOk: false
+    }
   }
 
   const earliestRevenueEstimateDate =
@@ -643,7 +642,7 @@ function buildCompanyData({ quoteSummary }) {
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
-    earliestEarningsDate: getEarningsChartCurrentEstimateData().earliestDate /* ?*/,
+    earliestEarningsDate: getEarningsChartCurrentEstimateData().earliestDate,
     quarterlyEPSActualEstimateChart: validateEarningsChart(earningsChart, fiscalMRQStr)
       .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
       .concat(
