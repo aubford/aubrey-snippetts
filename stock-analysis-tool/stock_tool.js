@@ -1,4 +1,4 @@
-import data from "./data/radData.json"
+import data from "./data/ntdoyData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -383,21 +383,21 @@ function buildCompanyData({ quoteSummary }) {
         earningsChartDateOk: !dateStrIsBefore(earliestDate, -10)
       }
     }
-    
+
     if (currentQuarterEstimateDate && currentQuarterEstimateYear) {
       const mrqNum = fiscalMRQYear.toString() + fiscalMRQQtr.toString()
       const earliestDateNum = currentQuarterEstimateYear + currentQuarterEstimateDate[0]
-      
+
       const earliestDate = currentQuarterEstimateDate + currentQuarterEstimateYear
       return {
         earliestDate,
         earningsChartDateOk: earliestDateNum > mrqNum
       }
     }
-    
+
     return 0
   }
-  
+
   const earliestRevenueEstimateDate =
     earningsDate && earningsDate[0] ? earningsDate.map(({ fmt }) => fmt).sort()[0] : 0
 
@@ -643,14 +643,14 @@ function buildCompanyData({ quoteSummary }) {
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
-    earliestEarningsDate: getEarningsChartCurrentEstimateData().earliestDate /* ?*/ ,
+    earliestEarningsDate: getEarningsChartCurrentEstimateData().earliestDate /* ?*/,
     quarterlyEPSActualEstimateChart: validateEarningsChart(earningsChart, fiscalMRQStr)
       .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
       .concat(
         currentQuarterEstimate && getEarningsChartCurrentEstimateData().earningsChartDateOk
           ? currentQuarterEstimate.raw
           : []
-      ) /* ?*/ ,
+      ),
     quarterlyRevenueChart: validateEarningsChart(financialsChart, fiscalMRQStr)
       .map(({ revenue }) => revenue.raw)
       .concat(
