@@ -292,6 +292,11 @@ alias cron-ls="crontab -l"
 # edit cron jobs file
 alias cron="export VISUAL=NANO; crontab -e"
 
+# check MAC address
+alias checkMacAddy='ifconfig en0 |grep ether'
+alias setMacAddy='sudo ifconfig en0 ether'
+
+
 # ------- Database -------------------------------------------------------------------------------------------------
 # start postgres database
 alias poststart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"

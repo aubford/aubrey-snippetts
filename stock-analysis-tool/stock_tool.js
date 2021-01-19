@@ -1,4 +1,4 @@
-import data from "./data/fuboData.json"
+import data from "./data/biibData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -325,9 +325,7 @@ function buildCompanyData({ quoteSummary }) {
     incomeStatementHistoryQuarterly: { incomeStatementHistory },
     balanceSheetHistoryQuarterly: { balanceSheetStatements }
   } = quoteSummary.result[0]
-
-  earningsChart /* ?+*/
-
+  
   const mrqSeconds = mostRecentQuarter ? mostRecentQuarter.raw : 0
   const lfyEndSeconds = lastFiscalYearEnd ? lastFiscalYearEnd.raw : 0
 
