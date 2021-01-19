@@ -1,4 +1,4 @@
-import data from "./data/blkData.json"
+import data from "./data/citiData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -26,10 +26,10 @@ function getNonIndexOwners(ownershipList) {
   if (!ownershipList) {
     return ""
   }
-  const indexFundTags = ["Index", "500"]
+  const indexFundTags = ["index", "500", "russel","spdr","s&p",]
 
   return ownershipList
-    .filter(owner => indexFundTags.every(name => !owner.organization.includes(name)))
+    .filter(owner => indexFundTags.every(name => !owner.organization.toLowerCase().includes(name)))
     .map(({ organization, pctHeld }) => `${organization}: ${pctHeld.fmt}`)
     .join("\n")
 }
