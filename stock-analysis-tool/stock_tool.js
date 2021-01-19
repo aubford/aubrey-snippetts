@@ -159,8 +159,8 @@ function validateEarningsChart(earningsChart, mrq) {
   return earningsChart.quarterly
 }
 
-function getRecentStatement(statements, mrqSeconds) {
-  return statements.find(({ endDate }) => endDate && endDate.raw === mrqSeconds)
+function getRecentStatement(statements, seconds) {
+  return statements.find(({ endDate }) => endDate && endDate.raw === seconds)
 }
 function cleanStatement(statementList, mrqSeconds) {
   const recentStatement = getRecentStatement(statementList, mrqSeconds)
@@ -452,6 +452,16 @@ function buildCompanyData({ quoteSummary }) {
 
   const cashFlowReStock = -((cashFlows.issuanceOfStock || 0) + (cashFlows.repurchaseOfStock || 0))
 
+  const cashFlowStatementsUpToDate = Boolean(
+    getRecentStatement(cashflowStatements, mrqSeconds) &&
+      getRecentStatement(annualCashFlowStatements, lfyEndSeconds)
+  )
+  const getDividendChart = (statements, mult = 1) =>
+    statements
+      .filter(statement => statement.dividendsPaid)
+      .reverse()
+      .map(({ dividendsPaid }) => -dividendsPaid.raw * mult)
+  
   return {
     ...balanceSheet,
     ...incomeStatement,
@@ -654,6 +664,7 @@ function buildCompanyData({ quoteSummary }) {
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
     earliestEarningsDate: getEarningsChartCurrentEstimateData().earningsDates,
+    dividendChart: cashFlowStatementsUpToDate ? [...getDividendChart(annualCashFlowStatements),0,...getDividendChart(cashflowStatements,4)] : [],
     quarterlyEPSActualEstimateChart: validateEarningsChart(earningsChart, fiscalMRQStr)
       .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
       .concat(

@@ -1,183 +1,267 @@
-/*
-  ALL MODULES:
-  assetProfile
-  balanceSheetHistory
-  balanceSheetHistoryQuarterly
-  calendarEvents
-  cashflowStatementHistory
-  cashflowStatementHistoryQuarterly
-  defaultKeyStatistics
-  earnings
-  earningsHistory
-  earningsTrend
-  esgScores
-  financialData
-  fundOwnership
-  fundPerformance
-  fundProfile
-  incomeStatementHistory
-  incomeStatementHistoryQuarterly
-  indexTrend
-  industryTrend
-  insiderHolders
-  insiderTransactions
-  institutionOwnership
-  majorDirectHolders
-  majorHoldersBreakdown
-  netSharePurchaseActivity
-  price
-  recommendationTrend
-  secFilings
-  sectorTrend
-  summaryDetail
-  summaryProfile
-  topHoldings
-  upgradeDowngradeHistory
-  
-  IN STRING FORM: assetProfile,balanceSheetHistory,balanceSheetHistoryQuarterly,calendarEvents,cashflowStatementHistory,cashflowStatementHistoryQuarterly,defaultKeyStatistics,earnings,earningsHistory,earningsTrend,esgScores,financialData,fundOwnership,fundPerformance,fundProfile,incomeStatementHistory,incomeStatementHistoryQuarterly,indexTrend,industryTrend,insiderHolders,insiderTransactions,institutionOwnership,majorDirectHolders,majorHoldersBreakdown,netSharePurchaseActivity,price,recommendationTrend,secFilings,sectorTrend,summaryDetail,summaryProfile,topHoldings,upgradeDowngradeHistory
+import importedData from "./data/citiTimeSeries.json"
+import _ from "lodash"
 
-
-  MY MODULES:
-  assetProfile,
-  summaryProfile,
-  summaryDetail,
-  esgScores,
-  price,
-  defaultKeyStatistics,
-  financialData,
-  calendarEvents,
-  secFilings,
-  recommendationTrend,
-  upgradeDowngradeHistory,
-  institutionOwnership,
-  fundOwnership,
-  majorDirectHolders,
-  majorHoldersBreakdown,
-  insiderTransactions,
-  insiderHolders,
-  netSharePurchaseActivity,
-  earnings,
-  earningsTrend,
-  industryTrend,
-  indexTrend,
-  sectorTrend,
-  cashflowStatementHistoryQuarterly,
-  incomeStatementHistoryQuarterly,
-  balanceSheetHistoryQuarterly
-  
-*/
-
-
-import stockData from "./data/attData.json"
-import { isNumber } from "underscore"
-
-const billion = 1000000000
-const million = 1000000
-
-function selectValueTypes(multiValues, type) {
-  return Object.keys(multiValues).reduce(
-    (acc, key) => ({
-      ...acc,
-      [key]: multiValues[key] ? multiValues[key][type] : 0
-    }),
-    {}
-  )
+function pbcopy(data) {
+  const proc = require("child_process").spawn("pbcopy")
+  proc.stdin.write(data)
+  proc.stdin.end()
 }
 
-const {
-  balanceSheetHistoryQuarterly: { balanceSheetStatements },
-  financialData: { totalDebt }
-} = stockData.quoteSummary.result[0]
-const balanceSheet = selectValueTypes(balanceSheetStatements[0], "raw") /* ?+*/
-const bsValues = Object.values(balanceSheet)
-const {
-  maxAge,
-  endDate,
-  shortTermInvestments,
-  netReceivables,
-  inventory,
-  otherCurrentAssets,
-  totalCurrentAssets,
-  propertyPlantEquipment,
-  goodWill,
-  intangibleAssets,
-  otherAssets,
-  totalAssets,
-  commonStock,
-  retainedEarnings,
-  treasuryStock,
-  capitalSurplus,
-  otherStockholderEquity,
-  totalStockholderEquity,
-  netTangibleAssets,
+const getKeys = () => data.map(({ meta }) => meta.type[0]).sort()
 
-  cash,
-  // liabilities //
-  longTermInvestments,
-  deferredLongTermAssetCharges,
+const types = [
+  "quarterlyAdjustedGeographySegmentData",
+  "quarterlyAmortizationCashFlow",
+  "quarterlyAmortizationOfIntangibles",
+  "quarterlyAmortizationOfSecurities",
+  "quarterlyAssetImpairmentCharge",
+  "quarterlyBeginningCashPosition",
+  "quarterlyCapitalExpenditure",
+  "quarterlyCapitalExpenditureReported",
+  "quarterlyCashDividendsPaid",
+  "quarterlyCashFlowFromContinuingFinancingActivities",
+  "quarterlyCashFlowFromContinuingInvestingActivities",
+  "quarterlyCashFlowFromContinuingOperatingActivities",
+  "quarterlyCashFlowFromDiscontinuedOperation",
+  "quarterlyCashFlowsfromusedinOperatingActivitiesDirect",
+  "quarterlyCashFromDiscontinuedFinancingActivities",
+  "quarterlyCashFromDiscontinuedInvestingActivities",
+  "quarterlyCashFromDiscontinuedOperatingActivities",
+  "quarterlyChangeInAccountPayable",
+  "quarterlyChangeInAccruedExpense",
+  "quarterlyChangeInDividendPayable",
+  "quarterlyChangeInIncomeTaxPayable",
+  "quarterlyChangeInInterestPayable",
+  "quarterlyChangeInInventory",
+  "quarterlyChangeInOtherCurrentAssets",
+  "quarterlyChangeInOtherCurrentLiabilities",
+  "quarterlyChangeInOtherWorkingCapital",
+  "quarterlyChangeInPayable",
+  "quarterlyChangeInPayablesAndAccruedExpense",
+  "quarterlyChangeInPrepaidAssets",
+  "quarterlyChangeInReceivables",
+  "quarterlyChangeInTaxPayable",
+  "quarterlyChangeInWorkingCapital",
+  "quarterlyChangesInAccountReceivables",
+  "quarterlyChangesInCash",
+  "quarterlyClassesofCashPayments",
+  "quarterlyClassesofCashReceiptsfromOperatingActivities",
+  "quarterlyCommonStockDividendPaid",
+  "quarterlyCommonStockIssuance",
+  "quarterlyCommonStockPayments",
+  "quarterlyDeferredIncomeTax",
+  "quarterlyDeferredTax",
+  "quarterlyDepletion",
+  "quarterlyDepreciation",
+  "quarterlyDepreciationAmortizationDepletion",
+  "quarterlyDepreciationAndAmortization",
+  "quarterlyDividendPaidCFO",
+  "quarterlyDividendReceivedCFO",
+  "quarterlyDividendsPaidDirect",
+  "quarterlyDividendsReceivedCFI",
+  "quarterlyDividendsReceivedDirect",
+  "quarterlyDomesticSales",
+  "quarterlyEarningsLossesFromEquityInvestments",
+  "quarterlyEffectOfExchangeRateChanges",
+  "quarterlyEndCashPosition",
+  "quarterlyExcessTaxBenefitFromStockBasedCompensation",
+  "quarterlyFinancingCashFlow",
+  "quarterlyForeignSales",
+  "quarterlyFreeCashFlow",
+  "quarterlyGainLossOnInvestmentSecurities",
+  "quarterlyGainLossOnSaleOfBusiness",
+  "quarterlyGainLossOnSaleOfPPE",
+  "quarterlyIncomeTaxPaidSupplementalData",
+  "quarterlyInterestPaidCFF",
+  "quarterlyInterestPaidCFO",
+  "quarterlyInterestPaidDirect",
+  "quarterlyInterestPaidSupplementalData",
+  "quarterlyInterestReceivedCFI",
+  "quarterlyInterestReceivedCFO",
+  "quarterlyInterestReceivedDirect",
+  "quarterlyInvestingCashFlow",
+  "quarterlyIssuanceOfCapitalStock",
+  "quarterlyIssuanceOfDebt",
+  "quarterlyLongTermDebtIssuance",
+  "quarterlyLongTermDebtPayments",
+  "quarterlyNetBusinessPurchaseAndSale",
+  "quarterlyNetCommonStockIssuance",
+  "quarterlyNetForeignCurrencyExchangeGainLoss",
+  "quarterlyNetIncomeFromContinuingOperations",
+  "quarterlyNetIntangiblesPurchaseAndSale",
+  "quarterlyNetInvestmentPropertiesPurchaseAndSale",
+  "quarterlyNetInvestmentPurchaseAndSale",
+  "quarterlyNetIssuancePaymentsOfDebt",
+  "quarterlyNetLongTermDebtIssuance",
+  "quarterlyNetOtherFinancingCharges",
+  "quarterlyNetOtherInvestingChanges",
+  "quarterlyNetPPEPurchaseAndSale",
+  "quarterlyNetPreferredStockIssuance",
+  "quarterlyNetShortTermDebtIssuance",
+  "quarterlyOperatingCashFlow",
+  "quarterlyOperatingGainsLosses",
+  "quarterlyOtherCashAdjustmentInsideChangeinCash",
+  "quarterlyOtherCashAdjustmentOutsideChangeinCash",
+  "quarterlyOtherCashPaymentsfromOperatingActivities",
+  "quarterlyOtherCashReceiptsfromOperatingActivities",
+  "quarterlyOtherNonCashItems",
+  "quarterlyPaymentsonBehalfofEmployees",
+  "quarterlyPaymentstoSuppliersforGoodsandServices",
+  "quarterlyPensionAndEmployeeBenefitExpense",
+  "quarterlyPreferredStockDividendPaid",
+  "quarterlyPreferredStockIssuance",
+  "quarterlyPreferredStockPayments",
+  "quarterlyProceedsFromStockOptionExercised",
+  "quarterlyProvisionandWriteOffofAssets",
+  "quarterlyPurchaseOfBusiness",
+  "quarterlyPurchaseOfIntangibles",
+  "quarterlyPurchaseOfInvestment",
+  "quarterlyPurchaseOfInvestmentProperties",
+  "quarterlyPurchaseOfPPE",
+  "quarterlyReceiptsfromCustomers",
+  "quarterlyReceiptsfromGovernmentGrants",
+  "quarterlyRepaymentOfDebt",
+  "quarterlyRepurchaseOfCapitalStock",
+  "quarterlySaleOfBusiness",
+  "quarterlySaleOfIntangibles",
+  "quarterlySaleOfInvestment",
+  "quarterlySaleOfInvestmentProperties",
+  "quarterlySaleOfPPE",
+  "quarterlyShortTermDebtIssuance",
+  "quarterlyShortTermDebtPayments",
+  "quarterlyStockBasedCompensation",
+  "quarterlyTaxesRefundPaid",
+  "quarterlyTaxesRefundPaidDirect",
+  "quarterlyUnrealizedGainLossOnInvestmentSecurities",
+  "trailingAdjustedGeographySegmentData",
+  "trailingAmortizationCashFlow",
+  "trailingAmortizationOfIntangibles",
+  "trailingAmortizationOfSecurities",
+  "trailingAssetImpairmentCharge",
+  "trailingBeginningCashPosition",
+  "trailingCapitalExpenditure",
+  "trailingCapitalExpenditureReported",
+  "trailingCashDividendsPaid",
+  "trailingCashFlowFromContinuingFinancingActivities",
+  "trailingCashFlowFromContinuingInvestingActivities",
+  "trailingCashFlowFromContinuingOperatingActivities",
+  "trailingCashFlowFromDiscontinuedOperation",
+  "trailingCashFlowsfromusedinOperatingActivitiesDirect",
+  "trailingCashFromDiscontinuedFinancingActivities",
+  "trailingCashFromDiscontinuedInvestingActivities",
+  "trailingCashFromDiscontinuedOperatingActivities",
+  "trailingChangeInAccountPayable",
+  "trailingChangeInAccruedExpense",
+  "trailingChangeInDividendPayable",
+  "trailingChangeInIncomeTaxPayable",
+  "trailingChangeInInterestPayable",
+  "trailingChangeInInventory",
+  "trailingChangeInOtherCurrentAssets",
+  "trailingChangeInOtherCurrentLiabilities",
+  "trailingChangeInOtherWorkingCapital",
+  "trailingChangeInPayable",
+  "trailingChangeInPayablesAndAccruedExpense",
+  "trailingChangeInPrepaidAssets",
+  "trailingChangeInReceivables",
+  "trailingChangeInTaxPayable",
+  "trailingChangeInWorkingCapital",
+  "trailingChangesInAccountReceivables",
+  "trailingChangesInCash",
+  "trailingClassesofCashPayments",
+  "trailingClassesofCashReceiptsfromOperatingActivities",
+  "trailingCommonStockDividendPaid",
+  "trailingCommonStockIssuance",
+  "trailingCommonStockPayments",
+  "trailingDeferredIncomeTax",
+  "trailingDeferredTax",
+  "trailingDepletion",
+  "trailingDepreciation",
+  "trailingDepreciationAmortizationDepletion",
+  "trailingDepreciationAndAmortization",
+  "trailingDividendPaidCFO",
+  "trailingDividendReceivedCFO",
+  "trailingDividendsPaidDirect",
+  "trailingDividendsReceivedCFI",
+  "trailingDividendsReceivedDirect",
+  "trailingDomesticSales",
+  "trailingEarningsLossesFromEquityInvestments",
+  "trailingEffectOfExchangeRateChanges",
+  "trailingEndCashPosition",
+  "trailingExcessTaxBenefitFromStockBasedCompensation",
+  "trailingFinancingCashFlow",
+  "trailingForeignSales",
+  "trailingFreeCashFlow",
+  "trailingGainLossOnInvestmentSecurities",
+  "trailingGainLossOnSaleOfBusiness",
+  "trailingGainLossOnSaleOfPPE",
+  "trailingIncomeTaxPaidSupplementalData",
+  "trailingInterestPaidCFF",
+  "trailingInterestPaidCFO",
+  "trailingInterestPaidDirect",
+  "trailingInterestPaidSupplementalData",
+  "trailingInterestReceivedCFI",
+  "trailingInterestReceivedCFO",
+  "trailingInterestReceivedDirect",
+  "trailingInvestingCashFlow",
+  "trailingIssuanceOfCapitalStock",
+  "trailingIssuanceOfDebt",
+  "trailingLongTermDebtIssuance",
+  "trailingLongTermDebtPayments",
+  "trailingNetBusinessPurchaseAndSale",
+  "trailingNetCommonStockIssuance",
+  "trailingNetForeignCurrencyExchangeGainLoss",
+  "trailingNetIncomeFromContinuingOperations",
+  "trailingNetIntangiblesPurchaseAndSale",
+  "trailingNetInvestmentPropertiesPurchaseAndSale",
+  "trailingNetInvestmentPurchaseAndSale",
+  "trailingNetIssuancePaymentsOfDebt",
+  "trailingNetLongTermDebtIssuance",
+  "trailingNetOtherFinancingCharges",
+  "trailingNetOtherInvestingChanges",
+  "trailingNetPPEPurchaseAndSale",
+  "trailingNetPreferredStockIssuance",
+  "trailingNetShortTermDebtIssuance",
+  "trailingOperatingCashFlow",
+  "trailingOperatingGainsLosses",
+  "trailingOtherCashAdjustmentInsideChangeinCash",
+  "trailingOtherCashAdjustmentOutsideChangeinCash",
+  "trailingOtherCashPaymentsfromOperatingActivities",
+  "trailingOtherCashReceiptsfromOperatingActivities",
+  "trailingOtherNonCashItems",
+  "trailingPaymentsonBehalfofEmployees",
+  "trailingPaymentstoSuppliersforGoodsandServices",
+  "trailingPensionAndEmployeeBenefitExpense",
+  "trailingPreferredStockDividendPaid",
+  "trailingPreferredStockIssuance",
+  "trailingPreferredStockPayments",
+  "trailingProceedsFromStockOptionExercised",
+  "trailingProvisionandWriteOffofAssets",
+  "trailingPurchaseOfBusiness",
+  "trailingPurchaseOfIntangibles",
+  "trailingPurchaseOfInvestment",
+  "trailingPurchaseOfInvestmentProperties",
+  "trailingPurchaseOfPPE",
+  "trailingReceiptsfromCustomers",
+  "trailingReceiptsfromGovernmentGrants",
+  "trailingRepaymentOfDebt",
+  "trailingRepurchaseOfCapitalStock",
+  "trailingSaleOfBusiness",
+  "trailingSaleOfIntangibles",
+  "trailingSaleOfInvestment",
+  "trailingSaleOfInvestmentProperties",
+  "trailingSaleOfPPE",
+  "trailingShortTermDebtIssuance",
+  "trailingShortTermDebtPayments",
+  "trailingStockBasedCompensation",
+  "trailingTaxesRefundPaid",
+  "trailingTaxesRefundPaidDirect",
+  "trailingUnrealizedGainLossOnInvestmentSecurities"
+]
+const data = importedData.timeseries.result
 
-  accountsPayable,
-  otherCurrentLiab,
-  totalCurrentLiabilities,
+const selectAKey = "quarterlyChangeInDividendPayable"
 
-  deferredLongTermLiab,
-  shortLongTermDebt,
-  longTermDebt,
+const end = data.find(({ meta }) => meta.type[0] === selectAKey)
 
-  minorityInterest,
-  otherLiab,
-  totalLiab
-} = balanceSheet
-
-
-const currentDebt = totalCurrentLiabilities - accountsPayable - otherCurrentLiab
-
-
-totalDebt.raw; /* ? $/billion */
-totalDebt.raw - cash/* ? $/billion*/
-longTermDebt + shortLongTermDebt + currentDebt; /* ? $/billion */
-currentDebt; /* ? $/billion */
-
-cash /* ? $/billion*/
-deferredLongTermAssetCharges /* ? $/billion*/
-longTermInvestments /* ? $/billion*/
-
-accountsPayable /* ? $/billion*/
-otherCurrentLiab /* ? $/billion*/
-totalCurrentLiabilities /* ? $/billion*/
-
-shortLongTermDebt /* ? $/billion*/
-deferredLongTermLiab /* ? $/billion*/
-longTermDebt /* ? $/billion*/
-
-minorityInterest /* ? $/billion*/
-otherLiab /* ? $/billion*/
-totalLiab /* ? $/billion*/
-
-
-
-const targetValue = 310.693 * billion
-const range = 0.1 * billion
-
-const testTarget = (num, history) => {
-  const diff = num - targetValue
-  if (Math.abs(diff) < range) {
-    console.log("*******************HIT*********************", history)
-    return true
-  }
-  return false
-}
-
-const findCombination = (num, history) => {
-  if (!isNumber(num) || testTarget(num, history) || history.length > 2) {
-    return
-  }
-  bsValues.forEach(val => {
-    findCombination(num + val, history.concat(val))
-    findCombination(num - val, history.concat(val))
-  })
-}
-
-bsValues.forEach(val => findCombination(val, [val]))
-
-otherCurrentLiab + netReceivables + retainedEarnings /* ? $/billion*/
+end; /* ?+*/
+end[selectAKey].map(({reportedValue}) => reportedValue.fmt); /* ?*/
