@@ -26,7 +26,7 @@ function getNonIndexOwners(ownershipList) {
   if (!ownershipList) {
     return ""
   }
-  const indexFundTags = ["index", "500", "russel","spdr","s&p",]
+  const indexFundTags = ["index", "500", "russel", "spdr", "s&p"]
 
   return ownershipList
     .filter(owner => indexFundTags.every(name => !owner.organization.toLowerCase().includes(name)))
@@ -329,6 +329,7 @@ function buildCompanyData({ quoteSummary }) {
     } = {},
     upgradeDowngradeHistory: { history: upgradeDowngradeHistory } = {},
     price: { regularMarketPrice },
+    cashflowStatementHistory: { cashflowStatements: annualCashFlowStatements } = {},
     cashflowStatementHistoryQuarterly: { cashflowStatements },
     incomeStatementHistoryQuarterly: { incomeStatementHistory },
     balanceSheetHistoryQuarterly: { balanceSheetStatements }
@@ -389,7 +390,7 @@ function buildCompanyData({ quoteSummary }) {
       const earliestDateNum = currentQuarterEstimateYear + currentQuarterEstimateDate[0]
 
       return {
-        earliestDate:
+        earningsDates:
           earningsChartCurrentEstimateDates && earningsChartCurrentEstimateDates[0]
             ? earningsChartCurrentEstimateDates.map(({ fmt }) => fmt).sort()[0]
             : currentQuarterEstimateDate + currentQuarterEstimateYear,
@@ -398,7 +399,7 @@ function buildCompanyData({ quoteSummary }) {
     }
 
     return {
-      earliestDate: 0,
+      earningsDates: 0,
       earningsChartDateOk: false
     }
   }
@@ -652,7 +653,7 @@ function buildCompanyData({ quoteSummary }) {
     anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
-    earliestEarningsDate: getEarningsChartCurrentEstimateData().earliestDate,
+    earliestEarningsDate: getEarningsChartCurrentEstimateData().earningsDates,
     quarterlyEPSActualEstimateChart: validateEarningsChart(earningsChart, fiscalMRQStr)
       .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
       .concat(

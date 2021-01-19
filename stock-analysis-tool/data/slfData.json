@@ -19,7 +19,7 @@
                         {
                             "maxAge": 1,
                             "name": "Mr. Dean Arthur Connor",
-                            "age": 62,
+                            "age": 63,
                             "title": "Pres, CEO & Director",
                             "yearBorn": 1957,
                             "exercisedValue": {
@@ -36,7 +36,7 @@
                         {
                             "maxAge": 1,
                             "name": "Mr. Kevin David Strain C.A., CPA",
-                            "age": 53,
+                            "age": 54,
                             "title": "Exec. VP & CFO",
                             "yearBorn": 1966,
                             "exercisedValue": {
@@ -53,7 +53,7 @@
                         {
                             "maxAge": 1,
                             "name": "Mr. Stephen Clarkson Peacher CFA",
-                            "age": 55,
+                            "age": 56,
                             "title": "Pres of SLC Management",
                             "yearBorn": 1964,
                             "exercisedValue": {
@@ -178,7 +178,7 @@
                     "compensationRisk": 3,
                     "shareHolderRightsRisk": 3,
                     "overallRisk": 1,
-                    "governanceEpochDate": 1572652800,
+                    "governanceEpochDate": 1606780800,
                     "maxAge": 86400
                 },
                 "recommendationTrend": {
@@ -218,51 +218,444 @@
                     ],
                     "maxAge": 86400
                 },
+                "cashflowStatementHistory": {
+                    "cashflowStatements": [
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1577750400,
+                                "fmt": "2019-12-31"
+                            },
+                            "netIncome": {
+                                "raw": 2713000000,
+                                "fmt": "2.71B",
+                                "longFmt": "2,713,000,000"
+                            },
+                            "depreciation": {
+                                "raw": 305000000,
+                                "fmt": "305M",
+                                "longFmt": "305,000,000"
+                            },
+                            "changeToNetincome": {
+                                "raw": -11948000000,
+                                "fmt": "-11.95B",
+                                "longFmt": "-11,948,000,000"
+                            },
+                            "changeToLiabilities": {
+                                "raw": 0,
+                                "fmt": null,
+                                "longFmt": "0"
+                            },
+                            "changeToOperatingActivities": {
+                                "raw": 11404000000,
+                                "fmt": "11.4B",
+                                "longFmt": "11,404,000,000"
+                            },
+                            "totalCashFromOperatingActivities": {
+                                "raw": 2547000000,
+                                "fmt": "2.55B",
+                                "longFmt": "2,547,000,000"
+                            },
+                            "capitalExpenditures": {
+                                "raw": -114000000,
+                                "fmt": "-114M",
+                                "longFmt": "-114,000,000"
+                            },
+                            "investments": {
+                                "raw": 19000000,
+                                "fmt": "19M",
+                                "longFmt": "19,000,000"
+                            },
+                            "otherCashflowsFromInvestingActivities": {
+                                "raw": -168000000,
+                                "fmt": "-168M",
+                                "longFmt": "-168,000,000"
+                            },
+                            "totalCashflowsFromInvestingActivities": {
+                                "raw": -430000000,
+                                "fmt": "-430M",
+                                "longFmt": "-430,000,000"
+                            },
+                            "dividendsPaid": {
+                                "raw": -1318000000,
+                                "fmt": "-1.32B",
+                                "longFmt": "-1,318,000,000"
+                            },
+                            "netBorrowings": {
+                                "raw": -296000000,
+                                "fmt": "-296M",
+                                "longFmt": "-296,000,000"
+                            },
+                            "otherCashflowsFromFinancingActivities": {
+                                "raw": -253000000,
+                                "fmt": "-253M",
+                                "longFmt": "-253,000,000"
+                            },
+                            "totalCashFromFinancingActivities": {
+                                "raw": -2436000000,
+                                "fmt": "-2.44B",
+                                "longFmt": "-2,436,000,000"
+                            },
+                            "effectOfExchangeRate": {
+                                "raw": -190000000,
+                                "fmt": "-190M",
+                                "longFmt": "-190,000,000"
+                            },
+                            "changeInCash": {
+                                "raw": -509000000,
+                                "fmt": "-509M",
+                                "longFmt": "-509,000,000"
+                            },
+                            "repurchaseOfStock": {
+                                "raw": -592000000,
+                                "fmt": "-592M",
+                                "longFmt": "-592,000,000"
+                            },
+                            "issuanceOfStock": {
+                                "raw": 23000000,
+                                "fmt": "23M",
+                                "longFmt": "23,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1546214400,
+                                "fmt": "2018-12-31"
+                            },
+                            "netIncome": {
+                                "raw": 2616000000,
+                                "fmt": "2.62B",
+                                "longFmt": "2,616,000,000"
+                            },
+                            "depreciation": {
+                                "raw": 160000000,
+                                "fmt": "160M",
+                                "longFmt": "160,000,000"
+                            },
+                            "changeToNetincome": {
+                                "raw": 614000000,
+                                "fmt": "614M",
+                                "longFmt": "614,000,000"
+                            },
+                            "changeToLiabilities": {
+                                "raw": 0,
+                                "fmt": null,
+                                "longFmt": "0"
+                            },
+                            "changeToOperatingActivities": {
+                                "raw": 378000000,
+                                "fmt": "378M",
+                                "longFmt": "378,000,000"
+                            },
+                            "totalCashFromOperatingActivities": {
+                                "raw": 3834000000,
+                                "fmt": "3.83B",
+                                "longFmt": "3,834,000,000"
+                            },
+                            "capitalExpenditures": {
+                                "raw": -85000000,
+                                "fmt": "-85M",
+                                "longFmt": "-85,000,000"
+                            },
+                            "investments": {
+                                "raw": -64000000,
+                                "fmt": "-64M",
+                                "longFmt": "-64,000,000"
+                            },
+                            "otherCashflowsFromInvestingActivities": {
+                                "raw": -131000000,
+                                "fmt": "-131M",
+                                "longFmt": "-131,000,000"
+                            },
+                            "totalCashflowsFromInvestingActivities": {
+                                "raw": -280000000,
+                                "fmt": "-280M",
+                                "longFmt": "-280,000,000"
+                            },
+                            "dividendsPaid": {
+                                "raw": -1227000000,
+                                "fmt": "-1.23B",
+                                "longFmt": "-1,227,000,000"
+                            },
+                            "netBorrowings": {
+                                "raw": -440000000,
+                                "fmt": "-440M",
+                                "longFmt": "-440,000,000"
+                            },
+                            "otherCashflowsFromFinancingActivities": {
+                                "raw": -271000000,
+                                "fmt": "-271M",
+                                "longFmt": "-271,000,000"
+                            },
+                            "totalCashFromFinancingActivities": {
+                                "raw": -2566000000,
+                                "fmt": "-2.57B",
+                                "longFmt": "-2,566,000,000"
+                            },
+                            "effectOfExchangeRate": {
+                                "raw": 250000000,
+                                "fmt": "250M",
+                                "longFmt": "250,000,000"
+                            },
+                            "changeInCash": {
+                                "raw": 1238000000,
+                                "fmt": "1.24B",
+                                "longFmt": "1,238,000,000"
+                            },
+                            "repurchaseOfStock": {
+                                "raw": -641000000,
+                                "fmt": "-641M",
+                                "longFmt": "-641,000,000"
+                            },
+                            "issuanceOfStock": {
+                                "raw": 13000000,
+                                "fmt": "13M",
+                                "longFmt": "13,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1514678400,
+                                "fmt": "2017-12-31"
+                            },
+                            "netIncome": {
+                                "raw": 2242000000,
+                                "fmt": "2.24B",
+                                "longFmt": "2,242,000,000"
+                            },
+                            "depreciation": {
+                                "raw": 150000000,
+                                "fmt": "150M",
+                                "longFmt": "150,000,000"
+                            },
+                            "changeToNetincome": {
+                                "raw": -6656000000,
+                                "fmt": "-6.66B",
+                                "longFmt": "-6,656,000,000"
+                            },
+                            "changeToLiabilities": {
+                                "raw": 0,
+                                "fmt": null,
+                                "longFmt": "0"
+                            },
+                            "changeToOperatingActivities": {
+                                "raw": 6189000000,
+                                "fmt": "6.19B",
+                                "longFmt": "6,189,000,000"
+                            },
+                            "totalCashFromOperatingActivities": {
+                                "raw": 1984000000,
+                                "fmt": "1.98B",
+                                "longFmt": "1,984,000,000"
+                            },
+                            "capitalExpenditures": {
+                                "raw": -182000000,
+                                "fmt": "-182M",
+                                "longFmt": "-182,000,000"
+                            },
+                            "investments": {
+                                "raw": -121000000,
+                                "fmt": "-121M",
+                                "longFmt": "-121,000,000"
+                            },
+                            "otherCashflowsFromInvestingActivities": {
+                                "raw": 25000000,
+                                "fmt": "25M",
+                                "longFmt": "25,000,000"
+                            },
+                            "totalCashflowsFromInvestingActivities": {
+                                "raw": -339000000,
+                                "fmt": "-339M",
+                                "longFmt": "-339,000,000"
+                            },
+                            "dividendsPaid": {
+                                "raw": -1155000000,
+                                "fmt": "-1.16B",
+                                "longFmt": "-1,155,000,000"
+                            },
+                            "netBorrowings": {
+                                "raw": -447000000,
+                                "fmt": "-447M",
+                                "longFmt": "-447,000,000"
+                            },
+                            "otherCashflowsFromFinancingActivities": {
+                                "raw": -257000000,
+                                "fmt": "-257M",
+                                "longFmt": "-257,000,000"
+                            },
+                            "totalCashFromFinancingActivities": {
+                                "raw": -2019000000,
+                                "fmt": "-2.02B",
+                                "longFmt": "-2,019,000,000"
+                            },
+                            "effectOfExchangeRate": {
+                                "raw": -179000000,
+                                "fmt": "-179M",
+                                "longFmt": "-179,000,000"
+                            },
+                            "changeInCash": {
+                                "raw": -553000000,
+                                "fmt": "-553M",
+                                "longFmt": "-553,000,000"
+                            },
+                            "repurchaseOfStock": {
+                                "raw": -175000000,
+                                "fmt": "-175M",
+                                "longFmt": "-175,000,000"
+                            },
+                            "issuanceOfStock": {
+                                "raw": 15000000,
+                                "fmt": "15M",
+                                "longFmt": "15,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1483142400,
+                                "fmt": "2016-12-31"
+                            },
+                            "netIncome": {
+                                "raw": 2581000000,
+                                "fmt": "2.58B",
+                                "longFmt": "2,581,000,000"
+                            },
+                            "depreciation": {
+                                "raw": 140000000,
+                                "fmt": "140M",
+                                "longFmt": "140,000,000"
+                            },
+                            "changeToNetincome": {
+                                "raw": -4627000000,
+                                "fmt": "-4.63B",
+                                "longFmt": "-4,627,000,000"
+                            },
+                            "changeToLiabilities": {
+                                "raw": 0,
+                                "fmt": null,
+                                "longFmt": "0"
+                            },
+                            "changeToOperatingActivities": {
+                                "raw": 5511000000,
+                                "fmt": "5.51B",
+                                "longFmt": "5,511,000,000"
+                            },
+                            "totalCashFromOperatingActivities": {
+                                "raw": 3668000000,
+                                "fmt": "3.67B",
+                                "longFmt": "3,668,000,000"
+                            },
+                            "capitalExpenditures": {
+                                "raw": -131000000,
+                                "fmt": "-131M",
+                                "longFmt": "-131,000,000"
+                            },
+                            "investments": {
+                                "raw": -366000000,
+                                "fmt": "-366M",
+                                "longFmt": "-366,000,000"
+                            },
+                            "otherCashflowsFromInvestingActivities": {
+                                "raw": -80000000,
+                                "fmt": "-80M",
+                                "longFmt": "-80,000,000"
+                            },
+                            "totalCashflowsFromInvestingActivities": {
+                                "raw": -1893000000,
+                                "fmt": "-1.89B",
+                                "longFmt": "-1,893,000,000"
+                            },
+                            "dividendsPaid": {
+                                "raw": -1074000000,
+                                "fmt": "-1.07B",
+                                "longFmt": "-1,074,000,000"
+                            },
+                            "netBorrowings": {
+                                "raw": -217000000,
+                                "fmt": "-217M",
+                                "longFmt": "-217,000,000"
+                            },
+                            "otherCashflowsFromFinancingActivities": {
+                                "raw": -291000000,
+                                "fmt": "-291M",
+                                "longFmt": "-291,000,000"
+                            },
+                            "totalCashFromFinancingActivities": {
+                                "raw": -1543000000,
+                                "fmt": "-1.54B",
+                                "longFmt": "-1,543,000,000"
+                            },
+                            "effectOfExchangeRate": {
+                                "raw": -235000000,
+                                "fmt": "-235M",
+                                "longFmt": "-235,000,000"
+                            },
+                            "changeInCash": {
+                                "raw": -3000000,
+                                "fmt": "-3M",
+                                "longFmt": "-3,000,000"
+                            },
+                            "repurchaseOfStock": {
+                                "raw": -175000000,
+                                "fmt": "-175M",
+                                "longFmt": "-175,000,000"
+                            },
+                            "issuanceOfStock": {
+                                "raw": 39000000,
+                                "fmt": "39M",
+                                "longFmt": "39,000,000"
+                            }
+                        }
+                    ],
+                    "maxAge": 86400
+                },
                 "indexTrend": {
                     "maxAge": 1,
                     "symbol": "SP5",
                     "peRatio": {
-                        "raw": 10.6271,
-                        "fmt": "10.63"
+                        "raw": 10.215,
+                        "fmt": "10.22"
                     },
                     "pegRatio": {
-                        "raw": 3.68385,
-                        "fmt": "3.68"
+                        "raw": 4.98551,
+                        "fmt": "4.99"
                     },
                     "estimates": [
                         {
                             "period": "0q",
                             "growth": {
-                                "raw": -0.016,
-                                "fmt": "-0.02"
+                                "raw": 0.02,
+                                "fmt": "0.02"
                             }
                         },
                         {
                             "period": "+1q",
                             "growth": {
-                                "raw": 0.598,
-                                "fmt": "0.60"
+                                "raw": 0.655,
+                                "fmt": "0.65"
                             }
                         },
                         {
                             "period": "0y",
                             "growth": {
-                                "raw": -0.092,
-                                "fmt": "-0.09"
+                                "raw": -0.061,
+                                "fmt": "-0.06"
                             }
                         },
                         {
                             "period": "+1y",
                             "growth": {
-                                "raw": 0.22,
-                                "fmt": "0.22"
+                                "raw": 0.22600001,
+                                "fmt": "0.23"
                             }
                         },
                         {
                             "period": "+5y",
                             "growth": {
-                                "raw": 0.0623739,
-                                "fmt": "0.06"
+                                "raw": 0.0679804,
+                                "fmt": "0.07"
                             }
                         },
                         {
@@ -279,65 +672,65 @@
                         "longFmt": "2"
                     },
                     "enterpriseValue": {
-                        "raw": 26278180864,
-                        "fmt": "26.28B",
-                        "longFmt": "26,278,180,864"
+                        "raw": 27330945024,
+                        "fmt": "27.33B",
+                        "longFmt": "27,330,945,024"
                     },
                     "forwardPE": {
-                        "raw": 11.263291,
-                        "fmt": "11.26"
+                        "raw": 12.232911,
+                        "fmt": "12.23"
                     },
                     "profitMargins": {
                         "raw": 0.0615,
                         "fmt": "6.15%"
                     },
                     "floatShares": {
-                        "raw": 584664656,
+                        "raw": 584658807,
                         "fmt": "584.66M",
-                        "longFmt": "584,664,656"
+                        "longFmt": "584,658,807"
                     },
                     "sharesOutstanding": {
-                        "raw": 585030976,
-                        "fmt": "585.03M",
-                        "longFmt": "585,030,976"
+                        "raw": 585068032,
+                        "fmt": "585.07M",
+                        "longFmt": "585,068,032"
                     },
                     "sharesShort": {
+                        "raw": 617621,
+                        "fmt": "617.62k",
+                        "longFmt": "617,621"
+                    },
+                    "sharesShortPriorMonth": {
                         "raw": 676168,
                         "fmt": "676.17k",
                         "longFmt": "676,168"
                     },
-                    "sharesShortPriorMonth": {
-                        "raw": 1810142,
-                        "fmt": "1.81M",
-                        "longFmt": "1,810,142"
-                    },
                     "sharesShortPreviousMonthDate": {
-                        "raw": 1604016000,
-                        "fmt": "2020-10-30"
-                    },
-                    "dateShortInterest": {
                         "raw": 1606694400,
                         "fmt": "2020-11-30"
                     },
+                    "dateShortInterest": {
+                        "raw": 1609372800,
+                        "fmt": "2020-12-31"
+                    },
                     "sharesPercentSharesOut": {
-                        "raw": 0.0011999999,
-                        "fmt": "0.12%"
+                        "raw": 0.0011,
+                        "fmt": "0.11%"
                     },
                     "heldPercentInsiders": {
                         "raw": 4.1E-4,
                         "fmt": "0.04%"
                     },
                     "heldPercentInstitutions": {
-                        "raw": 0.54423,
-                        "fmt": "54.42%"
+                        "raw": 0.54390997,
+                        "fmt": "54.39%"
                     },
                     "shortRatio": {
-                        "raw": 0.83,
-                        "fmt": "0.83"
+                        "raw": 1.51,
+                        "fmt": "1.51"
                     },
                     "shortPercentOfFloat": {},
                     "beta": {
-                        "raw": 1.018193,
+                        "raw": 1.020462,
                         "fmt": "1.02"
                     },
                     "impliedSharesOutstanding": {},
@@ -349,8 +742,8 @@
                         "fmt": "26.64"
                     },
                     "priceToBook": {
-                        "raw": 1.6701078,
-                        "fmt": "1.67"
+                        "raw": 1.8138819,
+                        "fmt": "1.81"
                     },
                     "annualReportExpenseRatio": {},
                     "ytdReturn": {},
@@ -398,12 +791,12 @@
                     "enterpriseToRevenue": {},
                     "enterpriseToEbitda": {},
                     "52WeekChange": {
-                        "raw": -0.0057534575,
-                        "fmt": "-0.58%"
+                        "raw": -0.032505155,
+                        "fmt": "-3.25%"
                     },
                     "SandP52WeekChange": {
-                        "raw": 0.15467787,
-                        "fmt": "15.47%"
+                        "raw": 0.134745,
+                        "fmt": "13.47%"
                     },
                     "lastDividendValue": {
                         "raw": 0.42,
@@ -423,36 +816,413 @@
                     "pegRatio": {},
                     "estimates": []
                 },
+                "incomeStatementHistory": {
+                    "incomeStatementHistory": [
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1577750400,
+                                "fmt": "2019-12-31"
+                            },
+                            "totalRevenue": {
+                                "raw": 39679000000,
+                                "fmt": "39.68B",
+                                "longFmt": "39,679,000,000"
+                            },
+                            "costOfRevenue": {
+                                "raw": 31035000000,
+                                "fmt": "31.04B",
+                                "longFmt": "31,035,000,000"
+                            },
+                            "grossProfit": {
+                                "raw": 8644000000,
+                                "fmt": "8.64B",
+                                "longFmt": "8,644,000,000"
+                            },
+                            "researchDevelopment": {},
+                            "sellingGeneralAdministrative": {
+                                "raw": 7018000000,
+                                "fmt": "7.02B",
+                                "longFmt": "7,018,000,000"
+                            },
+                            "nonRecurring": {},
+                            "otherOperatingExpenses": {
+                                "raw": -1725000000,
+                                "fmt": "-1.73B",
+                                "longFmt": "-1,725,000,000"
+                            },
+                            "totalOperatingExpenses": {
+                                "raw": 36328000000,
+                                "fmt": "36.33B",
+                                "longFmt": "36,328,000,000"
+                            },
+                            "operatingIncome": {
+                                "raw": 3351000000,
+                                "fmt": "3.35B",
+                                "longFmt": "3,351,000,000"
+                            },
+                            "totalOtherIncomeExpenseNet": {
+                                "raw": -348000000,
+                                "fmt": "-348M",
+                                "longFmt": "-348,000,000"
+                            },
+                            "ebit": {
+                                "raw": 3351000000,
+                                "fmt": "3.35B",
+                                "longFmt": "3,351,000,000"
+                            },
+                            "interestExpense": {
+                                "raw": -333000000,
+                                "fmt": "-333M",
+                                "longFmt": "-333,000,000"
+                            },
+                            "incomeBeforeTax": {
+                                "raw": 3003000000,
+                                "fmt": "3B",
+                                "longFmt": "3,003,000,000"
+                            },
+                            "incomeTaxExpense": {
+                                "raw": 286000000,
+                                "fmt": "286M",
+                                "longFmt": "286,000,000"
+                            },
+                            "minorityInterest": {
+                                "raw": 19000000,
+                                "fmt": "19M",
+                                "longFmt": "19,000,000"
+                            },
+                            "netIncomeFromContinuingOps": {
+                                "raw": 2717000000,
+                                "fmt": "2.72B",
+                                "longFmt": "2,717,000,000"
+                            },
+                            "discontinuedOperations": {},
+                            "extraordinaryItems": {},
+                            "effectOfAccountingCharges": {},
+                            "otherItems": {},
+                            "netIncome": {
+                                "raw": 2713000000,
+                                "fmt": "2.71B",
+                                "longFmt": "2,713,000,000"
+                            },
+                            "netIncomeApplicableToCommonShares": {
+                                "raw": 2618000000,
+                                "fmt": "2.62B",
+                                "longFmt": "2,618,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1546214400,
+                                "fmt": "2018-12-31"
+                            },
+                            "totalRevenue": {
+                                "raw": 26997000000,
+                                "fmt": "27B",
+                                "longFmt": "26,997,000,000"
+                            },
+                            "costOfRevenue": {
+                                "raw": 18693000000,
+                                "fmt": "18.69B",
+                                "longFmt": "18,693,000,000"
+                            },
+                            "grossProfit": {
+                                "raw": 8304000000,
+                                "fmt": "8.3B",
+                                "longFmt": "8,304,000,000"
+                            },
+                            "researchDevelopment": {},
+                            "sellingGeneralAdministrative": {
+                                "raw": 6432000000,
+                                "fmt": "6.43B",
+                                "longFmt": "6,432,000,000"
+                            },
+                            "nonRecurring": {},
+                            "otherOperatingExpenses": {
+                                "raw": -1646000000,
+                                "fmt": "-1.65B",
+                                "longFmt": "-1,646,000,000"
+                            },
+                            "totalOperatingExpenses": {
+                                "raw": 23479000000,
+                                "fmt": "23.48B",
+                                "longFmt": "23,479,000,000"
+                            },
+                            "operatingIncome": {
+                                "raw": 3518000000,
+                                "fmt": "3.52B",
+                                "longFmt": "3,518,000,000"
+                            },
+                            "totalOtherIncomeExpenseNet": {
+                                "raw": -305000000,
+                                "fmt": "-305M",
+                                "longFmt": "-305,000,000"
+                            },
+                            "ebit": {
+                                "raw": 3518000000,
+                                "fmt": "3.52B",
+                                "longFmt": "3,518,000,000"
+                            },
+                            "interestExpense": {
+                                "raw": -305000000,
+                                "fmt": "-305M",
+                                "longFmt": "-305,000,000"
+                            },
+                            "incomeBeforeTax": {
+                                "raw": 3213000000,
+                                "fmt": "3.21B",
+                                "longFmt": "3,213,000,000"
+                            },
+                            "incomeTaxExpense": {
+                                "raw": 597000000,
+                                "fmt": "597M",
+                                "longFmt": "597,000,000"
+                            },
+                            "minorityInterest": {
+                                "raw": 19000000,
+                                "fmt": "19M",
+                                "longFmt": "19,000,000"
+                            },
+                            "netIncomeFromContinuingOps": {
+                                "raw": 2616000000,
+                                "fmt": "2.62B",
+                                "longFmt": "2,616,000,000"
+                            },
+                            "discontinuedOperations": {},
+                            "extraordinaryItems": {},
+                            "effectOfAccountingCharges": {},
+                            "otherItems": {},
+                            "netIncome": {
+                                "raw": 2616000000,
+                                "fmt": "2.62B",
+                                "longFmt": "2,616,000,000"
+                            },
+                            "netIncomeApplicableToCommonShares": {
+                                "raw": 2522000000,
+                                "fmt": "2.52B",
+                                "longFmt": "2,522,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1514678400,
+                                "fmt": "2017-12-31"
+                            },
+                            "totalRevenue": {
+                                "raw": 29334000000,
+                                "fmt": "29.33B",
+                                "longFmt": "29,334,000,000"
+                            },
+                            "costOfRevenue": {
+                                "raw": 24071000000,
+                                "fmt": "24.07B",
+                                "longFmt": "24,071,000,000"
+                            },
+                            "grossProfit": {
+                                "raw": 5263000000,
+                                "fmt": "5.26B",
+                                "longFmt": "5,263,000,000"
+                            },
+                            "researchDevelopment": {},
+                            "sellingGeneralAdministrative": {
+                                "raw": 6350000000,
+                                "fmt": "6.35B",
+                                "longFmt": "6,350,000,000"
+                            },
+                            "nonRecurring": {},
+                            "otherOperatingExpenses": {
+                                "raw": -3994000000,
+                                "fmt": "-3.99B",
+                                "longFmt": "-3,994,000,000"
+                            },
+                            "totalOperatingExpenses": {
+                                "raw": 26427000000,
+                                "fmt": "26.43B",
+                                "longFmt": "26,427,000,000"
+                            },
+                            "operatingIncome": {
+                                "raw": 2907000000,
+                                "fmt": "2.91B",
+                                "longFmt": "2,907,000,000"
+                            },
+                            "totalOtherIncomeExpenseNet": {
+                                "raw": -363000000,
+                                "fmt": "-363M",
+                                "longFmt": "-363,000,000"
+                            },
+                            "ebit": {
+                                "raw": 2907000000,
+                                "fmt": "2.91B",
+                                "longFmt": "2,907,000,000"
+                            },
+                            "interestExpense": {
+                                "raw": -303000000,
+                                "fmt": "-303M",
+                                "longFmt": "-303,000,000"
+                            },
+                            "incomeBeforeTax": {
+                                "raw": 2544000000,
+                                "fmt": "2.54B",
+                                "longFmt": "2,544,000,000"
+                            },
+                            "incomeTaxExpense": {
+                                "raw": 302000000,
+                                "fmt": "302M",
+                                "longFmt": "302,000,000"
+                            },
+                            "minorityInterest": {
+                                "raw": 19000000,
+                                "fmt": "19M",
+                                "longFmt": "19,000,000"
+                            },
+                            "netIncomeFromContinuingOps": {
+                                "raw": 2242000000,
+                                "fmt": "2.24B",
+                                "longFmt": "2,242,000,000"
+                            },
+                            "discontinuedOperations": {},
+                            "extraordinaryItems": {},
+                            "effectOfAccountingCharges": {},
+                            "otherItems": {},
+                            "netIncome": {
+                                "raw": 2242000000,
+                                "fmt": "2.24B",
+                                "longFmt": "2,242,000,000"
+                            },
+                            "netIncomeApplicableToCommonShares": {
+                                "raw": 2149000000,
+                                "fmt": "2.15B",
+                                "longFmt": "2,149,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1483142400,
+                                "fmt": "2016-12-31"
+                            },
+                            "totalRevenue": {
+                                "raw": 28573000000,
+                                "fmt": "28.57B",
+                                "longFmt": "28,573,000,000"
+                            },
+                            "costOfRevenue": {
+                                "raw": 23031000000,
+                                "fmt": "23.03B",
+                                "longFmt": "23,031,000,000"
+                            },
+                            "grossProfit": {
+                                "raw": 5542000000,
+                                "fmt": "5.54B",
+                                "longFmt": "5,542,000,000"
+                            },
+                            "researchDevelopment": {},
+                            "sellingGeneralAdministrative": {
+                                "raw": 6000000000,
+                                "fmt": "6B",
+                                "longFmt": "6,000,000,000"
+                            },
+                            "nonRecurring": {},
+                            "otherOperatingExpenses": {
+                                "raw": -3974000000,
+                                "fmt": "-3.97B",
+                                "longFmt": "-3,974,000,000"
+                            },
+                            "totalOperatingExpenses": {
+                                "raw": 25057000000,
+                                "fmt": "25.06B",
+                                "longFmt": "25,057,000,000"
+                            },
+                            "operatingIncome": {
+                                "raw": 3516000000,
+                                "fmt": "3.52B",
+                                "longFmt": "3,516,000,000"
+                            },
+                            "totalOtherIncomeExpenseNet": {
+                                "raw": -316000000,
+                                "fmt": "-316M",
+                                "longFmt": "-316,000,000"
+                            },
+                            "ebit": {
+                                "raw": 3516000000,
+                                "fmt": "3.52B",
+                                "longFmt": "3,516,000,000"
+                            },
+                            "interestExpense": {
+                                "raw": -316000000,
+                                "fmt": "-316M",
+                                "longFmt": "-316,000,000"
+                            },
+                            "incomeBeforeTax": {
+                                "raw": 3200000000,
+                                "fmt": "3.2B",
+                                "longFmt": "3,200,000,000"
+                            },
+                            "incomeTaxExpense": {
+                                "raw": 619000000,
+                                "fmt": "619M",
+                                "longFmt": "619,000,000"
+                            },
+                            "minorityInterest": {
+                                "raw": 19000000,
+                                "fmt": "19M",
+                                "longFmt": "19,000,000"
+                            },
+                            "netIncomeFromContinuingOps": {
+                                "raw": 2581000000,
+                                "fmt": "2.58B",
+                                "longFmt": "2,581,000,000"
+                            },
+                            "discontinuedOperations": {},
+                            "extraordinaryItems": {},
+                            "effectOfAccountingCharges": {},
+                            "otherItems": {},
+                            "netIncome": {
+                                "raw": 2581000000,
+                                "fmt": "2.58B",
+                                "longFmt": "2,581,000,000"
+                            },
+                            "netIncomeApplicableToCommonShares": {
+                                "raw": 2485000000,
+                                "fmt": "2.48B",
+                                "longFmt": "2,485,000,000"
+                            }
+                        }
+                    ],
+                    "maxAge": 86400
+                },
                 "fundOwnership": {
                     "maxAge": 1,
                     "ownershipList": [
                         {
                             "maxAge": 1,
                             "reportDate": {
-                                "raw": 1596153600,
-                                "fmt": "2020-07-31"
+                                "raw": 1604102400,
+                                "fmt": "2020-10-31"
                             },
                             "organization": "Vanguard International Stock Index-Total Intl Stock Indx",
                             "pctHeld": {
-                                "raw": 0.017,
-                                "fmt": "1.70%"
+                                "raw": 0.0152,
+                                "fmt": "1.52%"
                             },
                             "position": {
-                                "raw": 9946138,
-                                "fmt": "9.95M",
-                                "longFmt": "9,946,138"
+                                "raw": 8881673,
+                                "fmt": "8.88M",
+                                "longFmt": "8,881,673"
                             },
                             "value": {
-                                "raw": 387600997,
-                                "fmt": "387.6M",
-                                "longFmt": "387,600,997"
+                                "raw": 353668218,
+                                "fmt": "353.67M",
+                                "longFmt": "353,668,218"
                             }
                         },
                         {
                             "maxAge": 1,
                             "reportDate": {
-                                "raw": 1604102400,
-                                "fmt": "2020-10-31"
+                                "raw": 1606694400,
+                                "fmt": "2020-11-30"
                             },
                             "organization": "Fidelity Series Canada Fund",
                             "pctHeld": {
@@ -460,21 +1230,21 @@
                                 "fmt": "0.70%"
                             },
                             "position": {
-                                "raw": 4070300,
-                                "fmt": "4.07M",
-                                "longFmt": "4,070,300"
+                                "raw": 4075600,
+                                "fmt": "4.08M",
+                                "longFmt": "4,075,600"
                             },
                             "value": {
-                                "raw": 162079346,
-                                "fmt": "162.08M",
-                                "longFmt": "162,079,346"
+                                "raw": 181323444,
+                                "fmt": "181.32M",
+                                "longFmt": "181,323,444"
                             }
                         },
                         {
                             "maxAge": 1,
                             "reportDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1604102400,
+                                "fmt": "2020-10-31"
                             },
                             "organization": "Price (T.Rowe) Overseas Stock Fund",
                             "pctHeld": {
@@ -487,9 +1257,9 @@
                                 "longFmt": "3,784,605"
                             },
                             "value": {
-                                "raw": 154146961,
-                                "fmt": "154.15M",
-                                "longFmt": "154,146,961"
+                                "raw": 150702971,
+                                "fmt": "150.7M",
+                                "longFmt": "150,702,971"
                             }
                         },
                         {
@@ -517,8 +1287,8 @@
                         {
                             "maxAge": 1,
                             "reportDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1604102400,
+                                "fmt": "2020-10-31"
                             },
                             "organization": "Price (T.Rowe) International Value Equity Fund",
                             "pctHeld": {
@@ -531,16 +1301,16 @@
                                 "longFmt": "1,697,100"
                             },
                             "value": {
-                                "raw": 69122883,
-                                "fmt": "69.12M",
-                                "longFmt": "69,122,883"
+                                "raw": 67578522,
+                                "fmt": "67.58M",
+                                "longFmt": "67,578,522"
                             }
                         },
                         {
                             "maxAge": 1,
                             "reportDate": {
-                                "raw": 1606694400,
-                                "fmt": "2020-11-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "organization": "JP Morgan ETF Tr-BetaBuilders Canada ETF",
                             "pctHeld": {
@@ -548,14 +1318,14 @@
                                 "fmt": "0.27%"
                             },
                             "position": {
-                                "raw": 1573662,
+                                "raw": 1569482,
                                 "fmt": "1.57M",
-                                "longFmt": "1,573,662"
+                                "longFmt": "1,569,482"
                             },
                             "value": {
-                                "raw": 70012222,
-                                "fmt": "70.01M",
-                                "longFmt": "70,012,222"
+                                "raw": 69779169,
+                                "fmt": "69.78M",
+                                "longFmt": "69,779,169"
                             }
                         },
                         {
@@ -627,8 +1397,8 @@
                         {
                             "maxAge": 1,
                             "reportDate": {
-                                "raw": 1596153600,
-                                "fmt": "2020-07-31"
+                                "raw": 1604102400,
+                                "fmt": "2020-10-31"
                             },
                             "organization": "Vanguard Intl Equity Index Fds-FTSE All World ex U.S. Index Fund",
                             "pctHeld": {
@@ -636,14 +1406,14 @@
                                 "fmt": "0.18%"
                             },
                             "position": {
-                                "raw": 1053577,
-                                "fmt": "1.05M",
-                                "longFmt": "1,053,577"
+                                "raw": 1041638,
+                                "fmt": "1.04M",
+                                "longFmt": "1,041,638"
                             },
                             "value": {
-                                "raw": 41057895,
-                                "fmt": "41.06M",
-                                "longFmt": "41,057,895"
+                                "raw": 41478025,
+                                "fmt": "41.48M",
+                                "longFmt": "41,478,025"
                             }
                         }
                     ]
@@ -656,44 +1426,44 @@
                         "longFmt": "2"
                     },
                     "previousClose": {
-                        "raw": 44.93,
-                        "fmt": "44.93"
+                        "raw": 46.73,
+                        "fmt": "46.73"
                     },
                     "open": {
-                        "raw": 45.24,
-                        "fmt": "45.24"
+                        "raw": 46.74,
+                        "fmt": "46.74"
                     },
                     "dayLow": {
-                        "raw": 44.4,
-                        "fmt": "44.40"
+                        "raw": 47.45,
+                        "fmt": "47.45"
                     },
                     "dayHigh": {
-                        "raw": 45.18,
-                        "fmt": "45.18"
+                        "raw": 48.7696,
+                        "fmt": "48.77"
                     },
                     "regularMarketPreviousClose": {
-                        "raw": 44.93,
-                        "fmt": "44.93"
+                        "raw": 46.73,
+                        "fmt": "46.73"
                     },
                     "regularMarketOpen": {
-                        "raw": 45.24,
-                        "fmt": "45.24"
+                        "raw": 46.74,
+                        "fmt": "46.74"
                     },
                     "regularMarketDayLow": {
-                        "raw": 44.4,
-                        "fmt": "44.40"
+                        "raw": 47.45,
+                        "fmt": "47.45"
                     },
                     "regularMarketDayHigh": {
-                        "raw": 45.18,
-                        "fmt": "45.18"
+                        "raw": 48.7696,
+                        "fmt": "48.77"
                     },
                     "dividendRate": {
-                        "raw": 1.69,
-                        "fmt": "1.69"
+                        "raw": 1.73,
+                        "fmt": "1.73"
                     },
                     "dividendYield": {
-                        "raw": 0.0377,
-                        "fmt": "3.77%"
+                        "raw": 0.0369,
+                        "fmt": "3.69%"
                     },
                     "exDividendDate": {
                         "raw": 1606176000,
@@ -708,54 +1478,54 @@
                         "fmt": "3.67"
                     },
                     "beta": {
-                        "raw": 1.018193,
+                        "raw": 1.020462,
                         "fmt": "1.02"
                     },
                     "trailingPE": {
-                        "raw": 16.839516,
-                        "fmt": "16.84"
+                        "raw": 18.289175,
+                        "fmt": "18.29"
                     },
                     "forwardPE": {
-                        "raw": 11.263291,
-                        "fmt": "11.26"
+                        "raw": 12.232911,
+                        "fmt": "12.23"
                     },
                     "volume": {
-                        "raw": 187746,
-                        "fmt": "187.75k",
-                        "longFmt": "187,746"
+                        "raw": 324567,
+                        "fmt": "324.57k",
+                        "longFmt": "324,567"
                     },
                     "regularMarketVolume": {
-                        "raw": 187746,
-                        "fmt": "187.75k",
-                        "longFmt": "187,746"
+                        "raw": 324567,
+                        "fmt": "324.57k",
+                        "longFmt": "324,567"
                     },
                     "averageVolume": {
-                        "raw": 537576,
-                        "fmt": "537.58k",
-                        "longFmt": "537,576"
+                        "raw": 556924,
+                        "fmt": "556.92k",
+                        "longFmt": "556,924"
                     },
                     "averageVolume10days": {
-                        "raw": 426500,
-                        "fmt": "426.5k",
-                        "longFmt": "426,500"
+                        "raw": 332940,
+                        "fmt": "332.94k",
+                        "longFmt": "332,940"
                     },
                     "averageDailyVolume10Day": {
-                        "raw": 426500,
-                        "fmt": "426.5k",
-                        "longFmt": "426,500"
+                        "raw": 332940,
+                        "fmt": "332.94k",
+                        "longFmt": "332,940"
                     },
                     "bid": {
-                        "raw": 44.42,
-                        "fmt": "44.42"
+                        "raw": 48.39,
+                        "fmt": "48.39"
                     },
                     "ask": {
-                        "raw": 44.43,
-                        "fmt": "44.43"
+                        "raw": 48.42,
+                        "fmt": "48.42"
                     },
                     "bidSize": {
-                        "raw": 900,
-                        "fmt": "900",
-                        "longFmt": "900"
+                        "raw": 800,
+                        "fmt": "800",
+                        "longFmt": "800"
                     },
                     "askSize": {
                         "raw": 1100,
@@ -763,9 +1533,9 @@
                         "longFmt": "1,100"
                     },
                     "marketCap": {
-                        "raw": 25909018624,
-                        "fmt": "25.91B",
-                        "longFmt": "25,909,018,624"
+                        "raw": 28462508032,
+                        "fmt": "28.46B",
+                        "longFmt": "28,462,508,032"
                     },
                     "yield": {},
                     "ytdReturn": {},
@@ -783,20 +1553,20 @@
                     },
                     "priceToSalesTrailing12Months": {},
                     "fiftyDayAverage": {
-                        "raw": 44.063145,
-                        "fmt": "44.06"
+                        "raw": 45.01091,
+                        "fmt": "45.01"
                     },
                     "twoHundredDayAverage": {
-                        "raw": 40.96893,
-                        "fmt": "40.97"
+                        "raw": 42.322647,
+                        "fmt": "42.32"
                     },
                     "trailingAnnualDividendRate": {
                         "raw": 1.398,
                         "fmt": "1.40"
                     },
                     "trailingAnnualDividendYield": {
-                        "raw": 0.031115068,
-                        "fmt": "3.11%"
+                        "raw": 0.029916542,
+                        "fmt": "2.99%"
                     },
                     "navPrice": {},
                     "currency": "USD",
@@ -820,17 +1590,17 @@
                             "url": "",
                             "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
                             "latestTransDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "positionDirect": {
-                                "raw": 108329,
-                                "fmt": "108.33k",
-                                "longFmt": "108,329"
+                                "raw": 109393,
+                                "fmt": "109.39k",
+                                "longFmt": "109,393"
                             },
                             "positionDirectDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             }
                         },
                         {
@@ -840,37 +1610,17 @@
                             "url": "",
                             "transactionDescription": "Exercise of options",
                             "latestTransDate": {
-                                "raw": 1606780800,
-                                "fmt": "2020-12-01"
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
                             },
                             "positionDirect": {
-                                "raw": 114153,
-                                "fmt": "114.15k",
-                                "longFmt": "114,153"
+                                "raw": 100285,
+                                "fmt": "100.28k",
+                                "longFmt": "100,285"
                             },
                             "positionDirectDate": {
-                                "raw": 1606780800,
-                                "fmt": "2020-12-01"
-                            }
-                        },
-                        {
-                            "maxAge": 1,
-                            "name": "Coyles (Stephanie)",
-                            "relation": "Director of Issuer",
-                            "url": "",
-                            "transactionDescription": "Acquisition or disposition in the public market",
-                            "latestTransDate": {
-                                "raw": 1607040000,
-                                "fmt": "2020-12-04"
-                            },
-                            "positionDirect": {
-                                "raw": 6100,
-                                "fmt": "6.1k",
-                                "longFmt": "6,100"
-                            },
-                            "positionDirectDate": {
-                                "raw": 1607040000,
-                                "fmt": "2020-12-04"
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
                             }
                         },
                         {
@@ -880,17 +1630,17 @@
                             "url": "",
                             "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
                             "latestTransDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "positionDirect": {
-                                "raw": 26748,
-                                "fmt": "26.75k",
-                                "longFmt": "26,748"
+                                "raw": 27011,
+                                "fmt": "27.01k",
+                                "longFmt": "27,011"
                             },
                             "positionDirectDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             }
                         },
                         {
@@ -900,17 +1650,17 @@
                             "url": "",
                             "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
                             "latestTransDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "positionDirect": {
-                                "raw": 79076,
-                                "fmt": "79.08k",
-                                "longFmt": "79,076"
+                                "raw": 79853,
+                                "fmt": "79.85k",
+                                "longFmt": "79,853"
                             },
                             "positionDirectDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             }
                         },
                         {
@@ -920,17 +1670,17 @@
                             "url": "",
                             "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
                             "latestTransDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "positionDirect": {
-                                "raw": 63481,
-                                "fmt": "63.48k",
-                                "longFmt": "63,481"
+                                "raw": 64104,
+                                "fmt": "64.1k",
+                                "longFmt": "64,104"
                             },
                             "positionDirectDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             }
                         },
                         {
@@ -940,17 +1690,17 @@
                             "url": "",
                             "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
                             "latestTransDate": {
-                                "raw": 1607040000,
-                                "fmt": "2020-12-04"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "positionDirect": {
-                                "raw": 89997,
-                                "fmt": "90k",
-                                "longFmt": "89,997"
+                                "raw": 7216,
+                                "fmt": "7.22k",
+                                "longFmt": "7,216"
                             },
                             "positionDirectDate": {
-                                "raw": 1607040000,
-                                "fmt": "2020-12-04"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             }
                         },
                         {
@@ -960,37 +1710,17 @@
                             "url": "",
                             "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
                             "latestTransDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "positionDirect": {
-                                "raw": 69246,
-                                "fmt": "69.25k",
-                                "longFmt": "69,246"
+                                "raw": 69926,
+                                "fmt": "69.93k",
+                                "longFmt": "69,926"
                             },
                             "positionDirectDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
-                            }
-                        },
-                        {
-                            "maxAge": 1,
-                            "name": "Gupta (Ashok K)",
-                            "relation": "Director of Issuer",
-                            "url": "",
-                            "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
-                            "latestTransDate": {
-                                "raw": 1605484800,
-                                "fmt": "2020-11-16"
-                            },
-                            "positionDirect": {
-                                "raw": 1230,
-                                "fmt": "1.23k",
-                                "longFmt": "1,230"
-                            },
-                            "positionDirectDate": {
-                                "raw": 1605484800,
-                                "fmt": "2020-11-16"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             }
                         },
                         {
@@ -1000,17 +1730,57 @@
                             "url": "",
                             "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
                             "latestTransDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             },
                             "positionDirect": {
-                                "raw": 6164,
-                                "fmt": "6.16k",
-                                "longFmt": "6,164"
+                                "raw": 6224,
+                                "fmt": "6.22k",
+                                "longFmt": "6,224"
                             },
                             "positionDirectDate": {
-                                "raw": 1601424000,
-                                "fmt": "2020-09-30"
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "name": "Kennedy, Melissa Jane",
+                            "relation": "Senior Officer of Issuer",
+                            "url": "",
+                            "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
+                            "latestTransDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "positionDirect": {
+                                "raw": 34215,
+                                "fmt": "34.22k",
+                                "longFmt": "34,215"
+                            },
+                            "positionDirectDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "name": "Money, Laura Ann",
+                            "relation": "Senior Officer of Issuer",
+                            "url": "",
+                            "transactionDescription": "Acquisition or disposition under a purchase/ownership plan",
+                            "latestTransDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "positionDirect": {
+                                "raw": 12486,
+                                "fmt": "12.49k",
+                                "longFmt": "12,486"
+                            },
+                            "positionDirectDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
                             }
                         }
                     ],
@@ -1290,60 +2060,71 @@
                 },
                 "price": {
                     "maxAge": 1,
-                    "preMarketChange": {},
-                    "preMarketPrice": {},
-                    "preMarketSource": "DELAYED",
+                    "preMarketChangePercent": {
+                        "raw": 0.0164776,
+                        "fmt": "1.65%"
+                    },
+                    "preMarketChange": {
+                        "raw": 0.77,
+                        "fmt": "0.77"
+                    },
+                    "preMarketTime": 1611066599,
+                    "preMarketPrice": {
+                        "raw": 47.5,
+                        "fmt": "47.50"
+                    },
+                    "preMarketSource": "FREE_REALTIME",
                     "postMarketChange": {},
                     "postMarketPrice": {},
                     "regularMarketChangePercent": {
-                        "raw": -0.009792981,
-                        "fmt": "-0.98%"
+                        "raw": 0.034025256,
+                        "fmt": "3.40%"
                     },
                     "regularMarketChange": {
-                        "raw": -0.43999863,
-                        "fmt": "-0.44"
+                        "raw": 1.5900002,
+                        "fmt": "1.59"
                     },
-                    "regularMarketTime": 1608229295,
+                    "regularMarketTime": 1611079397,
                     "priceHint": {
                         "raw": 2,
                         "fmt": "2",
                         "longFmt": "2"
                     },
                     "regularMarketPrice": {
-                        "raw": 44.49,
-                        "fmt": "44.49"
+                        "raw": 48.32,
+                        "fmt": "48.32"
                     },
                     "regularMarketDayHigh": {
-                        "raw": 45.18,
-                        "fmt": "45.18"
+                        "raw": 48.7696,
+                        "fmt": "48.77"
                     },
                     "regularMarketDayLow": {
-                        "raw": 44.4,
-                        "fmt": "44.40"
+                        "raw": 47.45,
+                        "fmt": "47.45"
                     },
                     "regularMarketVolume": {
-                        "raw": 187746,
-                        "fmt": "187.75k",
-                        "longFmt": "187,746.00"
+                        "raw": 324567,
+                        "fmt": "324.57k",
+                        "longFmt": "324,567.00"
                     },
                     "averageDailyVolume10Day": {
-                        "raw": 426500,
-                        "fmt": "426.5k",
-                        "longFmt": "426,500"
+                        "raw": 332940,
+                        "fmt": "332.94k",
+                        "longFmt": "332,940"
                     },
                     "averageDailyVolume3Month": {
-                        "raw": 537576,
-                        "fmt": "537.58k",
-                        "longFmt": "537,576"
+                        "raw": 556924,
+                        "fmt": "556.92k",
+                        "longFmt": "556,924"
                     },
                     "regularMarketPreviousClose": {
-                        "raw": 44.93,
-                        "fmt": "44.93"
+                        "raw": 46.73,
+                        "fmt": "46.73"
                     },
                     "regularMarketSource": "FREE_REALTIME",
                     "regularMarketOpen": {
-                        "raw": 45.24,
-                        "fmt": "45.24"
+                        "raw": 46.74,
+                        "fmt": "46.74"
                     },
                     "strikePrice": {},
                     "openInterest": {},
@@ -1366,10 +2147,533 @@
                     "volumeAllCurrencies": {},
                     "circulatingSupply": {},
                     "marketCap": {
-                        "raw": 25909018624,
-                        "fmt": "25.91B",
-                        "longFmt": "25,909,018,624.00"
+                        "raw": 28462508032,
+                        "fmt": "28.46B",
+                        "longFmt": "28,462,508,032.00"
                     }
+                },
+                "balanceSheetHistory": {
+                    "balanceSheetStatements": [
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1577750400,
+                                "fmt": "2019-12-31"
+                            },
+                            "cash": {
+                                "raw": 6715000000,
+                                "fmt": "6.71B",
+                                "longFmt": "6,715,000,000"
+                            },
+                            "shortTermInvestments": {
+                                "raw": 2860000000,
+                                "fmt": "2.86B",
+                                "longFmt": "2,860,000,000"
+                            },
+                            "netReceivables": {
+                                "raw": 1956000000,
+                                "fmt": "1.96B",
+                                "longFmt": "1,956,000,000"
+                            },
+                            "otherCurrentAssets": {
+                                "raw": 5496000000,
+                                "fmt": "5.5B",
+                                "longFmt": "5,496,000,000"
+                            },
+                            "totalCurrentAssets": {
+                                "raw": 93928000000,
+                                "fmt": "93.93B",
+                                "longFmt": "93,928,000,000"
+                            },
+                            "longTermInvestments": {
+                                "raw": 16366000000,
+                                "fmt": "16.37B",
+                                "longFmt": "16,366,000,000"
+                            },
+                            "propertyPlantEquipment": {
+                                "raw": 1400000000,
+                                "fmt": "1.4B",
+                                "longFmt": "1,400,000,000"
+                            },
+                            "goodWill": {
+                                "raw": 5832000000,
+                                "fmt": "5.83B",
+                                "longFmt": "5,832,000,000"
+                            },
+                            "intangibleAssets": {
+                                "raw": 2222000000,
+                                "fmt": "2.22B",
+                                "longFmt": "2,222,000,000"
+                            },
+                            "otherAssets": {
+                                "raw": 177454000000,
+                                "fmt": "177.45B",
+                                "longFmt": "177,454,000,000"
+                            },
+                            "deferredLongTermAssetCharges": {
+                                "raw": 1455000000,
+                                "fmt": "1.46B",
+                                "longFmt": "1,455,000,000"
+                            },
+                            "totalAssets": {
+                                "raw": 297202000000,
+                                "fmt": "297.2B",
+                                "longFmt": "297,202,000,000"
+                            },
+                            "accountsPayable": {
+                                "raw": 1903000000,
+                                "fmt": "1.9B",
+                                "longFmt": "1,903,000,000"
+                            },
+                            "otherCurrentLiab": {
+                                "raw": 956000000,
+                                "fmt": "956M",
+                                "longFmt": "956,000,000"
+                            },
+                            "longTermDebt": {
+                                "raw": 8557000000,
+                                "fmt": "8.56B",
+                                "longFmt": "8,557,000,000"
+                            },
+                            "otherLiab": {
+                                "raw": 255245000000,
+                                "fmt": "255.25B",
+                                "longFmt": "255,245,000,000"
+                            },
+                            "minorityInterest": {
+                                "raw": 19000000,
+                                "fmt": "19M",
+                                "longFmt": "19,000,000"
+                            },
+                            "totalCurrentLiabilities": {
+                                "raw": 7990000000,
+                                "fmt": "7.99B",
+                                "longFmt": "7,990,000,000"
+                            },
+                            "totalLiab": {
+                                "raw": 272694000000,
+                                "fmt": "272.69B",
+                                "longFmt": "272,694,000,000"
+                            },
+                            "commonStock": {
+                                "raw": 8289000000,
+                                "fmt": "8.29B",
+                                "longFmt": "8,289,000,000"
+                            },
+                            "retainedEarnings": {
+                                "raw": 11318000000,
+                                "fmt": "11.32B",
+                                "longFmt": "11,318,000,000"
+                            },
+                            "treasuryStock": {
+                                "raw": 2552000000,
+                                "fmt": "2.55B",
+                                "longFmt": "2,552,000,000"
+                            },
+                            "capitalSurplus": {
+                                "raw": 73000000,
+                                "fmt": "73M",
+                                "longFmt": "73,000,000"
+                            },
+                            "otherStockholderEquity": {
+                                "raw": 2552000000,
+                                "fmt": "2.55B",
+                                "longFmt": "2,552,000,000"
+                            },
+                            "totalStockholderEquity": {
+                                "raw": 22232000000,
+                                "fmt": "22.23B",
+                                "longFmt": "22,232,000,000"
+                            },
+                            "netTangibleAssets": {
+                                "raw": 14317000000,
+                                "fmt": "14.32B",
+                                "longFmt": "14,317,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1546214400,
+                                "fmt": "2018-12-31"
+                            },
+                            "cash": {
+                                "raw": 7298000000,
+                                "fmt": "7.3B",
+                                "longFmt": "7,298,000,000"
+                            },
+                            "shortTermInvestments": {
+                                "raw": 2208000000,
+                                "fmt": "2.21B",
+                                "longFmt": "2,208,000,000"
+                            },
+                            "netReceivables": {
+                                "raw": 2018000000,
+                                "fmt": "2.02B",
+                                "longFmt": "2,018,000,000"
+                            },
+                            "otherCurrentAssets": {
+                                "raw": 5462000000,
+                                "fmt": "5.46B",
+                                "longFmt": "5,462,000,000"
+                            },
+                            "totalCurrentAssets": {
+                                "raw": 86334000000,
+                                "fmt": "86.33B",
+                                "longFmt": "86,334,000,000"
+                            },
+                            "longTermInvestments": {
+                                "raw": 15790000000,
+                                "fmt": "15.79B",
+                                "longFmt": "15,790,000,000"
+                            },
+                            "propertyPlantEquipment": {
+                                "raw": 621000000,
+                                "fmt": "621M",
+                                "longFmt": "621,000,000"
+                            },
+                            "goodWill": {
+                                "raw": 5412000000,
+                                "fmt": "5.41B",
+                                "longFmt": "5,412,000,000"
+                            },
+                            "intangibleAssets": {
+                                "raw": 1909000000,
+                                "fmt": "1.91B",
+                                "longFmt": "1,909,000,000"
+                            },
+                            "otherAssets": {
+                                "raw": 161761000000,
+                                "fmt": "161.76B",
+                                "longFmt": "161,761,000,000"
+                            },
+                            "deferredLongTermAssetCharges": {
+                                "raw": 1209000000,
+                                "fmt": "1.21B",
+                                "longFmt": "1,209,000,000"
+                            },
+                            "totalAssets": {
+                                "raw": 271827000000,
+                                "fmt": "271.83B",
+                                "longFmt": "271,827,000,000"
+                            },
+                            "accountsPayable": {
+                                "raw": 2045000000,
+                                "fmt": "2.04B",
+                                "longFmt": "2,045,000,000"
+                            },
+                            "longTermDebt": {
+                                "raw": 8485000000,
+                                "fmt": "8.48B",
+                                "longFmt": "8,485,000,000"
+                            },
+                            "otherLiab": {
+                                "raw": 231662000000,
+                                "fmt": "231.66B",
+                                "longFmt": "231,662,000,000"
+                            },
+                            "totalCurrentLiabilities": {
+                                "raw": 7110000000,
+                                "fmt": "7.11B",
+                                "longFmt": "7,110,000,000"
+                            },
+                            "totalLiab": {
+                                "raw": 247257000000,
+                                "fmt": "247.26B",
+                                "longFmt": "247,257,000,000"
+                            },
+                            "commonStock": {
+                                "raw": 8419000000,
+                                "fmt": "8.42B",
+                                "longFmt": "8,419,000,000"
+                            },
+                            "retainedEarnings": {
+                                "raw": 11267000000,
+                                "fmt": "11.27B",
+                                "longFmt": "11,267,000,000"
+                            },
+                            "treasuryStock": {
+                                "raw": 2554000000,
+                                "fmt": "2.55B",
+                                "longFmt": "2,554,000,000"
+                            },
+                            "capitalSurplus": {
+                                "raw": 73000000,
+                                "fmt": "73M",
+                                "longFmt": "73,000,000"
+                            },
+                            "otherStockholderEquity": {
+                                "raw": 2554000000,
+                                "fmt": "2.55B",
+                                "longFmt": "2,554,000,000"
+                            },
+                            "totalStockholderEquity": {
+                                "raw": 22313000000,
+                                "fmt": "22.31B",
+                                "longFmt": "22,313,000,000"
+                            },
+                            "netTangibleAssets": {
+                                "raw": 15122000000,
+                                "fmt": "15.12B",
+                                "longFmt": "15,122,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1514678400,
+                                "fmt": "2017-12-31"
+                            },
+                            "cash": {
+                                "raw": 6096000000,
+                                "fmt": "6.1B",
+                                "longFmt": "6,096,000,000"
+                            },
+                            "shortTermInvestments": {
+                                "raw": 2794000000,
+                                "fmt": "2.79B",
+                                "longFmt": "2,794,000,000"
+                            },
+                            "netReceivables": {
+                                "raw": 2101000000,
+                                "fmt": "2.1B",
+                                "longFmt": "2,101,000,000"
+                            },
+                            "otherCurrentAssets": {
+                                "raw": 5396000000,
+                                "fmt": "5.4B",
+                                "longFmt": "5,396,000,000"
+                            },
+                            "totalCurrentAssets": {
+                                "raw": 85113000000,
+                                "fmt": "85.11B",
+                                "longFmt": "85,113,000,000"
+                            },
+                            "longTermInvestments": {
+                                "raw": 15537000000,
+                                "fmt": "15.54B",
+                                "longFmt": "15,537,000,000"
+                            },
+                            "propertyPlantEquipment": {
+                                "raw": 624000000,
+                                "fmt": "624M",
+                                "longFmt": "624,000,000"
+                            },
+                            "goodWill": {
+                                "raw": 5183000000,
+                                "fmt": "5.18B",
+                                "longFmt": "5,183,000,000"
+                            },
+                            "intangibleAssets": {
+                                "raw": 1827000000,
+                                "fmt": "1.83B",
+                                "longFmt": "1,827,000,000"
+                            },
+                            "otherAssets": {
+                                "raw": 160828000000,
+                                "fmt": "160.83B",
+                                "longFmt": "160,828,000,000"
+                            },
+                            "deferredLongTermAssetCharges": {
+                                "raw": 1295000000,
+                                "fmt": "1.29B",
+                                "longFmt": "1,295,000,000"
+                            },
+                            "totalAssets": {
+                                "raw": 269112000000,
+                                "fmt": "269.11B",
+                                "longFmt": "269,112,000,000"
+                            },
+                            "accountsPayable": {
+                                "raw": 1972000000,
+                                "fmt": "1.97B",
+                                "longFmt": "1,972,000,000"
+                            },
+                            "longTermDebt": {
+                                "raw": 8741000000,
+                                "fmt": "8.74B",
+                                "longFmt": "8,741,000,000"
+                            },
+                            "otherLiab": {
+                                "raw": 230385000000,
+                                "fmt": "230.38B",
+                                "longFmt": "230,385,000,000"
+                            },
+                            "totalCurrentLiabilities": {
+                                "raw": 7015000000,
+                                "fmt": "7.01B",
+                                "longFmt": "7,015,000,000"
+                            },
+                            "totalLiab": {
+                                "raw": 246141000000,
+                                "fmt": "246.14B",
+                                "longFmt": "246,141,000,000"
+                            },
+                            "commonStock": {
+                                "raw": 8582000000,
+                                "fmt": "8.58B",
+                                "longFmt": "8,582,000,000"
+                            },
+                            "retainedEarnings": {
+                                "raw": 10305000000,
+                                "fmt": "10.3B",
+                                "longFmt": "10,305,000,000"
+                            },
+                            "treasuryStock": {
+                                "raw": 1755000000,
+                                "fmt": "1.75B",
+                                "longFmt": "1,755,000,000"
+                            },
+                            "capitalSurplus": {
+                                "raw": 72000000,
+                                "fmt": "72M",
+                                "longFmt": "72,000,000"
+                            },
+                            "otherStockholderEquity": {
+                                "raw": 1755000000,
+                                "fmt": "1.75B",
+                                "longFmt": "1,755,000,000"
+                            },
+                            "totalStockholderEquity": {
+                                "raw": 20714000000,
+                                "fmt": "20.71B",
+                                "longFmt": "20,714,000,000"
+                            },
+                            "netTangibleAssets": {
+                                "raw": 13864000000,
+                                "fmt": "13.86B",
+                                "longFmt": "13,864,000,000"
+                            }
+                        },
+                        {
+                            "maxAge": 1,
+                            "endDate": {
+                                "raw": 1483142400,
+                                "fmt": "2016-12-31"
+                            },
+                            "cash": {
+                                "raw": 6698000000,
+                                "fmt": "6.7B",
+                                "longFmt": "6,698,000,000"
+                            },
+                            "shortTermInvestments": {
+                                "raw": 1944000000,
+                                "fmt": "1.94B",
+                                "longFmt": "1,944,000,000"
+                            },
+                            "netReceivables": {
+                                "raw": 2802000000,
+                                "fmt": "2.8B",
+                                "longFmt": "2,802,000,000"
+                            },
+                            "otherCurrentAssets": {
+                                "raw": 6426000000,
+                                "fmt": "6.43B",
+                                "longFmt": "6,426,000,000"
+                            },
+                            "totalCurrentAssets": {
+                                "raw": 86047000000,
+                                "fmt": "86.05B",
+                                "longFmt": "86,047,000,000"
+                            },
+                            "longTermInvestments": {
+                                "raw": 15069000000,
+                                "fmt": "15.07B",
+                                "longFmt": "15,069,000,000"
+                            },
+                            "propertyPlantEquipment": {
+                                "raw": 659000000,
+                                "fmt": "659M",
+                                "longFmt": "659,000,000"
+                            },
+                            "goodWill": {
+                                "raw": 5317000000,
+                                "fmt": "5.32B",
+                                "longFmt": "5,317,000,000"
+                            },
+                            "intangibleAssets": {
+                                "raw": 1880000000,
+                                "fmt": "1.88B",
+                                "longFmt": "1,880,000,000"
+                            },
+                            "otherAssets": {
+                                "raw": 149266000000,
+                                "fmt": "149.27B",
+                                "longFmt": "149,266,000,000"
+                            },
+                            "deferredLongTermAssetCharges": {
+                                "raw": 1448000000,
+                                "fmt": "1.45B",
+                                "longFmt": "1,448,000,000"
+                            },
+                            "totalAssets": {
+                                "raw": 258238000000,
+                                "fmt": "258.24B",
+                                "longFmt": "258,238,000,000"
+                            },
+                            "accountsPayable": {
+                                "raw": 2739000000,
+                                "fmt": "2.74B",
+                                "longFmt": "2,739,000,000"
+                            },
+                            "longTermDebt": {
+                                "raw": 9163000000,
+                                "fmt": "9.16B",
+                                "longFmt": "9,163,000,000"
+                            },
+                            "otherLiab": {
+                                "raw": 219106000000,
+                                "fmt": "219.11B",
+                                "longFmt": "219,106,000,000"
+                            },
+                            "totalCurrentLiabilities": {
+                                "raw": 7601000000,
+                                "fmt": "7.6B",
+                                "longFmt": "7,601,000,000"
+                            },
+                            "totalLiab": {
+                                "raw": 235870000000,
+                                "fmt": "235.87B",
+                                "longFmt": "235,870,000,000"
+                            },
+                            "commonStock": {
+                                "raw": 8614000000,
+                                "fmt": "8.61B",
+                                "longFmt": "8,614,000,000"
+                            },
+                            "retainedEarnings": {
+                                "raw": 9360000000,
+                                "fmt": "9.36B",
+                                "longFmt": "9,360,000,000"
+                            },
+                            "treasuryStock": {
+                                "raw": 2065000000,
+                                "fmt": "2.06B",
+                                "longFmt": "2,065,000,000"
+                            },
+                            "capitalSurplus": {
+                                "raw": 72000000,
+                                "fmt": "72M",
+                                "longFmt": "72,000,000"
+                            },
+                            "otherStockholderEquity": {
+                                "raw": 2065000000,
+                                "fmt": "2.06B",
+                                "longFmt": "2,065,000,000"
+                            },
+                            "totalStockholderEquity": {
+                                "raw": 20111000000,
+                                "fmt": "20.11B",
+                                "longFmt": "20,111,000,000"
+                            },
+                            "netTangibleAssets": {
+                                "raw": 13091000000,
+                                "fmt": "13.09B",
+                                "longFmt": "13,091,000,000"
+                            }
+                        }
+                    ],
+                    "maxAge": 86400
                 },
                 "earningsTrend": {
                     "trend": [
@@ -2105,17 +3409,17 @@
                         "fmt": "0.04%"
                     },
                     "institutionsPercentHeld": {
-                        "raw": 0.54423,
-                        "fmt": "54.42%"
+                        "raw": 0.54390997,
+                        "fmt": "54.39%"
                     },
                     "institutionsFloatPercentHeld": {
-                        "raw": 0.54446,
-                        "fmt": "54.45%"
+                        "raw": 0.54412997,
+                        "fmt": "54.41%"
                     },
                     "institutionsCount": {
-                        "raw": 597,
-                        "fmt": "597",
-                        "longFmt": "597"
+                        "raw": 594,
+                        "fmt": "594",
+                        "longFmt": "594"
                     }
                 },
                 "balanceSheetHistoryQuarterly": {
@@ -2611,6 +3915,107 @@
                     ],
                     "maxAge": 86400
                 },
+                "earningsHistory": {
+                    "history": [
+                        {
+                            "maxAge": 1,
+                            "epsActual": {
+                                "raw": 0.73,
+                                "fmt": "0.73"
+                            },
+                            "epsEstimate": {
+                                "raw": 0.78,
+                                "fmt": "0.78"
+                            },
+                            "epsDifference": {
+                                "raw": -0.05,
+                                "fmt": "-0.05"
+                            },
+                            "surprisePercent": {
+                                "raw": -0.064,
+                                "fmt": "-6.40%"
+                            },
+                            "quarter": {
+                                "raw": 1490918400,
+                                "fmt": "2017-03-31"
+                            },
+                            "period": "-4q"
+                        },
+                        {
+                            "maxAge": 1,
+                            "epsActual": {
+                                "raw": 0.88,
+                                "fmt": "0.88"
+                            },
+                            "epsEstimate": {
+                                "raw": 0.77,
+                                "fmt": "0.77"
+                            },
+                            "epsDifference": {
+                                "raw": 0.11,
+                                "fmt": "0.11"
+                            },
+                            "surprisePercent": {
+                                "raw": 0.143,
+                                "fmt": "14.30%"
+                            },
+                            "quarter": {
+                                "raw": 1498780800,
+                                "fmt": "2017-06-30"
+                            },
+                            "period": "-3q"
+                        },
+                        {
+                            "maxAge": 1,
+                            "epsActual": {
+                                "raw": 0.83,
+                                "fmt": "0.83"
+                            },
+                            "epsEstimate": {
+                                "raw": 0.8,
+                                "fmt": "0.8"
+                            },
+                            "epsDifference": {
+                                "raw": 0.03,
+                                "fmt": "0.03"
+                            },
+                            "surprisePercent": {
+                                "raw": 0.037,
+                                "fmt": "3.70%"
+                            },
+                            "quarter": {
+                                "raw": 1506729600,
+                                "fmt": "2017-09-30"
+                            },
+                            "period": "-2q"
+                        },
+                        {
+                            "maxAge": 1,
+                            "epsActual": {
+                                "raw": 0.83,
+                                "fmt": "0.83"
+                            },
+                            "epsEstimate": {
+                                "raw": 0.81,
+                                "fmt": "0.81"
+                            },
+                            "epsDifference": {
+                                "raw": 0.02,
+                                "fmt": "0.02"
+                            },
+                            "surprisePercent": {
+                                "raw": 0.025,
+                                "fmt": "2.50%"
+                            },
+                            "quarter": {
+                                "raw": 1514678400,
+                                "fmt": "2017-12-31"
+                            },
+                            "period": "-1q"
+                        }
+                    ],
+                    "maxAge": 86400
+                },
                 "majorDirectHolders": {
                     "holders": [],
                     "maxAge": 1
@@ -2618,8 +4023,8 @@
                 "esgScores": {
                     "maxAge": 86400,
                     "totalEsg": {
-                        "raw": 19.77,
-                        "fmt": "19.8"
+                        "raw": 20.13,
+                        "fmt": "20.1"
                     },
                     "environmentScore": {
                         "raw": 0.75,
@@ -2630,46 +4035,46 @@
                         "fmt": "9.1"
                     },
                     "governanceScore": {
-                        "raw": 9.9,
-                        "fmt": "9.9"
+                        "raw": 10.26,
+                        "fmt": "10.3"
                     },
-                    "ratingYear": 2020,
-                    "ratingMonth": 10,
+                    "ratingYear": 2021,
+                    "ratingMonth": 1,
                     "highestControversy": 2.0,
-                    "peerCount": 96,
-                    "esgPerformance": "UNDER_PERF",
+                    "peerCount": 97,
+                    "esgPerformance": "AVG_PERF",
                     "peerGroup": "Insurance",
                     "relatedControversy": [
                         "Customer Incidents"
                     ],
                     "peerEsgScorePerformance": {
-                        "min": 12.73,
-                        "avg": 23.886354166666663,
+                        "min": 12.45,
+                        "avg": 23.463298969072166,
                         "max": 34.74
                     },
                     "peerGovernancePerformance": {
-                        "min": 6.14,
-                        "avg": 12.741789473684209,
+                        "min": 5.9,
+                        "avg": 12.446458333333334,
                         "max": 20.91
                     },
                     "peerSocialPerformance": {
-                        "min": 4.86,
-                        "avg": 9.476526315789473,
+                        "min": 4.84,
+                        "avg": 9.378854166666665,
                         "max": 13.79
                     },
                     "peerEnvironmentPerformance": {
                         "min": 0.07,
-                        "avg": 1.6301052631578954,
+                        "avg": 1.5914583333333336,
                         "max": 2.95
                     },
                     "peerHighestControversyPerformance": {
                         "min": 0.0,
-                        "avg": 1.5416666666666667,
+                        "avg": 1.5051546391752577,
                         "max": 4.0
                     },
                     "percentile": {
-                        "raw": 19.68,
-                        "fmt": "20"
+                        "raw": 21.44,
+                        "fmt": "21"
                     },
                     "environmentPercentile": null,
                     "socialPercentile": null,
@@ -2746,6 +4151,765 @@
                 },
                 "insiderTransactions": {
                     "transactions": [
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 14238,
+                                "fmt": "14.24k",
+                                "longFmt": "14,238"
+                            },
+                            "value": {
+                                "raw": 434814,
+                                "fmt": "434.81k",
+                                "longFmt": "434,814"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Exercise of options at price 30.54 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 18715,
+                                "fmt": "18.71k",
+                                "longFmt": "18,715"
+                            },
+                            "value": {
+                                "raw": 413058,
+                                "fmt": "413.06k",
+                                "longFmt": "413,058"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Exercise of options at price 22.07 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 14147,
+                                "fmt": "14.15k",
+                                "longFmt": "14,147"
+                            },
+                            "value": {
+                                "raw": 434808,
+                                "fmt": "434.81k",
+                                "longFmt": "434,808"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Exercise of options at price 30.73 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 14238,
+                                "fmt": "14.24k",
+                                "longFmt": "14,238"
+                            },
+                            "value": {
+                                "raw": 631939,
+                                "fmt": "631.94k",
+                                "longFmt": "631,939"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition in the public market at price 44.38 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 18715,
+                                "fmt": "18.71k",
+                                "longFmt": "18,715"
+                            },
+                            "value": {
+                                "raw": 830646,
+                                "fmt": "830.65k",
+                                "longFmt": "830,646"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition in the public market at price 44.38 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 14147,
+                                "fmt": "14.15k",
+                                "longFmt": "14,147"
+                            },
+                            "value": {
+                                "raw": 627900,
+                                "fmt": "627.9k",
+                                "longFmt": "627,900"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition in the public market at price 44.38 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609718400,
+                                "fmt": "2021-01-04"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 1064,
+                                "fmt": "1.06k",
+                                "longFmt": "1,064"
+                            },
+                            "value": {
+                                "raw": 46813,
+                                "fmt": "46.81k",
+                                "longFmt": "46,813"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Brown (Randolph)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 750,
+                                "fmt": "750",
+                                "longFmt": "750"
+                            },
+                            "value": {
+                                "raw": 33345,
+                                "fmt": "33.34k",
+                                "longFmt": "33,345"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Redemption, retraction, cancelation, repurchase at price 44.46 per share.",
+                            "filerName": "Brown (Randolph)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 2666,
+                                "fmt": "2.67k",
+                                "longFmt": "2,666"
+                            },
+                            "value": {
+                                "raw": 117298,
+                                "fmt": "117.3k",
+                                "longFmt": "117,298"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 953,
+                                "fmt": "953",
+                                "longFmt": "953"
+                            },
+                            "value": {
+                                "raw": 39310,
+                                "fmt": "39.31k",
+                                "longFmt": "39,310"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.25 per share.",
+                            "filerName": "Connor (Dean)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 263,
+                                "fmt": "263",
+                                "longFmt": "263"
+                            },
+                            "value": {
+                                "raw": 11571,
+                                "fmt": "11.57k",
+                                "longFmt": "11,571"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Dougherty (Linda)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 204,
+                                "fmt": "204",
+                                "longFmt": "204"
+                            },
+                            "value": {
+                                "raw": 8483,
+                                "fmt": "8.48k",
+                                "longFmt": "8,483"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.59 per share.",
+                            "filerName": "Dougherty (Linda)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 777,
+                                "fmt": "777",
+                                "longFmt": "777"
+                            },
+                            "value": {
+                                "raw": 34186,
+                                "fmt": "34.19k",
+                                "longFmt": "34,186"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Fishbein (Daniel)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 623,
+                                "fmt": "623",
+                                "longFmt": "623"
+                            },
+                            "value": {
+                                "raw": 27410,
+                                "fmt": "27.41k",
+                                "longFmt": "27,410"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Freyne, Colm Joseph",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 874,
+                                "fmt": "874",
+                                "longFmt": "874"
+                            },
+                            "value": {
+                                "raw": 35982,
+                                "fmt": "35.98k",
+                                "longFmt": "35,982"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.17 per share.",
+                            "filerName": "Freyne, Colm Joseph",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 69,
+                                "fmt": "69",
+                                "longFmt": "69"
+                            },
+                            "value": {
+                                "raw": 3083,
+                                "fmt": "3.08k",
+                                "longFmt": "3,083"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.69 per share.",
+                            "filerName": "Goulet (Jacques Jr.)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 756,
+                                "fmt": "756",
+                                "longFmt": "756"
+                            },
+                            "value": {
+                                "raw": 33262,
+                                "fmt": "33.26k",
+                                "longFmt": "33,262"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Goulet (Jacques Jr.)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 680,
+                                "fmt": "680",
+                                "longFmt": "680"
+                            },
+                            "value": {
+                                "raw": 29918,
+                                "fmt": "29.92k",
+                                "longFmt": "29,918"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Grepin (Leo)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 60,
+                                "fmt": "60",
+                                "longFmt": "60"
+                            },
+                            "value": {
+                                "raw": 2652,
+                                "fmt": "2.65k",
+                                "longFmt": "2,652"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.20 per share.",
+                            "filerName": "Harris (Margaret Marianne)",
+                            "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 333,
+                                "fmt": "333",
+                                "longFmt": "333"
+                            },
+                            "value": {
+                                "raw": 14651,
+                                "fmt": "14.65k",
+                                "longFmt": "14,651"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Kennedy, Melissa Jane",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 157,
+                                "fmt": "157",
+                                "longFmt": "157"
+                            },
+                            "value": {
+                                "raw": 6540,
+                                "fmt": "6.54k",
+                                "longFmt": "6,540"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.66 per share.",
+                            "filerName": "Kennedy, Melissa Jane",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 121,
+                                "fmt": "121",
+                                "longFmt": "121"
+                            },
+                            "value": {
+                                "raw": 5323,
+                                "fmt": "5.32k",
+                                "longFmt": "5,323"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Money, Laura Ann",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 116,
+                                "fmt": "116",
+                                "longFmt": "116"
+                            },
+                            "value": {
+                                "raw": 5071,
+                                "fmt": "5.07k",
+                                "longFmt": "5,071"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 43.72 per share.",
+                            "filerName": "Money, Laura Ann",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 171,
+                                "fmt": "171",
+                                "longFmt": "171"
+                            },
+                            "value": {
+                                "raw": 7523,
+                                "fmt": "7.52k",
+                                "longFmt": "7,523"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Morrissey (Kevin)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 367,
+                                "fmt": "367",
+                                "longFmt": "367"
+                            },
+                            "value": {
+                                "raw": 15124,
+                                "fmt": "15.12k",
+                                "longFmt": "15,124"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.21 per share.",
+                            "filerName": "Morrissey (Kevin)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 67,
+                                "fmt": "67",
+                                "longFmt": "67"
+                            },
+                            "value": {
+                                "raw": 2710,
+                                "fmt": "2.71k",
+                                "longFmt": "2,710"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 40.46 per share.",
+                            "filerName": "Morrissey (Kevin)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 195,
+                                "fmt": "195",
+                                "longFmt": "195"
+                            },
+                            "value": {
+                                "raw": 8579,
+                                "fmt": "8.58k",
+                                "longFmt": "8,579"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Pagano, Helena Janina",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 819,
+                                "fmt": "819",
+                                "longFmt": "819"
+                            },
+                            "value": {
+                                "raw": 34162,
+                                "fmt": "34.16k",
+                                "longFmt": "34,162"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.71 per share.",
+                            "filerName": "Pagano, Helena Janina",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 1056,
+                                "fmt": "1.06k",
+                                "longFmt": "1,056"
+                            },
+                            "value": {
+                                "raw": 46461,
+                                "fmt": "46.46k",
+                                "longFmt": "46,461"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Peacher (Stephen)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 321,
+                                "fmt": "321",
+                                "longFmt": "321"
+                            },
+                            "value": {
+                                "raw": 14123,
+                                "fmt": "14.12k",
+                                "longFmt": "14,123"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Saunders, Mark",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 166,
+                                "fmt": "166",
+                                "longFmt": "166"
+                            },
+                            "value": {
+                                "raw": 6923,
+                                "fmt": "6.92k",
+                                "longFmt": "6,923"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.70 per share.",
+                            "filerName": "Saunders, Mark",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 802,
+                                "fmt": "802",
+                                "longFmt": "802"
+                            },
+                            "value": {
+                                "raw": 35286,
+                                "fmt": "35.29k",
+                                "longFmt": "35,286"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 44.00 per share.",
+                            "filerName": "Strain (Kevin David)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 3466,
+                                "fmt": "3.47k",
+                                "longFmt": "3,466"
+                            },
+                            "value": {
+                                "raw": 144275,
+                                "fmt": "144.28k",
+                                "longFmt": "144,275"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 41.63 per share.",
+                            "filerName": "Strain (Kevin David)",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1609372800,
+                                "fmt": "2020-12-31"
+                            },
+                            "ownership": "I"
+                        },
                         {
                             "maxAge": 1,
                             "shares": {
@@ -3894,6 +6058,24 @@
                         {
                             "maxAge": 1,
                             "shares": {
+                                "raw": 0,
+                                "fmt": null,
+                                "longFmt": "0"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "",
+                            "filerName": "Money, Laura Ann",
+                            "filerRelation": "Senior Officer of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1593388800,
+                                "fmt": "2020-06-29"
+                            },
+                            "ownership": "I"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
                                 "raw": 28103,
                                 "fmt": "28.1k",
                                 "longFmt": "28,103"
@@ -4533,24 +6715,6 @@
                         {
                             "maxAge": 1,
                             "shares": {
-                                "raw": 1155451,
-                                "fmt": "1.16M",
-                                "longFmt": "1,155,451"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "",
-                            "filerName": "Sun (Life Financial)",
-                            "filerRelation": "Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1584057600,
-                                "fmt": "2020-03-13"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
                                 "raw": 393351,
                                 "fmt": "393.35k",
                                 "longFmt": "393,351"
@@ -4585,6 +6749,24 @@
                             },
                             "filerUrl": "",
                             "transactionText": "Redemption, retraction, cancelation, repurchase at price 32.68 per share.",
+                            "filerName": "Sun (Life Financial)",
+                            "filerRelation": "Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1584057600,
+                                "fmt": "2020-03-13"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 1155451,
+                                "fmt": "1.16M",
+                                "longFmt": "1,155,451"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "",
                             "filerName": "Sun (Life Financial)",
                             "filerRelation": "Issuer",
                             "moneyText": "",
@@ -4666,12 +6848,17 @@
                         {
                             "maxAge": 1,
                             "shares": {
-                                "raw": 663381,
-                                "fmt": "663.38k",
-                                "longFmt": "663,381"
+                                "raw": 393351,
+                                "fmt": "393.35k",
+                                "longFmt": "393,351"
+                            },
+                            "value": {
+                                "raw": 16528609,
+                                "fmt": "16.53M",
+                                "longFmt": "16,528,609"
                             },
                             "filerUrl": "",
-                            "transactionText": "",
+                            "transactionText": "Redemption, retraction, cancelation, repurchase at price 42.02 per share.",
                             "filerName": "Sun (Life Financial)",
                             "filerRelation": "Issuer",
                             "moneyText": "",
@@ -4684,17 +6871,12 @@
                         {
                             "maxAge": 1,
                             "shares": {
-                                "raw": 393351,
-                                "fmt": "393.35k",
-                                "longFmt": "393,351"
-                            },
-                            "value": {
-                                "raw": 16528609,
-                                "fmt": "16.53M",
-                                "longFmt": "16,528,609"
+                                "raw": 663381,
+                                "fmt": "663.38k",
+                                "longFmt": "663,381"
                             },
                             "filerUrl": "",
-                            "transactionText": "Redemption, retraction, cancelation, repurchase at price 42.02 per share.",
+                            "transactionText": "",
                             "filerName": "Sun (Life Financial)",
                             "filerRelation": "Issuer",
                             "moneyText": "",
@@ -4776,47 +6958,6 @@
                         {
                             "maxAge": 1,
                             "shares": {
-                                "raw": 130000,
-                                "fmt": "130k",
-                                "longFmt": "130,000"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "",
-                            "filerName": "Sun (Life Financial)",
-                            "filerRelation": "Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1583107200,
-                                "fmt": "2020-03-02"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 150000,
-                                "fmt": "150k",
-                                "longFmt": "150,000"
-                            },
-                            "value": {
-                                "raw": 6573900,
-                                "fmt": "6.57M",
-                                "longFmt": "6,573,900"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Redemption, retraction, cancelation, repurchase at price 43.83 per share.",
-                            "filerName": "Sun (Life Financial)",
-                            "filerRelation": "Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1583107200,
-                                "fmt": "2020-03-02"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
                                 "raw": 28103,
                                 "fmt": "28.1k",
                                 "longFmt": "28,103"
@@ -4853,6 +6994,47 @@
                             "transactionText": "Acquisition or disposition in the public market at price 43.20 per share.",
                             "filerName": "Connor (Dean)",
                             "filerRelation": "Director of Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1583107200,
+                                "fmt": "2020-03-02"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 130000,
+                                "fmt": "130k",
+                                "longFmt": "130,000"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "",
+                            "filerName": "Sun (Life Financial)",
+                            "filerRelation": "Issuer",
+                            "moneyText": "",
+                            "startDate": {
+                                "raw": 1583107200,
+                                "fmt": "2020-03-02"
+                            },
+                            "ownership": "D"
+                        },
+                        {
+                            "maxAge": 1,
+                            "shares": {
+                                "raw": 150000,
+                                "fmt": "150k",
+                                "longFmt": "150,000"
+                            },
+                            "value": {
+                                "raw": 6573900,
+                                "fmt": "6.57M",
+                                "longFmt": "6,573,900"
+                            },
+                            "filerUrl": "",
+                            "transactionText": "Redemption, retraction, cancelation, repurchase at price 43.83 per share.",
+                            "filerName": "Sun (Life Financial)",
+                            "filerRelation": "Issuer",
                             "moneyText": "",
                             "startDate": {
                                 "raw": 1583107200,
@@ -5386,783 +7568,6 @@
                             "startDate": {
                                 "raw": 1582588800,
                                 "fmt": "2020-02-25"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 12731,
-                                "fmt": "12.73k",
-                                "longFmt": "12,731"
-                            },
-                            "value": {
-                                "raw": 623755,
-                                "fmt": "623.75k",
-                                "longFmt": "623,755"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 48.99 per share.",
-                            "filerName": "Peacher (Stephen)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1582588800,
-                                "fmt": "2020-02-25"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 8648,
-                                "fmt": "8.65k",
-                                "longFmt": "8,648"
-                            },
-                            "value": {
-                                "raw": 423708,
-                                "fmt": "423.71k",
-                                "longFmt": "423,708"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 48.99 per share.",
-                            "filerName": "Saunders, Mark",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1582588800,
-                                "fmt": "2020-02-25"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 25366,
-                                "fmt": "25.37k",
-                                "longFmt": "25,366"
-                            },
-                            "value": {
-                                "raw": 1242807,
-                                "fmt": "1.24M",
-                                "longFmt": "1,242,807"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 48.99 per share.",
-                            "filerName": "Strain (Kevin David)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1582588800,
-                                "fmt": "2020-02-25"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 25465,
-                                "fmt": "25.46k",
-                                "longFmt": "25,465"
-                            },
-                            "value": {
-                                "raw": 754222,
-                                "fmt": "754.22k",
-                                "longFmt": "754,222"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Exercise of options at price 29.62 per share.",
-                            "filerName": "Freyne, Colm Joseph",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1582156800,
-                                "fmt": "2020-02-20"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 25628,
-                                "fmt": "25.63k",
-                                "longFmt": "25,628"
-                            },
-                            "value": {
-                                "raw": 754206,
-                                "fmt": "754.21k",
-                                "longFmt": "754,206"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Exercise of options at price 29.43 per share.",
-                            "filerName": "Freyne, Colm Joseph",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1582156800,
-                                "fmt": "2020-02-20"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 51093,
-                                "fmt": "51.09k",
-                                "longFmt": "51,093"
-                            },
-                            "value": {
-                                "raw": 2511680,
-                                "fmt": "2.51M",
-                                "longFmt": "2,511,680"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition in the public market at price 49.16 per share.",
-                            "filerName": "Freyne, Colm Joseph",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1582156800,
-                                "fmt": "2020-02-20"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 81,
-                                "fmt": "81",
-                                "longFmt": "81"
-                            },
-                            "value": {
-                                "raw": 3986,
-                                "fmt": "3.99k",
-                                "longFmt": "3,986"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 49.21 per share.",
-                            "filerName": "Gupta (Ashok K)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1582156800,
-                                "fmt": "2020-02-20"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 600,
-                                "fmt": "600",
-                                "longFmt": "600"
-                            },
-                            "value": {
-                                "raw": 29927,
-                                "fmt": "29.93k",
-                                "longFmt": "29,927"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition in the public market at price 49.88 per share.",
-                            "filerName": "Coyles (Stephanie)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581984000,
-                                "fmt": "2020-02-18"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 13073,
-                                "fmt": "13.07k",
-                                "longFmt": "13,073"
-                            },
-                            "value": {
-                                "raw": 396059,
-                                "fmt": "396.06k",
-                                "longFmt": "396,059"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Exercise of options at price 30.30 per share.",
-                            "filerName": "Saunders, Mark",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581984000,
-                                "fmt": "2020-02-18"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 13073,
-                                "fmt": "13.07k",
-                                "longFmt": "13,073"
-                            },
-                            "value": {
-                                "raw": 649087,
-                                "fmt": "649.09k",
-                                "longFmt": "649,087"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition in the public market at price 49.65 per share.",
-                            "filerName": "Saunders, Mark",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581984000,
-                                "fmt": "2020-02-18"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 25465,
-                                "fmt": "25.46k",
-                                "longFmt": "25,465"
-                            },
-                            "value": {
-                                "raw": 754375,
-                                "fmt": "754.38k",
-                                "longFmt": "754,375"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Exercise of options at price 29.62 per share.",
-                            "filerName": "Strain (Kevin David)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581984000,
-                                "fmt": "2020-02-18"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 25628,
-                                "fmt": "25.63k",
-                                "longFmt": "25,628"
-                            },
-                            "value": {
-                                "raw": 754385,
-                                "fmt": "754.38k",
-                                "longFmt": "754,385"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Exercise of options at price 29.44 per share.",
-                            "filerName": "Strain (Kevin David)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581984000,
-                                "fmt": "2020-02-18"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 25465,
-                                "fmt": "25.46k",
-                                "longFmt": "25,465"
-                            },
-                            "value": {
-                                "raw": 1256876,
-                                "fmt": "1.26M",
-                                "longFmt": "1,256,876"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition in the public market at price 49.36 per share.",
-                            "filerName": "Strain (Kevin David)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581984000,
-                                "fmt": "2020-02-18"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 25628,
-                                "fmt": "25.63k",
-                                "longFmt": "25,628"
-                            },
-                            "value": {
-                                "raw": 1264921,
-                                "fmt": "1.26M",
-                                "longFmt": "1,264,921"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition in the public market at price 49.36 per share.",
-                            "filerName": "Strain (Kevin David)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581984000,
-                                "fmt": "2020-02-18"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 14910,
-                                "fmt": "14.91k",
-                                "longFmt": "14,910"
-                            },
-                            "value": {
-                                "raw": 548389,
-                                "fmt": "548.39k",
-                                "longFmt": "548,389"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Brown (Randolph)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 31217,
-                                "fmt": "31.22k",
-                                "longFmt": "31,217"
-                            },
-                            "value": {
-                                "raw": 1148161,
-                                "fmt": "1.15M",
-                                "longFmt": "1,148,161"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Connor (Dean)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 2271,
-                                "fmt": "2.27k",
-                                "longFmt": "2,271"
-                            },
-                            "value": {
-                                "raw": 83527,
-                                "fmt": "83.53k",
-                                "longFmt": "83,527"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Dougherty (Linda)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 8946,
-                                "fmt": "8.95k",
-                                "longFmt": "8,946"
-                            },
-                            "value": {
-                                "raw": 329033,
-                                "fmt": "329.03k",
-                                "longFmt": "329,033"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Fishbein (Daniel)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 7378,
-                                "fmt": "7.38k",
-                                "longFmt": "7,378"
-                            },
-                            "value": {
-                                "raw": 271362,
-                                "fmt": "271.36k",
-                                "longFmt": "271,362"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Freyne, Colm Joseph",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 9838,
-                                "fmt": "9.84k",
-                                "longFmt": "9,838"
-                            },
-                            "value": {
-                                "raw": 361841,
-                                "fmt": "361.84k",
-                                "longFmt": "361,841"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Grepin (Leo)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 3973,
-                                "fmt": "3.97k",
-                                "longFmt": "3,973"
-                            },
-                            "value": {
-                                "raw": 146126,
-                                "fmt": "146.13k",
-                                "longFmt": "146,126"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Kennedy, Melissa Jane",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 2119,
-                                "fmt": "2.12k",
-                                "longFmt": "2,119"
-                            },
-                            "value": {
-                                "raw": 77936,
-                                "fmt": "77.94k",
-                                "longFmt": "77,936"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Morrissey (Kevin)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 1514,
-                                "fmt": "1.51k",
-                                "longFmt": "1,514"
-                            },
-                            "value": {
-                                "raw": 55684,
-                                "fmt": "55.68k",
-                                "longFmt": "55,684"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Pagano, Helena Janina",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 16401,
-                                "fmt": "16.4k",
-                                "longFmt": "16,401"
-                            },
-                            "value": {
-                                "raw": 603228,
-                                "fmt": "603.23k",
-                                "longFmt": "603,228"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Peacher (Stephen)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 4257,
-                                "fmt": "4.26k",
-                                "longFmt": "4,257"
-                            },
-                            "value": {
-                                "raw": 156572,
-                                "fmt": "156.57k",
-                                "longFmt": "156,572"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Saunders, Mark",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 9365,
-                                "fmt": "9.37k",
-                                "longFmt": "9,365"
-                            },
-                            "value": {
-                                "raw": 344444,
-                                "fmt": "344.44k",
-                                "longFmt": "344,444"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Grant of rights at price 36.78 per share.",
-                            "filerName": "Strain (Kevin David)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1581465600,
-                                "fmt": "2020-02-12"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 28103,
-                                "fmt": "28.1k",
-                                "longFmt": "28,103"
-                            },
-                            "value": {
-                                "raw": 455465,
-                                "fmt": "455.46k",
-                                "longFmt": "455,465"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Exercise of options at price 16.21 per share.",
-                            "filerName": "Connor (Dean)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1580688000,
-                                "fmt": "2020-02-03"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 28103,
-                                "fmt": "28.1k",
-                                "longFmt": "28,103"
-                            },
-                            "value": {
-                                "raw": 1321150,
-                                "fmt": "1.32M",
-                                "longFmt": "1,321,150"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition in the public market at price 47.01 per share.",
-                            "filerName": "Connor (Dean)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1580688000,
-                                "fmt": "2020-02-03"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 28103,
-                                "fmt": "28.1k",
-                                "longFmt": "28,103"
-                            },
-                            "value": {
-                                "raw": 466228,
-                                "fmt": "466.23k",
-                                "longFmt": "466,228"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Exercise of options at price 16.59 per share.",
-                            "filerName": "Connor (Dean)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1577923200,
-                                "fmt": "2020-01-02"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 28103,
-                                "fmt": "28.1k",
-                                "longFmt": "28,103"
-                            },
-                            "value": {
-                                "raw": 1287876,
-                                "fmt": "1.29M",
-                                "longFmt": "1,287,876"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition in the public market at price 45.83 per share.",
-                            "filerName": "Connor (Dean)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1577923200,
-                                "fmt": "2020-01-02"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 0,
-                                "fmt": null,
-                                "longFmt": "0"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "",
-                            "filerName": "Grepin (Leo)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1577836800,
-                                "fmt": "2020-01-01"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 552,
-                                "fmt": "552",
-                                "longFmt": "552"
-                            },
-                            "value": {
-                                "raw": 25342,
-                                "fmt": "25.34k",
-                                "longFmt": "25,342"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 45.91 per share.",
-                            "filerName": "Accum, Claude",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1577750400,
-                                "fmt": "2019-12-31"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 1161,
-                                "fmt": "1.16k",
-                                "longFmt": "1,161"
-                            },
-                            "value": {
-                                "raw": 53302,
-                                "fmt": "53.3k",
-                                "longFmt": "53,302"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 45.91 per share.",
-                            "filerName": "Brown (Randolph)",
-                            "filerRelation": "Senior Officer of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1577750400,
-                                "fmt": "2019-12-31"
-                            },
-                            "ownership": "D"
-                        },
-                        {
-                            "maxAge": 1,
-                            "shares": {
-                                "raw": 2578,
-                                "fmt": "2.58k",
-                                "longFmt": "2,578"
-                            },
-                            "value": {
-                                "raw": 118358,
-                                "fmt": "118.36k",
-                                "longFmt": "118,358"
-                            },
-                            "filerUrl": "",
-                            "transactionText": "Acquisition or disposition under a purchase/ownership plan at price 45.91 per share.",
-                            "filerName": "Connor (Dean)",
-                            "filerRelation": "Director of Issuer",
-                            "moneyText": "",
-                            "startDate": {
-                                "raw": 1577750400,
-                                "fmt": "2019-12-31"
                             },
                             "ownership": "D"
                         }
@@ -7102,8 +8507,8 @@
                 "financialData": {
                     "maxAge": 86400,
                     "currentPrice": {
-                        "raw": 44.49,
-                        "fmt": "44.49"
+                        "raw": 48.32,
+                        "fmt": "48.32"
                     },
                     "targetHighPrice": {
                         "raw": 45.65,
