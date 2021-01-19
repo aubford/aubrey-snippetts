@@ -1,4 +1,4 @@
-import data from "./data/biibData.json"
+import data from "./data/blkData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -164,7 +164,15 @@ function getRecentStatement(statements, mrqSeconds) {
 }
 function cleanStatement(statementList, mrqSeconds) {
   const recentStatement = getRecentStatement(statementList, mrqSeconds)
-  return _.mapValues(recentStatement, "raw")
+  if (!recentStatement) {
+    return {}
+  }
+  const selectedStatement =
+    Object.keys(recentStatement).length > 10
+      ? recentStatement
+      : statementList[statementList.indexOf(recentStatement) + 1]
+  const mapped = _.mapValues(selectedStatement, "raw")
+  return { ...mapped, quartersBack: -statementList.indexOf(selectedStatement) }
 }
 
 function cleanShortInterest(
@@ -325,7 +333,7 @@ function buildCompanyData({ quoteSummary }) {
     incomeStatementHistoryQuarterly: { incomeStatementHistory },
     balanceSheetHistoryQuarterly: { balanceSheetStatements }
   } = quoteSummary.result[0]
-  
+
   const mrqSeconds = mostRecentQuarter ? mostRecentQuarter.raw : 0
   const lfyEndSeconds = lastFiscalYearEnd ? lastFiscalYearEnd.raw : 0
 
@@ -539,7 +547,6 @@ function buildCompanyData({ quoteSummary }) {
 
         lastFiscalYearEnd,
         nextFiscalYearEnd,
-        mostRecentQuarter,
         regularMarketVolume,
 
         // DIVIDEND //
@@ -612,6 +619,11 @@ function buildCompanyData({ quoteSummary }) {
     shareHolderRightsRisk,
     totalRevenueTTM,
     operatingCashflowTTM,
+    mostRecentQuarter: mostRecentQuarter
+      ? `${mostRecentQuarter.fmt} BS:${balanceSheet.quartersBack} CF:${cashFlows.quartersBack} IS:${
+          incomeStatement.quartersBack
+        }`
+      : "?",
     totalDebt: mTotalDebt,
     percentRepurchasedMRQ: cashFlowReStock / fiftyDayAverage.raw / sharesOutstanding.raw,
     buybackRatio: cashFlows.netIncome > 0 ? cashFlowReStock / cashFlows.netIncome : "n/a", // validated this data w/ other brokerages
