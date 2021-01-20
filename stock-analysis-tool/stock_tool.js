@@ -1,4 +1,4 @@
-import data from "./data/citiData.json"
+import data from "./data/sedgData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -652,9 +652,9 @@ function buildCompanyData({ quoteSummary }) {
     freeCashFlowPerShareMRQ: slicePerShare(freeCashFlowMRQ),
     totalCashPerShare: totalCashPerShare ? totalCashPerShare.raw : slicePerShare(balanceSheet.cash),
     operatingCashFlowPerShareMRQ: slicePerShare(operatingCashFlowMRQ),
-    enterpriseToRevenue: enterpriseToRevenue
+    enterpriseToRevenue: enterpriseToRevenue && enterpriseToRevenue.raw
       ? enterpriseToRevenue.raw
-      : enterpriseValue.raw / totalRevenueTTM,
+      : Boolean(enterpriseValue) && enterpriseValue.raw / totalRevenueTTM,
 
     // non-numbers:
     upgradeDowngradeHistory: upgradeDowngradeHistory
