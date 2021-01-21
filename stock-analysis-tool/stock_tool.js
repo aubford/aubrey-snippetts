@@ -227,7 +227,7 @@ function getUpgradeDowngradeHistory(upgradeDowngradeHistory) {
   )
 }
 
-function buildCompanyData({ quoteSummary }) {
+function buildCompanyData({ quoteSummary }, wsjData) {
   const {
     assetProfile: {
       longBusinessSummary,
@@ -461,7 +461,7 @@ function buildCompanyData({ quoteSummary }) {
       .filter(statement => statement.dividendsPaid)
       .reverse()
       .map(({ dividendsPaid }) => -dividendsPaid.raw * mult)
-  
+
   return {
     ...balanceSheet,
     ...incomeStatement,
@@ -652,9 +652,10 @@ function buildCompanyData({ quoteSummary }) {
     freeCashFlowPerShareMRQ: slicePerShare(freeCashFlowMRQ),
     totalCashPerShare: totalCashPerShare ? totalCashPerShare.raw : slicePerShare(balanceSheet.cash),
     operatingCashFlowPerShareMRQ: slicePerShare(operatingCashFlowMRQ),
-    enterpriseToRevenue: enterpriseToRevenue && enterpriseToRevenue.raw
-      ? enterpriseToRevenue.raw
-      : Boolean(enterpriseValue) && enterpriseValue.raw / totalRevenueTTM,
+    enterpriseToRevenue:
+      enterpriseToRevenue && enterpriseToRevenue.raw
+        ? enterpriseToRevenue.raw
+        : Boolean(enterpriseValue) && enterpriseValue.raw / totalRevenueTTM,
 
     // non-numbers:
     upgradeDowngradeHistory: upgradeDowngradeHistory
@@ -664,7 +665,13 @@ function buildCompanyData({ quoteSummary }) {
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
     earliestEarningsDate: getEarningsChartCurrentEstimateData().earningsDates,
-    dividendChart: cashFlowStatementsUpToDate ? [...getDividendChart(annualCashFlowStatements),0,...getDividendChart(cashflowStatements,4)] : [],
+    dividendChart: cashFlowStatementsUpToDate
+      ? [
+          ...getDividendChart(annualCashFlowStatements),
+          0,
+          ...getDividendChart(cashflowStatements, 4)
+        ]
+      : [],
     quarterlyEPSActualEstimateChart: validateEarningsChart(earningsChart, fiscalMRQStr)
       .reduce((acc, { actual, estimate }) => [...acc, estimate.raw, actual.raw, 0], [])
       .concat(
@@ -678,10 +685,41 @@ function buildCompanyData({ quoteSummary }) {
         revenueAverage && !dateStrIsBefore(earliestRevenueEstimateDate, -10)
           ? [0, revenueAverage.raw]
           : []
-      )
+      ),
+    wsjChartThreeMonthAgo: wsjData
+      .filter((d, idx) => idx % 3 === 0)
+      .map(str => Number(str))
+      .reverse(),
+    wsjChartMonthAgo: wsjData
+      .filter((d, idx) => (idx + 2) % 3 === 0)
+      .map(str => Number(str))
+      .reverse(),
+    wsjChartCurrent: wsjData
+      .filter((d, idx) => (idx + 1) % 3 === 0)
+      .map(str => Number(str))
+      .reverse(),
+    wsjChartCurrentNum: wsjData
+      .filter((d, idx) => (idx + 1) % 3 === 0)
+      .reduce((acc, curr) => acc + Number(curr), 0)
   }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-buildCompanyData(data)
+buildCompanyData(data, [
+  "19",
+  "21",
+  "19",
+  "2",
+  "1",
+  "1",
+  "5",
+  "5",
+  "6",
+  "0",
+  "0",
+  "0",
+  "0",
+  "0",
+  "0"
+])
