@@ -213,17 +213,27 @@ function getUpgradeDowngradeHistory(upgradeDowngradeHistory) {
 
   const nowInSeconds = Date.now() / 1000
   const quarterAgoSeconds = nowInSeconds - maxSecondsInQuarter
+  const prevQuarterAgoSeconds = nowInSeconds - maxSecondsInQuarter * 2
   const yearAgoSeconds = nowInSeconds - secondsInYear
 
   const pastQuarter = filterDoubles.filter(
     ({ epochGradeDate }) => epochGradeDate >= quarterAgoSeconds
   )
+  const prevQuarter = filterDoubles.filter(
+    ({ epochGradeDate }) =>
+      epochGradeDate < quarterAgoSeconds && epochGradeDate >= prevQuarterAgoSeconds
+  )
   const restOfYear = filterDoubles.filter(
-    ({ epochGradeDate }) => epochGradeDate > yearAgoSeconds && epochGradeDate < quarterAgoSeconds
+    ({ epochGradeDate }) =>
+      epochGradeDate < prevQuarterAgoSeconds && epochGradeDate >= yearAgoSeconds
   )
 
   return (
-    reduceUpdownGrade(pastQuarter) + "_________Qtr_Old__________\n" + reduceUpdownGrade(restOfYear)
+    reduceUpdownGrade(pastQuarter) +
+    "_____-1 Qtr_____\n" +
+    reduceUpdownGrade(prevQuarter) +
+    "_____-2 Qtr_____\n" +
+    reduceUpdownGrade(restOfYear)
   )
 }
 
