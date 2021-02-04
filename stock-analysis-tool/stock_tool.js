@@ -1,4 +1,4 @@
-import data from "./data/sedgData.json"
+import data from "./data/citiData.json"
 import _ from "lodash"
 //noinspection JSUnusedLocalSymbols
 const million = 1000000
@@ -471,6 +471,8 @@ function buildCompanyData({ quoteSummary }, wsjData) {
       .filter(statement => statement.dividendsPaid)
       .reverse()
       .map(({ dividendsPaid }) => -dividendsPaid.raw * mult)
+  
+  const anaylstRecommendations = getAnalystRecommendations(recommendationTrend)
 
   return {
     ...balanceSheet,
@@ -671,7 +673,8 @@ function buildCompanyData({ quoteSummary }, wsjData) {
     upgradeDowngradeHistory: upgradeDowngradeHistory
       ? getUpgradeDowngradeHistory(upgradeDowngradeHistory)
       : "n/a",
-    anaylstRecommendations: getAnalystRecommendations(recommendationTrend),
+    anaylstRecommendations,
+    numAnaylstRecommendations: anaylstRecommendations.reduce((acc,curr) => acc + curr,0),
     institutionsCount: institutionsCount ? institutionsCount.longFmt : null,
     nonIndexOwners: getNonIndexOwners(ownershipList),
     earliestEarningsDate: getEarningsChartCurrentEstimateData().earningsDates,
@@ -716,7 +719,7 @@ function buildCompanyData({ quoteSummary }, wsjData) {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-buildCompanyData(data, [
+const companyData  = buildCompanyData(data, [
   "19",
   "21",
   "19",
@@ -732,4 +735,4 @@ buildCompanyData(data, [
   "0",
   "0",
   "0"
-])
+]).numAnaylstRecommendations /* ?*/
