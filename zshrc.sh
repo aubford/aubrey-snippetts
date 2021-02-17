@@ -104,7 +104,7 @@ source "$ZSH/oh-my-zsh.sh"
 # sed this file
 alias alialist="tail -n +8 zrc"
 # pbcopy pwd
-alias cppwd="pwd | tr -d '\n' | pbcopy"
+alias pwdcp="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
 zzz(){
   (cd "/Users/aubreyford/workspace/aubrey-snippetts" && idea .)
@@ -242,6 +242,9 @@ alias ngrok='~/workspace/aubrey-snippetts/util/ngrok'
 grok(){
   ngrok http "$1"
 }
+
+alias nightfox='/Applications/Firefox\ Nightly.app/Contents/MacOS/firefox'
+alias foxy='/Applications/Firefox\ Nightly.app/Contents/MacOS/firefox --remote-debugging-port'
 
 # ------- Mac --------------------------------------------------------------------------------------------------
 alias downloads="cd $HOME/downloads"

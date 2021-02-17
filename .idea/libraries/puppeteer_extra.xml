@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="puppeteer-extra" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/stock-analysis-tool/scraper/node_modules/puppeteer" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/stock-analysis-tool/scraper/node_modules/@types/puppeteer/index.d.ts" />
+      <root url="file://$PROJECT_DIR$/stock-analysis-tool/scraper/node_modules/puppeteer" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

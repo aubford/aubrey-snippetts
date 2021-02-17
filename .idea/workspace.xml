@@ -36,10 +36,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/scraper/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/scraper/creds.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock-analysis-tool/scraper/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/puppeteer_extra.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aubrey-snippetts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aubrey-snippetts.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +119,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="javascript.nodejs.core.library.typings.version" value="10.17.48" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.51" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/stock-analysis-tool" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -129,7 +136,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="aJavascript" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
