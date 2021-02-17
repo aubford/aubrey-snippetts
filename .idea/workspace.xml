@@ -36,16 +36,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/puppeteer_extra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aubrey-snippetts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aubrey-snippetts.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/scraper/package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/zshrc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/zshrc.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,14 +107,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="javascript.nodejs.core.library.typings.version" value="10.17.51" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/stock-analysis-tool" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.20.2" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.20.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -136,7 +131,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="aJavascript" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -326,6 +321,7 @@
       <workItem from="1588703565115" duration="396000" />
       <workItem from="1588707019173" duration="627000" />
       <workItem from="1588904914424" duration="114000" />
+      <workItem from="1613541310910" duration="1855000" />
     </task>
     <task id="LOCAL-00001" summary="Add Java/Android commands">
       <created>1573849242120</created>

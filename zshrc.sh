@@ -5,13 +5,10 @@
 #   What your ~/.zshrc file should look like, simply:
 
 #>  #@IgnoreInspection BashAddShebang
-#>  AUBREY="aubreyford"
+#>  AUBREY="aubrey"
 #>  path+="/usr/local/mysql/bin"
-#>  source "/Users/aubreyford/workspace/aubrey-snippetts/zshrc.sh"
+#>  source "/Users/aubrey/workspace/aubrey-snippetts/zshrc.sh"
 #>  JDK_HOME="WHATEVER_CURRENT_JDK_IS" (e.g.: JDK_HOME="jdk1.8.0_231.jdk")
-#>  METEOR_VERSION_DIR="WHATEVER_CURRENT_METEOR_VERSION"
-#>  METEOR_VERSION_DIR="WHATEVER_CURRENT_METEOR_VERSION"
-#>  export BRASCH_LOCATION="location of brasch dir"
 
 ########################################################################
 
@@ -25,7 +22,7 @@ alias desktop-apk='cp /Users/aubreyford/workspace/brasch/suremeteor/.meteor/loca
 SURENURSING_DATABASE_URI="mongodb://development-mongodb-replicaset-0.development-mongodb-replicaset.development-mongodb-replicaset.svc.cluster.local:27017,development-mongodb-replicaset-1.development-mongodb-replicaset.development-mongodb-replicaset.svc.cluster.local:27017,development-mongodb-replicaset-2.development-mongodb-replicaset.development-mongodb-replicaset.svc.cluster.local:27017/suredb?replicaSet=rs0&readPreference=primaryPreferred"
 
 # set global bin locations
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$PATH
 # Set the Android home for the location they are found when SDK is installed using Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
 # Add Android tools locations to PATH
@@ -41,7 +38,7 @@ export PATH=/usr/local/opt/mongodb-community/bin:$PATH
 # path to shell manual
 export MANPATH=/usr/local/man:$MANPATH
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/$AUBREY/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # ---- Global settings ---------------------------------------------------------------------
 
