@@ -12,10 +12,6 @@
 
 ########################################################################
 
-# --- TEMP ----------------------------------------------------------------------------------
-alias copy-apk='cp /Users/aubreyford/workspace/brasch/suremeteor/.meteor/local/cordova-build/platforms/android/app/build/outputs/apk/debug/app-debug.apk /Users/aubreyford/workspace/brasch/version-url/'
-alias desktop-apk='cp /Users/aubreyford/workspace/brasch/suremeteor/.meteor/local/cordova-build/platforms/android/app/build/outputs/apk/debug/app-debug.apk /Users/aubreyford/Desktop'
-
 # --- Set Locations -------------------------------------------------------------------------
 
 #surenursing database uri
@@ -30,7 +26,7 @@ export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-to
 # set Java Developent Kit home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/$JDK_HOME/Contents/Home
 # Set location
-#export METEOR_TOOLS_DIR=/Users/aubreyford/.meteor/packages/meteor-tool/$METEOR_VERSION_DIR/mt-os.osx.x86_64/tools/cli
+#export METEOR_TOOLS_DIR=/Users/aubrey/.meteor/packages/meteor-tool/$METEOR_VERSION_DIR/mt-os.osx.x86_64/tools/cli
 
 
 # set mongo bin location
@@ -49,11 +45,13 @@ alias -g zrc=~/workspace/aubrey-snippetts/zshrc.sh
 git config --global push.default current
 
 # I think this fixes some shit related to dumb alt key behavior
-bindkey "\e\eOD" backward-word
-bindkey "\e\eOC" forward-word
+#bindkey "\e\eOD" backward-word
+#bindkey "\e\eOC" forward-word
 # faster key repeat for bad ADD
 defaults write -g InitialKeyRepeat -int 8
 defaults write -g KeyRepeat -int 1
+# turn off accent menu on long keypress
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # ------- Oh My Zsh Settings -----------------------------------------------------------------
 # shellcheck disable=SC2034
@@ -104,9 +102,9 @@ alias alialist="tail -n +8 zrc"
 alias pwdcp="pwd | tr -d '\n' | pbcopy"
 # open zsh config file
 zzz(){
-  (cd "/Users/aubreyford/workspace/aubrey-snippetts" && idea .)
+  (cd "/Users/aubrey/workspace/aubrey-snippetts" && idea .)
 }
-alias zz="open /Users/aubreyford/workspace/aubrey-snippetts"
+alias zz="open /Users/aubrey/workspace/aubrey-snippetts"
 
 alias nodem="node --max-old-space-size=4096"
 # open multiple files; '-g' aliases can be used anywhere in the command, not just the beginning

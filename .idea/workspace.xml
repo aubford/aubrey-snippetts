@@ -37,7 +37,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e769be0-42a6-4f14-b439-80fbd0c02b2b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-analysis-tool/stock_tool.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,7 +318,9 @@
       <workItem from="1588707019173" duration="627000" />
       <workItem from="1588904914424" duration="114000" />
       <workItem from="1613541310910" duration="1855000" />
-      <workItem from="1614014958331" duration="447000" />
+      <workItem from="1614014958331" duration="682000" />
+      <workItem from="1614017742195" duration="34000" />
+      <workItem from="1614017788959" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="Add Java/Android commands">
       <created>1573849242120</created>
